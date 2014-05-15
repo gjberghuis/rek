@@ -1,13 +1,11 @@
 var mongo = require('mongodb');
- 
-var Server = mongo.Server,
-    Db = mongo.Db,
-    BSON = mongo.BSONPure;
- 
-var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('winedb', server);
- 
-db.open(function(err, db) {
+
+var mongoUri = process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/mydb';
+
+mongo.Db.connect(mongoUri, function (err, db) {
+  db.open(function(err, db) {
     if(!err) {
         console.log("Connected to 'winedb' database");
         db.collection('wines', {strict:true}, function(err, collection) {
@@ -18,6 +16,17 @@ db.open(function(err, db) {
         });
     }
 });
+});
+//var mongo = require('mongodb');
+ 
+//var Server = mongo.Server,
+//    Db = mongo.Db,
+//    BSON = mongo.BSONPure;
+ 
+//var server = new Server('localhost', 27017, {auto_reconnect: true});
+//db = new Db('winedb', server);
+ 
+
  
 exports.findById = function(req, res) {
     var id = req.params.id;
