@@ -19,7 +19,7 @@ var Server = mongo.Server,
     BSON = mongo.BSONPure;
  
 var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('winedb', server);*/
+db = new Db('winedb', server);
  
 db.open(function(err, db) {
     if(!err) {
@@ -102,7 +102,7 @@ exports.deleteWine = function(req, res) {
 /*--------------------------------------------------------------------------------------------------------------------*/
 // Populate database with sample data -- Only used once: the first time the application is started.
 // You'd typically not find this code in a real-life app, since the database would already exist.
-var populateDB = function() {
+/*var populateDB = function() {
  
     var wines = [
     {
@@ -128,4 +128,4 @@ var populateDB = function() {
         collection.insert(wines, {safe:true}, function(err, result) {});
     });
  
-};
+};*/
