@@ -1,13 +1,3 @@
-var mongo = require('mongodb');
-
-var mongoUri = process.env.MONGOLAB_URI ||
-  process.env.MONGOHQ_URL ||
-  'mongodb://heroku_app25266627:5nuh6mit0qjqgv2184mivsq85h@ds061938.mongolab.com:61938/heroku_app25266627';
-
-mongo.Db.connect(mongoUri, function (err, db) {
- 
-});
-
 
 /*var mongo = require('mongodb');
  
