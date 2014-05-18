@@ -1,3 +1,5 @@
+
+
 var MongoClient = require('mongodb').MongoClient; 
 var myCollection;
 var db;
@@ -13,6 +15,10 @@ function createConnection(){
     MongoClient.connect(mongoUri, function(err, db) {
         if(err)
             throw err;
+         db.collection('mydocs', function(er, collection) {
+    collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
+    });
+  });
         
         console.log("connected to the mongoDB !");
         myCollection = db.collection('wines');
