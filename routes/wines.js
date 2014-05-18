@@ -1,8 +1,8 @@
 //var mongo = require('mongodb');
 
 //var mongoUri = process.env.MONGOLAB_URI ||
-  process.env.MONGOHQ_URL ||
-  'mongodb://localhost:3000/winedb';
+ // process.env.MONGOHQ_URL ||
+//  'mongodb://localhost:3000/winedb';
 
 //mongo.Db.connect(mongoUri, function (err, db) {
 //  db.collection('mydocs', function(er, collection) {
