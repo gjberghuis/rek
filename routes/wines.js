@@ -15,10 +15,7 @@ function createConnection(){
     MongoClient.connect(mongoUri, function(err, db) {
         if(err)
             throw err;
-         db.collection('mydocs', function(er, collection) {
-    collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
-    });
-  });
+     
         
         console.log("connected to the mongoDB !");
         myCollection = db.collection('wines');
@@ -37,16 +34,6 @@ exports.findAll = function(req, res) {
             res.send(items);
         });
 };
-
-function addDocument(onAdded){
-    myCollection.insert({name: "doduck", description: "learn more than everyone"}, function(err, result) {
-        if(err)
-            throw err;
- 
-        console.log("entry saved");
-        onAdded();
-    });
-}
 
 function populateDB() {   
     var wines = [
