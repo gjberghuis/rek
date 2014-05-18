@@ -1,7 +1,7 @@
 //var mongoose = require('mongoose');
 //mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds053148.mongolab.com:53148/<database name>');
 //mongoose.connect('mongodb://localhost:27017/redeenkind');
-console.log("test");
+
 // Retrieve
 //var MongoClient = require('mongodb').MongoClient;
 
@@ -13,28 +13,24 @@ console.log("test");
     
     
 //});
-
+    
 var mongo = require('mongodb');
 
 var mongoUri = process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
-  'mongodb://localhost/mydb';
+  'mongodb://localhost:27017/winedb';
 
-mongo.Db.connect(mongoUri, function (err, db) {
-  db.collection('mydocs', function(er, collection) {
-    collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
-    });
-  });
-});
+var collections = ["wines"];
+var db = require("mongojs").connect(mongoUri, collections);
+
 
  
-var Server = mongo.Server,
-    Db = mongo.Db,
-    BSON = mongo.BSONPure;
+//var Server = mongo.Server,
+//    Db = mongo.Db,
+//    BSON = mongo.BSONPure;
  
-var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('winedb', server);
- 
+//var server = new Server('localhost', 27017, {auto_reconnect: true});
+//db = new mongo.db('winedb', server);
 db.open(function(err, db) {
     if(!err) {
         console.log("Connected to 'winedb' database");
