@@ -28,14 +28,15 @@ function createConnection(){
             throw err;
         
         console.log("connected to the mongoDB !");
-
+   myCollection = db.collection('wines');
         db.collection('wines', {strict:true}, function(err, collection) {
             if (err) {
                 console.log("The 'wines' collection doesn't exist. Creating it with sample data...");
-                populateDB();
+               populateDB();
             }
-            myCollection = db.collection('wines');
         });
+        
+        
         
     });
 }
@@ -46,8 +47,17 @@ exports.findAll = function(req, res) {
         });
 };
 
-var populateDB = function() {
+function addDocument(onAdded){
+    myCollection.insert({name: "doduck", description: "learn more than everyone"}, function(err, result) {
+        if(err)
+            throw err;
  
+        console.log("entry saved");
+        onAdded();
+    });
+}
+
+function populateDB() {
     var wines = [
     {
         name: "CHATEAU DE SAINT COSME",
@@ -67,8 +77,16 @@ var populateDB = function() {
         description: "A resurgence of interest in boutique vineyards...",
         picture: "lan_rioja.jpg"
     }];
+    
+    myCollection.insert(wines, function(err, result){
+           if(err){
+            throw err;
+           }
+        console.log("entry saved");
+    });
  
-        myCollection.insert(wines, {safe:true}, function(err, result) {});
-
+  //  db.collection('wines', function(err, collection) {
+// /       collection.insert(wines, {safe:true}, function(err, result) {});
+ // /  });
  
 };
