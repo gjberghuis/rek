@@ -1,4 +1,18 @@
+//var mongoose = require('mongoose');
+//mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds053148.mongolab.com:53148/<database name>');
+//mongoose.connect('mongodb://localhost:27017/redeenkind');
+console.log("test");
+// Retrieve
+//var MongoClient = require('mongodb').MongoClient;
 
+// Connect to the db
+//MongoClient.connect("mongodb://localhost:27017/winedb", function(err, db) {
+//  if(!err) {
+//    console.log("We are connected");
+//  }
+    
+    
+//});
 var mongo = require('mongodb');
  
 var Server = mongo.Server,
