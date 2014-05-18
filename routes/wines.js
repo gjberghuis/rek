@@ -1,96 +1,74 @@
+//var mongo = require('mongodb');
+
+//var mongoUri = process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost:3000/winedb';
+
+//mongo.Db.connect(mongoUri, function (err, db) {
+//  db.collection('mydocs', function(er, collection) {
+//    collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
+//    });
+//  });
+//});
+
 var MongoClient = require('mongodb').MongoClient;
- 
+ 
 var myCollection;
 var db;
- 
-function removeDocument(onRemove){
-    myCollection.findAndModify({name: "doduck"}, [], {remove:true}, function(err, object) {
-        if(err)
-            throw err;
-        console.log("document deleted");
-        onRemove();
-    });
-}
- 
-function findDocument(onFinded){
-    var cursor = myCollection.find({"name" : "doduck", "company.officialName" : "doduck LTD" });
-    cursor.each(function(err, doc) {
-        if(err)
-            throw err;
-        if(doc==null)
-            return;
- 
-        console.log("document find:");
-        console.log(doc.name);
-        console.log(doc.company.employed);
-        onFinded();
-    });
-}
- 
-function fieldComplexeUpdateDocument(onUpdate){
-    myCollection.update({name: "doduck"}, {$set: {company: {employed: 10, officialName: "doduck LTD", industries: ["it consulting", "passionate programming"]}}}, {w:1}, function(err) {
-        if(err)
-            throw err;
-        console.log('entry updated');
-        onUpdate();
-    });
-}
- 
-function fieldUpdateDocument(onUpdate){
-    myCollection.update({name: "doduck"}, {$set: {industry: "France"}}, {w:1}, function(err) {
-        if(err)
-            throw err;
-        console.log('entry updated');
-        onUpdate();
-    });
-}
- 
-function simpleUpdateDocument(onUpdate){
-    myCollection.update({name: "doduck"}, {name: "doduck", description: "prototype your idea"}, {w:1}, function(err) {
-    if(err)
-        throw err;
-        console.log('entry updated');
-        onUpdate();
-    });
-}
- 
-function addDocument(onAdded){
-    myCollection.insert({name: "doduck", description: "learn more than everyone"}, function(err, result) {
-        if(err)
-            throw err;
- 
-        console.log("entry saved");
-        onAdded();
-    });
-}
- 
-function createConnection(onCreate){
- var mongoUri = process.env.MONGOLAB_URI ||
+
+createConnection();
+
+function createConnection(){
+ var mongoUri = process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
-  'mongodb://localhost:27017/redeenkind';
+  'mongodb://localhost:27017/winedb';
     
-    MongoClient.connect(mongoUri, function(err, db) {
-        if(err)
-            throw err;
-        console.log("connected to the mongoDB !");
-        myCollection = db.collection('test_collection');
- 
-        onCreate();
-    });
+    MongoClient.connect(mongoUri, function(err, db) {
+        if(err)
+            throw err;
+        console.log("connected to the mongoDB !");
+
+        db.collection('wines', {strict:true}, function(err, collection) {
+            if (err) {
+                console.log("The 'wines' collection doesn't exist. Creating it with sample data...");
+                populateDB();
+            }
+            myCollection = db.collection('wines');
+        });
+    }
+        
+    });
 }
- 
-createConnection(function(){
-    addDocument(function(){
-        simpleUpdateDocument(function(){
-            fieldUpdateDocument(function(){
-                fieldComplexeUpdateDocument(function(){
-                    findDocument(function(){
-                        removeDocument(function(){
-                            console.log("The end");
-                        });
-                    });
-                });
-            });
-        });
-    });
-});
+
+exports.findAll = function(req, res) {
+        myCollection.find().toArray(function(err, items) {
+            res.send(items);
+        });
+};
+
+var populateDB = function() {
+ 
+    var wines = [
+    {
+        name: "CHATEAU DE SAINT COSME",
+        year: "2009",
+        grapes: "Grenache / Syrah",
+        country: "France",
+        region: "Southern Rhone",
+        description: "The aromas of fruit and spice...",
+        picture: "saint_cosme.jpg"
+    },
+    {
+        name: "LAN RIOJA CRIANZA",
+        year: "2006",
+        grapes: "Tempranillo",
+        country: "Spain",
+        region: "Rioja",
+        description: "A resurgence of interest in boutique vineyards...",
+        picture: "lan_rioja.jpg"
+    }];
+ 
+        myCollection.insert(wines, {safe:true}, function(err, result) {});
+
+ 
+};
