@@ -1,8 +1,9 @@
 
-
-var MongoClient = require('mongodb').MongoClient; 
+var mongo = require('mongodb');
+var MongoClient = mongo.MongoClient; 
 var myCollection;
 var db;
+var BSON = mongo.BSONPure;
 
 createConnection();
 
