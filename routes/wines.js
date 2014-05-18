@@ -57,25 +57,25 @@ function addDocument(onAdded){
     });
 }
 
-function populateDB() {
+function populateDB() {   
     var wines = [
     {
-        name: "CHATEAU DE SAINT COSME",
-        year: "2009",
-        grapes: "Grenache / Syrah",
-        country: "France",
-        region: "Southern Rhone",
-        description: "The aromas of fruit and spice...",
-        picture: "saint_cosme.jpg"
+        "name": "CHATEAU DE SAINT COSME",
+        "year": "2009",
+        "grapes": "Grenache / Syrah",
+        "country": "France",
+        "region": "Southern Rhone",
+        "description": "The aromas of fruit and spice...",
+        "picture": "saint_cosme.jpg"
     },
     {
-        name: "LAN RIOJA CRIANZA",
-        year: "2006",
-        grapes: "Tempranillo",
-        country: "Spain",
-        region: "Rioja",
-        description: "A resurgence of interest in boutique vineyards...",
-        picture: "lan_rioja.jpg"
+        "name": "LAN RIOJA CRIANZA",
+        "year": "2006",
+        "grapes": "Tempranillo",
+        "country": "Spain",
+        "region": "Rioja",
+        "description": "A resurgence of interest in boutique vineyards...",
+        "picture": "lan_rioja.jpg"
     }];
     
     myCollection.insert(wines, function(err, result){
@@ -84,9 +84,4 @@ function populateDB() {
            }
         console.log("entry saved");
     });
- 
-  //  db.collection('wines', function(err, collection) {
-// /       collection.insert(wines, {safe:true}, function(err, result) {});
- // /  });
- 
 };
