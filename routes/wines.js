@@ -26,6 +26,7 @@ function createConnection(){
     MongoClient.connect(mongoUri, function(err, db) {
         if(err)
             throw err;
+        
         console.log("connected to the mongoDB !");
 
         db.collection('wines', {strict:true}, function(err, collection) {
@@ -35,7 +36,6 @@ function createConnection(){
             }
             myCollection = db.collection('wines');
         });
-    }
         
     });
 }
