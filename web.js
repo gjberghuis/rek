@@ -5,7 +5,8 @@
  
 var app = express();
 
- 
+app.get('/klussen', klussen.findAll);
+app.get('/klussen/:id', klussen.findById); 
 app.get('/spaardoelen', spaardoelen.findAll);
 app.get('/spaardoelen/:id', spaardoelen.findById);
 app.get('/wines', wine.findAll);
