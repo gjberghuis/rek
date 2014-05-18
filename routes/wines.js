@@ -1,43 +1,28 @@
-//var mongo = require('mongodb');
-
-//var mongoUri = process.env.MONGOLAB_URI ||
- // process.env.MONGOHQ_URL ||
-//  'mongodb://localhost:3000/winedb';
-
-//mongo.Db.connect(mongoUri, function (err, db) {
-//  db.collection('mydocs', function(er, collection) {
-//    collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
-//    });
-//  });
-//});
-
-var MongoClient = require('mongodb').MongoClient;
- 
+var MongoClient = require('mongodb').MongoClient; 
 var myCollection;
 var db;
 
 createConnection();
 
 function createConnection(){
- var mongoUri = process.env.MONGOLAB_URI ||
-  process.env.MONGOHQ_URL ||
-  'mongodb://localhost:27017/winedb';
+    
+    var mongoUri = process.env.MONGOLAB_URI ||
+        process.env.MONGOHQ_URL ||
+        'mongodb://localhost:27017/winedb';
     
     MongoClient.connect(mongoUri, function(err, db) {
         if(err)
             throw err;
         
         console.log("connected to the mongoDB !");
-   myCollection = db.collection('wines');
+        myCollection = db.collection('wines');
+    
         db.collection('wines', {strict:true}, function(err, collection) {
             if (err) {
                 console.log("The 'wines' collection doesn't exist. Creating it with sample data...");
                populateDB();
             }
         });
-        
-        
-        
     });
 }
 
