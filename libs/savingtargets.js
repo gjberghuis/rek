@@ -2,11 +2,19 @@ var mongoose    = require('mongoose');
 var log         = require('./routes/log')(module);
 var config      = require('./config');
 
-var mongoUri = process.env.MONGOLAB_URI ||
+var uristring = process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
   config.get('mongoose:uri');
 
-mongoose.connect(mongoUri);
+var theport = process.env.PORT || config.get('port');
+
+mongoose.connect(uristring, function (err, res) {
+  if (err) {
+  console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+  } else {
+  console.log ('Succeeded connected to: ' + uristring);
+  }
+});
 
 var db = mongoose.connection;
 
