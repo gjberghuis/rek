@@ -30,6 +30,10 @@ function createConnection(){
 }
 
 exports.findById = function(req, res) {
+    if(req.query.user != "")
+    {
+        
+    }
     var id = req.params.id;
     console.log('Retrieving task: ' + id);
     myCollection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {

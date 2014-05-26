@@ -2,7 +2,11 @@ var mongoose    = require('mongoose');
 var log         = require('./routes/log')(module);
 var config      = require('./config');
 
-mongoose.connect(config.get('mongoose:uri'));
+var mongoUri = process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  config.get('mongoose:uri');
+
+mongoose.connect(mongoUri);
 
 var db = mongoose.connection;
 
