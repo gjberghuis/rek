@@ -1,6 +1,5 @@
  var express = require('express'),
      app = express(),
-     tasks = require('./routes/tasks'),
      log = require('./libs/log')(module),
      config = require('./libs/config'),
      basicAuth = require('basic-auth'),    
@@ -34,7 +33,7 @@ var auth = function (req, res, next) {
 }
 
     
-var SavingTargetModel= require('./routes/savingtargets').SavingTargetModel;
+var SavingTargetModel= require('./routes/mongoose').SavingTargetModel;
 
 app.get('/savingtargets', function(req, res) {
     return SavingTargetModel.find(function(err, savingtargets){
@@ -143,7 +142,7 @@ app.delete('/savingtargets/:id', function (req, res){
     });
 });
 
-var TaskModel = require('./routes/savingtargets').TaskModel;
+var TaskModel = require('./routes/mongoose').TaskModel;
 
 app.get('/tasks', function(req, res) {
     return TaskModel.find(function(err, tasks){
@@ -247,7 +246,7 @@ app.delete('/task/:id', function (req, res){
     });
 });
 
-var UserModel = require('./routes/savingtargets').UserModel;
+var UserModel = require('./routes/mongoose').UserModel;
 
 app.get('/users', function(req, res) {
     return UserModel.find(function(err, users){
