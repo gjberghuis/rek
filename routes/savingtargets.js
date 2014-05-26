@@ -1,0 +1,90 @@
+var mongoose    = require('mongoose');
+var log         = require('../libs/log')(module);
+var config      = require('../libs/config');
+
+mongoose.connect(config.get('mongoose:uri'));
+
+var db = mongoose.connection;
+
+db.on('error', function (err) {
+    log.error('connection error:', err.message);
+});
+db.once('open', function callback () {
+    log.info("Connected to DB!");
+});
+
+var Schema = mongoose.Schema;
+
+/*
+* Savingtargets
+*/
+
+var Images = new Schema({
+    kind: {
+        type: String,
+        enum: ['thumbnail', 'detail'],
+        required: false
+    },
+    url: { type: String, required: false }
+});
+
+var SavingTarget = new Schema({
+    name: { type: String, required: true },
+    short_description: { type: String, required: true },
+    description: { type: String, required: false },
+    amount: { type: String, required: false },
+    images: [Images],
+});
+
+// validation
+SavingTarget.path('name').validate(function (v) {
+    return v.length > 2 && v.length < 70;
+});
+
+var SavingTargetModel = mongoose.model('SavingTarget', SavingTarget);
+
+module.exports.SavingTargetModel = SavingTargetModel;
+
+/*
+* Tasks
+*/
+
+var Task = new Schema({
+    name: { type: String, required: true },
+    short_description: { type: String, required: true },
+    description: { type: String, required: false }
+});
+
+// validation
+Task.path('name').validate(function (v) {
+    return v.length > 2 && v.length < 70;
+});
+
+var TaskModel = mongoose.model('Task', Task);
+
+module.exports.TaskModel = TaskModel;
+
+/*
+* Users
+*/
+
+var User = new Schema({
+    firstname: { type: String, required: true },
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    registration_date: { type: String, required: false }
+});
+
+// validation
+User.path('name').validate(function (v) {
+    return v.length > 2 && v.length < 70;
+});
+
+/*User.path('email').validate(function (email) {
+   var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+   return emailRegex.test(email.text); // Assuming email has a text attribute
+}, 'The e-mail field cannot be empty.')
+*/
+var UserModel = mongoose.model('User', User);
+
+module.exports.UserModel = UserModel;

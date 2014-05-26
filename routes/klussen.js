@@ -18,9 +18,9 @@ function createConnection(){
             throw err;
         
         console.log("connected to the mongoDB !");
-        myCollection = db.collection('klussen');
+        myCollection = db.collection('tasks');
     
-        db.collection('klussen', {strict:true}, function(err, collection) {
+        db.collection('tasks', {strict:true}, function(err, collection) {
             if (err) {
                 console.log("The 'klussen' collection doesn't exist. Creating it with sample data...");
                populateDB();
@@ -31,7 +31,7 @@ function createConnection(){
 
 exports.findById = function(req, res) {
     var id = req.params.id;
-    console.log('Retrieving klus: ' + id);
+    console.log('Retrieving task: ' + id);
     myCollection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
         res.send(item);
     });
@@ -44,10 +44,10 @@ exports.findAll = function(req, res) {
     });
 };
  
-/* exports.addWine = function(req, res) {
-    var wine = req.body;
-    console.log('Adding wine: ' + JSON.stringify(wine));
-    myCollection.insert(wine, {safe:true}, function(err, result) {
+ exports.addTask = function(req, res) {
+    var task = req.body;
+    console.log('Adding task: ' + JSON.stringify(task));
+    myCollection.insert(task, {safe:true}, function(err, result) {
         if (err) {
             res.send({'error':'An error has occurred'});
         } else {
@@ -57,25 +57,25 @@ exports.findAll = function(req, res) {
     });
 }
  
-exports.updateWine = function(req, res) {
+exports.updateTask = function(req, res) {
     var id = req.params.id;
-    var wine = req.body;
-    console.log('Updating wine: ' + id);
-    console.log(JSON.stringify(wine));
+    var task = req.body;
+    console.log('Updating task: ' + id);
+    console.log(JSON.stringify(task));
     myCollection.update({'_id':new BSON.ObjectID(id)}, wine, {safe:true}, function(err, result) {
         if (err) {
-            console.log('Error updating wine: ' + err);
+            console.log('Error updating task: ' + err);
             res.send({'error':'An error has occurred'});
         } else {
             console.log('' + result + ' document(s) updated');
-            res.send(wine);
+            res.send(task);
         }
     });
 }
  
-exports.deleteWine = function(req, res) {
+exports.deleteTask = function(req, res) {
     var id = req.params.id;
-    console.log('Deleting wine: ' + id);
+    console.log('Deleting task: ' + id);
     myCollection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
         if (err) {
             res.send({'error':'An error has occurred - ' + err});
@@ -87,21 +87,17 @@ exports.deleteWine = function(req, res) {
 }*/
 
 function populateDB() {
-    var klussen = [
+    var tasks = [
     {
         "name": "Wc schoonmaken",
-        "by": "Berry",
-        "amount": "1",
-        "deadine": "12/07/2014"
+        "desription": "Een wc schoonmaken"
     },
     {
         "name": "Auto wassen",
-        "by": "Judith",
-        "amount": "1,50",
-        "deadine": "01/05/2014"
+        "description": "een auto wassen"
     }];
     
-    myCollection.insert(klussen, function(err, result){
+    myCollection.insert(tasks, function(err, result){
            if(err){
             throw err;
            }

@@ -11,6 +11,8 @@
   "dependencies": {
     "logfmt": "~1.1.2",
     "express": "~4.2.0",
-    "mongodb": "~1.4.4"
+    "mongodb": "~1.4.4",
+    "body-parser":"*",
+    "method-override":"*"
   }
 }
