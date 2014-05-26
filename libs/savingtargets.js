@@ -6,7 +6,7 @@ var uristring = process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
   config.get('mongoose:uri');
 
-var theport = process.env.PORT || config.get('port');
+console.log("test");
 
 mongoose.connect(uristring, function (err, res) {
   if (err) {
@@ -15,6 +15,8 @@ mongoose.connect(uristring, function (err, res) {
   console.log ('Succeeded connected to: ' + uristring);
   }
 });
+
+console.log("test2");
 
 var db = mongoose.connection;
 
