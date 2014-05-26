@@ -355,7 +355,7 @@ app.delete('/users/:id', function (req, res){
 
 var port = Number(process.env.PORT || config.get('port'));
 app.listen(port, function(){
-    log.info('Express server listening on port ' + config.get('port'));
+    log.info('Express server listening on port ' + port);
 });
 
 app.use(function(req, res, next){
