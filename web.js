@@ -38,7 +38,7 @@ var auth = function (req, res, next) {
     
 var SavingTargetModel= require('./routes/mongoose').SavingTargetModel;
 
-app.get('/savingtargets', function(req, res) {
+app.get('/savingtargets', auth, function(req, res) {
     if(req.query.userid != null)
     {
         var SavingTargetByUserModel = require('./routes/mongoose').SavingTargetByUserModel;
@@ -70,7 +70,7 @@ app.get('/savingtargets', function(req, res) {
     }
 });
 
-app.post('/savingtargets', function(req, res) {
+app.post('/savingtargets', auth, function(req, res) {
     var savingtarget = new SavingTargetModel({
        
         name: req.body.name,
@@ -98,7 +98,7 @@ app.post('/savingtargets', function(req, res) {
     });
 });
  
-app.get('/savingtargets/:id', function(req, res) {
+app.get('/savingtargets/:id', auth, function(req, res) {
         return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
@@ -114,7 +114,7 @@ app.get('/savingtargets/:id', function(req, res) {
     });
 });
 
-app.put('/savingtargets/:id', function (req, res){
+app.put('/savingtargets/:id', auth, function (req, res){
         return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
@@ -145,7 +145,7 @@ app.put('/savingtargets/:id', function (req, res){
     });
 });   
 
-app.delete('/savingtargets/:id', function (req, res){
+app.delete('/savingtargets/:id', auth, function (req, res){
        return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
@@ -170,7 +170,7 @@ app.delete('/savingtargets/:id', function (req, res){
 
 var SavingTargetByUserModel= require('./routes/mongoose').SavingTargetByUserModel;
 
-app.get('/savingtargetsbyuser', function(req, res) {
+app.get('/savingtargetsbyuser', auth, function(req, res) {
     if(req.query.userid != null)
     {
          var savingTargetsByUser =  SavingTargetByUserModel.find({userid: req.query.userid}, function(err, savingtargets){
@@ -199,7 +199,7 @@ app.get('/savingtargetsbyuser', function(req, res) {
     }
 });
 
-app.post('/savingtargetsbyuser', function(req, res) {
+app.post('/savingtargetsbyuser',auth, function(req, res) {
     var savingtargetbyuser = new SavingTargetByUserModel({
        
         user_id: req.body.user_id,
@@ -227,7 +227,7 @@ app.post('/savingtargetsbyuser', function(req, res) {
     });
 });
  
-app.get('/savingtargetsbyuser/:id', function(req, res) {
+app.get('/savingtargetsbyuser/:id',auth, function(req, res) {
         return SavingTargetByUserModel.findById(req.params.id, function (err, savingtargetbyuser) {
         if(!savingtargetbyuser) {
             res.statusCode = 404;
@@ -243,7 +243,7 @@ app.get('/savingtargetsbyuser/:id', function(req, res) {
     });
 });
 
-app.put('/savingtargets/:id', function (req, res){
+app.put('/savingtargets/:id',auth, function (req, res){
         return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
@@ -274,7 +274,7 @@ app.put('/savingtargets/:id', function (req, res){
     });
 });   
 
-app.delete('/savingtargets/:id', function (req, res){
+app.delete('/savingtargets/:id',auth, function (req, res){
        return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
@@ -295,7 +295,7 @@ app.delete('/savingtargets/:id', function (req, res){
 
 var TaskModel = require('./routes/mongoose').TaskModel;
 
-app.get('/tasks', function(req, res) {
+app.get('/tasks', auth, function(req, res) {
     return TaskModel.find(function(err, tasks){
         if(!err) {
             return res.send(tasks);
@@ -308,7 +308,7 @@ app.get('/tasks', function(req, res) {
     });
 });
 
-app.post('/tasks', function(req, res) {
+app.post('/tasks', auth, function(req, res) {
     var task = new TaskModel({
         name: req.body.name,
         short_description: req.body.short_description,
@@ -333,7 +333,7 @@ app.post('/tasks', function(req, res) {
     });
 });
  
-app.get('/tasks/:id', function(req, res) {
+app.get('/tasks/:id', auth, function(req, res) {
         return TaskModel.findById(req.params.id, function (err, tasks) {
         if(!tasks) {
             res.statusCode = 404;
@@ -349,7 +349,7 @@ app.get('/tasks/:id', function(req, res) {
     });
 });
 
-app.put('/tasks/:id', function (req, res){
+app.put('/tasks/:id', auth, function (req, res){
         return TaskModel.findById(req.params.id, function (err, task) {
         if(!task) {
             res.statusCode = 404;
@@ -378,7 +378,7 @@ app.put('/tasks/:id', function (req, res){
     });
 });   
 
-app.delete('/task/:id', function (req, res){
+app.delete('/task/:id', auth, function (req, res){
        return TaskModel.findById(req.params.id, function (err, task) {
         if(!task) {
             res.statusCode = 404;
@@ -399,7 +399,7 @@ app.delete('/task/:id', function (req, res){
 
 var UserModel = require('./routes/mongoose').UserModel;
 
-app.get('/users', function(req, res) {
+app.get('/users', auth, function(req, res) {
     return UserModel.find(function(err, users){
         if(!err) {
             return res.send(users);
@@ -412,7 +412,7 @@ app.get('/users', function(req, res) {
     });
 });
 
-app.post('/users', function(req, res) {
+app.post('/users', auth, function(req, res) {
     console.log(req.body);
     var user = new UserModel({
         firstname: req.body.firstname,
@@ -439,7 +439,7 @@ app.post('/users', function(req, res) {
     });
 });
  
-app.get('/users/:id', function(req, res) {
+app.get('/users/:id', auth, function(req, res) {
         return UserModel.findById(req.params.id, function (err, users) {
         if(!users) {
             res.statusCode = 404;
@@ -455,7 +455,7 @@ app.get('/users/:id', function(req, res) {
     });
 });
 
-app.put('/users/:id', function (req, res){
+app.put('/users/:id', auth, function (req, res){
     var userModel = UserModel.findById(req.params.id, function (err, user) {
         if(!user) {
             res.statusCode = 404;
@@ -489,7 +489,7 @@ app.put('/users/:id', function (req, res){
     return userModel;
 });   
 
-app.delete('/users/:id', function (req, res){
+app.delete('/users/:id', auth, function (req, res){
        return UserModel.findById(req.params.id, function (err, user) {
         if(!user) {
             res.statusCode = 404;
