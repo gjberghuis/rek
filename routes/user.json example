@@ -1,4 +1,21 @@
-{ "firstname":"Gert-Jan", "name" : "Berghuis", "email" : "test@test.com", "registration_date" : "20-05-2014" }
+{ 
+"firstname":"Gert-Jan", 
+"name" : "Berghuis", 
+"email" : "test@test.com", 
+"registration_date" : "20-05-2014",
+"savingtargets" : [
+{"savingtarget_id" : "537faa6b09473a9dd41c433e", "completed" : "true", "start_date" : "2014-03-28T11:07:46.677Z", "end_date" : "2014-05-28T11:07:46.677Z", "tasks" : [
+{"task_id" : "537e114675299ca6a23be159", "start_date" : "2014-04-01T00:00:00.000Z", "end_date" : "2014-05-18T14:17:46.111Z", "completed" : "true" }
+]},
+{"savingtarget_id" : "537faa6b09473a9dd41c433e", "end_date" : "2014-07-28T11:07:46.677Z"}
+]
+}
+
+  task_id: { type: String, required: true },
+    start_date: { type: Date, default: Date.now },
+    end_date: { type: Date, required: false },
+    completed : { type: Boolean, default: false },
+    amount : { type: String, required: false }
  
  
  { "firstname":"Berry", "name": "Wijnia", "email" : "asdf", "registration_date" : "20-06-2014" }

@@ -32,20 +32,42 @@ var auth = function (req, res, next) {
   };
 }
 
+/*
+* SavingTargets
+*/
     
 var SavingTargetModel= require('./routes/mongoose').SavingTargetModel;
 
 app.get('/savingtargets', function(req, res) {
-    return SavingTargetModel.find(function(err, savingtargets){
-        if(!err) {
-            return res.send(savingtargets);
-        }
-        else {
-            res.statusCode = 500;
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.send({ error: 'Server error' });
-        }    
-    });
+    if(req.query.userid != null)
+    {
+        var SavingTargetByUserModel = require('./routes/mongoose').SavingTargetByUserModel;
+        var regex = new RegExp(req.query.userid, 'i');  // 'i' makes it case insensitive
+        console.log(req.query.userid);
+         var savingTargetsByUser =  SavingTargetByUserModel.find({userid: req.query.userid}, function(err, savingtargets){
+            if(!err) {
+                return res.send(savingtargets);
+            }
+            else {
+                res.statusCode = 500;
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                return res.send({ error: 'Server error' });
+            }    
+        });
+    }
+    else
+    {
+        return SavingTargetModel.find(function(err, savingtargets){
+            if(!err) {
+                return res.send(savingtargets);
+            }
+            else {
+                res.statusCode = 500;
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                return res.send({ error: 'Server error' });
+            }    
+        });
+    }
 });
 
 app.post('/savingtargets', function(req, res) {
@@ -84,6 +106,135 @@ app.get('/savingtargets/:id', function(req, res) {
         }
         if (!err) {
             return res.send({ status: 'OK', savingtarget:savingtarget });
+        } else {
+            res.statusCode = 500;
+            log.error('Internal error(%d): %s',res.statusCode,err.message);
+            return res.send({ error: 'Server error' });
+        }
+    });
+});
+
+app.put('/savingtargets/:id', function (req, res){
+        return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
+        if(!savingtarget) {
+            res.statusCode = 404;
+            return res.send({ error: 'Not found' });
+        }
+
+        savingtarget.name = req.body.name;
+        savingtarget.description = req.body.description;
+        savingtarget.short_description = req.body.short_description;
+        savingtarget.images = req.body.images;
+        savingtarget.amount = req.body.amount;
+            
+        return savingtarget.save(function (err) {
+            if (!err) {
+                log.info("savingtarget updated");
+                return res.send({ status: 'OK', savingtarget:savingtarget });
+            } else {
+                if(err.name == 'ValidationError') {
+                    res.statusCode = 400;
+                    res.send({ error: 'Validation error' });
+                } else {
+                    res.statusCode = 500;
+                    res.send({ error: 'Server error' });
+                }
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+            }
+        });
+    });
+});   
+
+app.delete('/savingtargets/:id', function (req, res){
+       return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
+        if(!savingtarget) {
+            res.statusCode = 404;
+            return res.send({ error: 'Not found' });
+        }
+        return savingtarget.remove(function (err) {
+            if (!err) {
+                log.info("savingtarget removed");
+                return res.send({ status: 'OK' });
+            } else {
+                res.statusCode = 500;
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                return res.send({ error: 'Server error' });
+            }
+        });
+    });
+});
+
+/*
+* SavingTargetByUser
+*/
+
+var SavingTargetByUserModel= require('./routes/mongoose').SavingTargetByUserModel;
+
+app.get('/savingtargetsbyuser', function(req, res) {
+    if(req.query.userid != null)
+    {
+         var savingTargetsByUser =  SavingTargetByUserModel.find({userid: req.query.userid}, function(err, savingtargets){
+            if(!err) {
+                return res.send(savingtargets);
+            }
+            else {
+                res.statusCode = 500;
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                return res.send({ error: 'Server error' });
+            }    
+        });
+    }
+    else
+    {
+        return SavingTargetByUserModel.find(function(err, savingtargetsbyuser){
+            if(!err) {
+                return res.send(savingtargetsbyuser);
+            }
+            else {
+                res.statusCode = 500;
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                return res.send({ error: 'Server error' });
+            }    
+        });
+    }
+});
+
+app.post('/savingtargetsbyuser', function(req, res) {
+    var savingtargetbyuser = new SavingTargetByUserModel({
+       
+        user_id: req.body.user_id,
+        savingtarget_id: req.body.savingtarget_id,
+        completed: req.body.completed,
+        start_date: req.body.start_date,
+        end_date: req.body.end_date
+    });
+    
+    savingtargetbyuser.save(function (err) {
+        if (!err) {
+            log.info("savingtargetbyuser created");
+            return res.send({ status: 'OK', savingtargetbyuser:savingtargetbyuser });
+        } else {
+            console.log(err);
+            if(err.name == 'ValidationError') {
+                res.statusCode = 400;
+                res.send({ error: 'Validation error' });
+            } else {
+                res.statusCode = 500;
+                res.send({ error: 'Server error' });
+            }
+            log.error('Internal error(%d): %s',res.statusCode,err.message);
+        }
+    });
+});
+ 
+app.get('/savingtargetsbyuser/:id', function(req, res) {
+        return SavingTargetByUserModel.findById(req.params.id, function (err, savingtargetbyuser) {
+        if(!savingtargetbyuser) {
+            res.statusCode = 404;
+            return res.send({ error: 'Not found' });
+        }
+        if (!err) {
+            return res.send({ status: 'OK', savingtargetbyuser:savingtargetbyuser });
         } else {
             res.statusCode = 500;
             log.error('Internal error(%d): %s',res.statusCode,err.message);
@@ -305,7 +456,7 @@ app.get('/users/:id', function(req, res) {
 });
 
 app.put('/users/:id', function (req, res){
-        return UserModel.findById(req.params.id, function (err, user) {
+    var userModel = UserModel.findById(req.params.id, function (err, user) {
         if(!user) {
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
@@ -314,6 +465,9 @@ app.put('/users/:id', function (req, res){
         user.name = req.body.name;
         user.email = req.body.email;
         user.registration_date = req.body.registration_date;
+        user.savingtargets = req.body.savingtargets;
+        
+            
             
         return user.save(function (err) {
             if (!err) {
@@ -331,6 +485,8 @@ app.put('/users/:id', function (req, res){
             }
         });
     });
+   
+    return userModel;
 });   
 
 app.delete('/users/:id', function (req, res){

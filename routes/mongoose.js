@@ -27,7 +27,7 @@ db.once('open', function callback () {
 var Schema = mongoose.Schema;
 
 /*
-* Savingtargets
+* SavingTargets
 */
 
 var Images = new Schema({
@@ -79,11 +79,29 @@ module.exports.TaskModel = TaskModel;
 * Users
 */
 
+var Tasks = new Schema({
+    task_id: { type: String, required: true },
+    start_date: { type: Date, default: Date.now },
+    end_date: { type: Date, required: false },
+    completed : { type: Boolean, default: false },
+    amount : { type: String, required: false }
+});
+
+var SavingTargets = new Schema({
+    savingtarget_id: { type: String, required: true },
+    start_date: { type: Date, default: Date.now },
+    end_date: { type: Date, required: false },
+    completed : { type: Boolean, default: false },
+    tasks: [Tasks]
+});
+
 var User = new Schema({
     firstname: { type: String, required: true },
     name: { type: String, required: true },
     email: { type: String, required: true },
-    registration_date: { type: String, required: false }
+    registration_date: { type: String, required: false },
+    savingtargets: [SavingTargets],
+    task: [Tasks]
 });
 
 // validation
