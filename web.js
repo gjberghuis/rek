@@ -25,17 +25,17 @@ var auth = function (req, res, next) {
     return res.send(401);
   };
 
-  var user = basicAuth(req);
+ // var user = basicAuth(req);
 
-  if (!user || !user.name || !user.pass) {
-    return unauthorized(res);
-  };
+  //if (!user || !user.name || !user.pass) {
+ //   return unauthorized(res);
+  //};
 
-  if (user.name === 'foo' && user.pass === 'bar') {
-    return next();
-  } else {
-    return unauthorized(res);
-  };
+ // if (user.name === 'foo' && user.pass === 'bar') {
+ //   return next();
+ // } else {
+ //   return unauthorized(res);
+ // };
 }
 
 /*
