@@ -47,7 +47,7 @@ var SavingTargetModel= require('./routes/mongoose').SavingTargetModel;
 app.get('/savingtargets', function(req, res) {
     return SavingTargetModel.find(function(err, savingtargets){
         if(!err) {
-            return res.jsonp(savingtargets);
+            return res.jsonp({ savingtargets:savingtargets });
         }
         else {
             res.statusCode = 500;
@@ -92,7 +92,7 @@ app.get('/savingtargets/:id', auth, function(req, res) {
             return res.jsonp({ error: 'Not found' });
         }
         if (!err) {
-            return res.jsonp({ status: 'OK', savingtarget:savingtarget });
+            return res.jsonp({ savingtarget:savingtarget });
         } else {
             res.statusCode = 500;
             log.error('Internal error(%d): %s',res.statusCode,err.message);
