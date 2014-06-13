@@ -101,8 +101,8 @@ var User = new Schema({
     email: { type: String, required: true },
     registration_date: { type: String, required: false },
     savingtargets: [SavingTargets],
-    task: [Tasks]
 });
+
 
 // validation
 User.path('name').validate(function (v) {

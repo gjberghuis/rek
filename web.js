@@ -408,7 +408,7 @@ var UserModel = require('./routes/mongoose').UserModel;
 app.get('/users', auth, function(req, res) {
     return UserModel.find(function(err, users){
         if(!err) {
-            return res.send(users);
+            return res.send({ users:users }); 
         }
         else {
             res.statusCode = 500;
@@ -452,7 +452,7 @@ app.get('/users/:id', auth, function(req, res) {
             return res.send({ error: 'Not found' });
         }
         if (!err) {
-            return res.send({ status: 'OK', users:users });
+                return res.send({ user:users });
         } else {
             res.statusCode = 500;
             log.error('Internal error(%d): %s',res.statusCode,err.message);
