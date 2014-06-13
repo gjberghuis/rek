@@ -301,10 +301,10 @@ app.delete('/savingtargets/:id',auth, function (req, res){
 
 var TaskModel = require('./routes/mongoose').TaskModel;
 
-app.get('/tasks', auth, function(req, res) {
+app.get('/tasks', function(req, res) {
     return TaskModel.find(function(err, tasks){
         if(!err) {
-           return res.send({ tasks:tasks });
+           return res.jsonp({ tasks:tasks });
         }
         else {
             res.statusCode = 500;
@@ -314,7 +314,7 @@ app.get('/tasks', auth, function(req, res) {
     });
 });
 
-app.post('/tasks', auth, function(req, res) {
+app.post('/tasks', function(req, res) {
     var task = new TaskModel({
         name: req.body.name,
         short_description: req.body.short_description,
@@ -346,7 +346,7 @@ app.get('/tasks/:id', auth, function(req, res) {
             return res.send({ error: 'Not found' });
         }
         if (!err) {
-            return res.send({ task:tasks });
+            return res.jsonp({ task:tasks });
         } else {
             res.statusCode = 500;
             log.error('Internal error(%d): %s',res.statusCode,err.message);
@@ -355,7 +355,7 @@ app.get('/tasks/:id', auth, function(req, res) {
     });
 });
 
-app.put('/tasks/:id', auth, function (req, res){
+app.put('/tasks/:id', function (req, res){
         return TaskModel.findById(req.params.id, function (err, task) {
         if(!task) {
             res.statusCode = 404;
@@ -384,7 +384,7 @@ app.put('/tasks/:id', auth, function (req, res){
     });
 });   
 
-app.delete('/task/:id', auth, function (req, res){
+app.delete('/task/:id', function (req, res){
        return TaskModel.findById(req.params.id, function (err, task) {
         if(!task) {
             res.statusCode = 404;
