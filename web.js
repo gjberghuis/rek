@@ -304,7 +304,7 @@ var TaskModel = require('./routes/mongoose').TaskModel;
 app.get('/tasks', auth, function(req, res) {
     return TaskModel.find(function(err, tasks){
         if(!err) {
-            return res.send(tasks);
+           return res.send({ tasks:tasks });
         }
         else {
             res.statusCode = 500;
@@ -346,7 +346,7 @@ app.get('/tasks/:id', auth, function(req, res) {
             return res.send({ error: 'Not found' });
         }
         if (!err) {
-            return res.send({ status: 'OK', tasks:tasks });
+            return res.send({ task:tasks });
         } else {
             res.statusCode = 500;
             log.error('Internal error(%d): %s',res.statusCode,err.message);
