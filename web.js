@@ -45,35 +45,16 @@ var auth = function (req, res, next) {
 var SavingTargetModel= require('./routes/mongoose').SavingTargetModel;
 
 app.get('/savingtargets', function(req, res) {
-    if(req.query.userid != null)
-    {
-        var SavingTargetByUserModel = require('./routes/mongoose').SavingTargetByUserModel;
-        var regex = new RegExp(req.query.userid, 'i');  // 'i' makes it case insensitive
-        console.log(req.query.userid);
-         var savingTargetsByUser =  SavingTargetByUserModel.find({userid: req.query.userid}, function(err, savingtargets){
-            if(!err) {
-                return res.send(savingtargets);
-            }
-            else {
-                res.statusCode = 500;
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
-                return res.send({ error: 'Server error' });
-            }    
-        });
-    }
-    else
-    {
-        return SavingTargetModel.find(function(err, savingtargets){
-            if(!err) {
-                return res.send(savingtargets);
-            }
-            else {
-                res.statusCode = 500;
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
-                return res.send({ error: 'Server error' });
-            }    
-        });
-    }
+    return SavingTargetModel.find(function(err, savingtargets){
+        if(!err) {
+            return res.jsonp(savingtargets);
+        }
+        else {
+            res.statusCode = 500;
+            log.error('Internal error(%d): %s',res.statusCode,err.message);
+            return res.jsonp({ error: 'Server error' });
+        }    
+    });
 });
 
 app.post('/savingtargets', auth, function(req, res) {
@@ -89,15 +70,15 @@ app.post('/savingtargets', auth, function(req, res) {
     savingtarget.save(function (err) {
         if (!err) {
             log.info("savingtarget created");
-            return res.send({ status: 'OK', savingtarget:savingtarget });
+            return res.jsonp({ status: 'OK', savingtarget:savingtarget });
         } else {
             console.log(err);
             if(err.name == 'ValidationError') {
                 res.statusCode = 400;
-                res.send({ error: 'Validation error' });
+                res.jsonp({ error: 'Validation error' });
             } else {
                 res.statusCode = 500;
-                res.send({ error: 'Server error' });
+                res.jsonp({ error: 'Server error' });
             }
             log.error('Internal error(%d): %s',res.statusCode,err.message);
         }
@@ -108,10 +89,10 @@ app.get('/savingtargets/:id', auth, function(req, res) {
         return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
-            return res.send({ error: 'Not found' });
+            return res.jsonp({ error: 'Not found' });
         }
         if (!err) {
-            return res.send({ status: 'OK', savingtarget:savingtarget });
+            return res.jsonp({ status: 'OK', savingtarget:savingtarget });
         } else {
             res.statusCode = 500;
             log.error('Internal error(%d): %s',res.statusCode,err.message);
@@ -124,7 +105,7 @@ app.put('/savingtargets/:id', auth, function (req, res){
         return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
-            return res.send({ error: 'Not found' });
+            return res.jsonp({ error: 'Not found' });
         }
 
         savingtarget.name = req.body.name;
@@ -136,14 +117,14 @@ app.put('/savingtargets/:id', auth, function (req, res){
         return savingtarget.save(function (err) {
             if (!err) {
                 log.info("savingtarget updated");
-                return res.send({ status: 'OK', savingtarget:savingtarget });
+                return res.jsonp({ status: 'OK', savingtarget:savingtarget });
             } else {
                 if(err.name == 'ValidationError') {
                     res.statusCode = 400;
-                    res.send({ error: 'Validation error' });
+                    res.jsonp({ error: 'Validation error' });
                 } else {
                     res.statusCode = 500;
-                    res.send({ error: 'Server error' });
+                    res.jsonp({ error: 'Server error' });
                 }
                 log.error('Internal error(%d): %s',res.statusCode,err.message);
             }
@@ -155,145 +136,16 @@ app.delete('/savingtargets/:id', auth, function (req, res){
        return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
-            return res.send({ error: 'Not found' });
+            return res.jsonp({ error: 'Not found' });
         }
         return savingtarget.remove(function (err) {
             if (!err) {
                 log.info("savingtarget removed");
-                return res.send({ status: 'OK' });
+                return res.jsonp({ status: 'OK' });
             } else {
                 res.statusCode = 500;
                 log.error('Internal error(%d): %s',res.statusCode,err.message);
-                return res.send({ error: 'Server error' });
-            }
-        });
-    });
-});
-
-/*
-* SavingTargetByUser
-*/
-
-var SavingTargetByUserModel= require('./routes/mongoose').SavingTargetByUserModel;
-
-app.get('/savingtargetsbyuser', auth, function(req, res) {
-    if(req.query.userid != null)
-    {
-         var savingTargetsByUser =  SavingTargetByUserModel.find({userid: req.query.userid}, function(err, savingtargets){
-            if(!err) {
-                return res.send(savingtargets);
-            }
-            else {
-                res.statusCode = 500;
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
-                return res.send({ error: 'Server error' });
-            }    
-        });
-    }
-    else
-    {
-        return SavingTargetByUserModel.find(function(err, savingtargetsbyuser){
-            if(!err) {
-                return res.send(savingtargetsbyuser);
-            }
-            else {
-                res.statusCode = 500;
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
-                return res.send({ error: 'Server error' });
-            }    
-        });
-    }
-});
-
-app.post('/savingtargetsbyuser',auth, function(req, res) {
-    var savingtargetbyuser = new SavingTargetByUserModel({
-       
-        user_id: req.body.user_id,
-        savingtarget_id: req.body.savingtarget_id,
-        completed: req.body.completed,
-        start_date: req.body.start_date,
-        end_date: req.body.end_date
-    });
-    
-    savingtargetbyuser.save(function (err) {
-        if (!err) {
-            log.info("savingtargetbyuser created");
-            return res.send({ status: 'OK', savingtargetbyuser:savingtargetbyuser });
-        } else {
-            console.log(err);
-            if(err.name == 'ValidationError') {
-                res.statusCode = 400;
-                res.send({ error: 'Validation error' });
-            } else {
-                res.statusCode = 500;
-                res.send({ error: 'Server error' });
-            }
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
-        }
-    });
-});
- 
-app.get('/savingtargetsbyuser/:id',auth, function(req, res) {
-        return SavingTargetByUserModel.findById(req.params.id, function (err, savingtargetbyuser) {
-        if(!savingtargetbyuser) {
-            res.statusCode = 404;
-            return res.send({ error: 'Not found' });
-        }
-        if (!err) {
-            return res.send({ status: 'OK', savingtargetbyuser:savingtargetbyuser });
-        } else {
-            res.statusCode = 500;
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.send({ error: 'Server error' });
-        }
-    });
-});
-
-app.put('/savingtargets/:id',auth, function (req, res){
-        return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
-        if(!savingtarget) {
-            res.statusCode = 404;
-            return res.send({ error: 'Not found' });
-        }
-
-        savingtarget.name = req.body.name;
-        savingtarget.description = req.body.description;
-        savingtarget.short_description = req.body.short_description;
-        savingtarget.images = req.body.images;
-        savingtarget.amount = req.body.amount;
-            
-        return savingtarget.save(function (err) {
-            if (!err) {
-                log.info("savingtarget updated");
-                return res.send({ status: 'OK', savingtarget:savingtarget });
-            } else {
-                if(err.name == 'ValidationError') {
-                    res.statusCode = 400;
-                    res.send({ error: 'Validation error' });
-                } else {
-                    res.statusCode = 500;
-                    res.send({ error: 'Server error' });
-                }
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
-            }
-        });
-    });
-});   
-
-app.delete('/savingtargets/:id',auth, function (req, res){
-       return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
-        if(!savingtarget) {
-            res.statusCode = 404;
-            return res.send({ error: 'Not found' });
-        }
-        return savingtarget.remove(function (err) {
-            if (!err) {
-                log.info("savingtarget removed");
-                return res.send({ status: 'OK' });
-            } else {
-                res.statusCode = 500;
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
-                return res.send({ error: 'Server error' });
+                return res.jsonp({ error: 'Server error' });
             }
         });
     });
@@ -309,7 +161,7 @@ app.get('/tasks', function(req, res) {
         else {
             res.statusCode = 500;
             log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.send({ error: 'Server error' });
+            return res.jsonp({ error: 'Server error' });
         }    
     });
 });
@@ -324,15 +176,15 @@ app.post('/tasks', function(req, res) {
     task.save(function (err) {
         if (!err) {
             log.info("task created");
-            return res.send({ status: 'OK', task:task });
+            return res.jsonp({ status: 'OK', task:task });
         } else {
             console.log(err);
             if(err.name == 'ValidationError') {
                 res.statusCode = 400;
-                res.send({ error: 'Validation error' });
+                res.jsonp({ error: 'Validation error' });
             } else {
                 res.statusCode = 500;
-                res.send({ error: 'Server error' });
+                res.jsonp({ error: 'Server error' });
             }
             log.error('Internal error(%d): %s',res.statusCode,err.message);
         }
@@ -343,14 +195,14 @@ app.get('/tasks/:id', auth, function(req, res) {
         return TaskModel.findById(req.params.id, function (err, tasks) {
         if(!tasks) {
             res.statusCode = 404;
-            return res.send({ error: 'Not found' });
+            return res.jsonp({ error: 'Not found' });
         }
         if (!err) {
             return res.jsonp({ task:tasks });
         } else {
             res.statusCode = 500;
             log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.send({ error: 'Server error' });
+            return res.jsonp({ error: 'Server error' });
         }
     });
 });
@@ -359,7 +211,7 @@ app.put('/tasks/:id', function (req, res){
         return TaskModel.findById(req.params.id, function (err, task) {
         if(!task) {
             res.statusCode = 404;
-            return res.send({ error: 'Not found' });
+            return res.jsonp({ error: 'Not found' });
         }
 
         task.name = req.body.name;
@@ -369,14 +221,14 @@ app.put('/tasks/:id', function (req, res){
         return task.save(function (err) {
             if (!err) {
                 log.info("task updated");
-                return res.send({ status: 'OK', task:task });
+                return res.jsonp({ status: 'OK', task:task });
             } else {
                 if(err.name == 'ValidationError') {
                     res.statusCode = 400;
-                    res.send({ error: 'Validation error' });
+                    res.jsonp({ error: 'Validation error' });
                 } else {
                     res.statusCode = 500;
-                    res.send({ error: 'Server error' });
+                    res.jsonp({ error: 'Server error' });
                 }
                 log.error('Internal error(%d): %s',res.statusCode,err.message);
             }
@@ -388,16 +240,16 @@ app.delete('/task/:id', function (req, res){
        return TaskModel.findById(req.params.id, function (err, task) {
         if(!task) {
             res.statusCode = 404;
-            return res.send({ error: 'Not found' });
+            return res.jsonp({ error: 'Not found' });
         }
         return task.remove(function (err) {
             if (!err) {
                 log.info("task removed");
-                return res.send({ status: 'OK' });
+                return res.jsonp({ status: 'OK' });
             } else {
                 res.statusCode = 500;
                 log.error('Internal error(%d): %s',res.statusCode,err.message);
-                return res.send({ error: 'Server error' });
+                return res.jsonp({ error: 'Server error' });
             }
         });
     });
@@ -408,12 +260,12 @@ var UserModel = require('./routes/mongoose').UserModel;
 app.get('/users', auth, function(req, res) {
     return UserModel.find(function(err, users){
         if(!err) {
-            return res.send({ users:users }); 
+            return res.jsonp({ users:users }); 
         }
         else {
             res.statusCode = 500;
             log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.send({ error: 'Server error' });
+            return res.jsonp({ error: 'Server error' });
         }    
     });
 });
@@ -449,14 +301,14 @@ app.get('/users/:id', auth, function(req, res) {
         return UserModel.findById(req.params.id, function (err, users) {
         if(!users) {
             res.statusCode = 404;
-            return res.send({ error: 'Not found' });
+            return res.jsonp({ error: 'Not found' });
         }
         if (!err) {
-                return res.send({ user:users });
+                return res.jsonp({ user:users });
         } else {
             res.statusCode = 500;
             log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.send({ error: 'Server error' });
+            return res.jsonp({ error: 'Server error' });
         }
     });
 });
