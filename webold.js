@@ -306,48 +306,54 @@ app.get('/users/:id', auth, function(req, res) {
                 res.statusCode = 404;
                 return res.jsonp({ error: 'Not found' });
             }
-            if (!err) { 
-                var len = user.savingtargets.length;
-                var counter = 0;
-                
-                
-              user.savingtargets.forEach(function(savingtarget){
-                  if(savingtarget.tasks.length > 0)
-                  {
-                      savingtarget.tasks.forEach(function(task){
-                        TaskModel.findById(task['task_id']).lean().exec(function(err, q){
-                            if(q)
-                            {
-                                task['name'] = q.name;
-                                task['description'] = q.description;
-                            }
-                            else{
-                             console.log("task with id: " + task['task_id'] + " not founded");   
-                            }
-                        });
-                      });
-                  }
-                    SavingTargetModel.findById(savingtarget['savingtarget_id']).lean().exec(function(err, q){
-                        if(q)
-                        {
-                            savingtarget['name'] = q.name;
-                            savingtarget['description'] = q.description;
-                            savingtarget['short_description'] = q.short_description;
-                            savingtarget['amount'] = q.amount;
-                            savingtarget['images'] = q.images;                         
-                        }
-                        else{
-                         console.log("savingtarget with id: " + savingtarget['savingtarget_id'] + " not founded");   
-                        }
-                          if(++counter == len) {
-                            res.jsonp(user);
-                        }
-                    });
-               });
+            if (!err) {   
+                user.forEach(user.savingtargets, function (value, key) {
+            
+                       
+                         SavingTargetModel.findById(value['savingtarget_id']).lean().exec(function (err, savingtarget) {
+                                if(savingtarget){
+                                   
+                                    user.savingtargets[key]['name'] = savingtarget.name;
+                                    console.log(user.firstname);
+                                    user.firstname = 'asdfghjfegr';
+                                    user.Set('asdf', 'test');
+                                    
+                                     //var userobject = user.toObject();                                                                                                            
+  //userobject[0] = { firstname: 'i changed' };
+  user.firstname = { firstname: 'i changed' };
+                                    
+                                     userModel.push({ firstname: "test" });
+        person.save( function(error, data){
+            if(error){
+                res.json(error);
+            }
+            else{
+                res.json(data);
             }
         });
+
+                                    
+                                } else if (!savingtarget || savingtarget == null) {
+                                    console.log("savingtarget met id: " + value['savingtarget_id'] + " niet gevonden.");
+                                } else {
+                                    res.statusCode = 500;
+                                    log.error('Internal error(%d): %s',res.statusCode,err.message);
+                                    return res.send({ error: 'Server error' });
+                                }
+                          });
+                 
+                 });
+                return res.jsonp({ user:user });
+            } else {
+                res.statusCode = 500;
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                return res.jsonp({ error: 'Server error' });
+            }
+        });
+        
+ 
     }
-    else {
+    else{
         return UserModel.findById(req.params.id, function (err, user) {
             if(!user) {
                 res.statusCode = 404;

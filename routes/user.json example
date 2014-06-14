@@ -4,10 +4,10 @@
 "email" : "test@test.com", 
 "registration_date" : "20-05-2014",
 "savingtargets" : [
-{"savingtarget_id" : "537faa6b09473a9dd41c433e", "completed" : "true", "start_date" : "2014-03-28T11:07:46.677Z", "end_date" : "2014-05-28T11:07:46.677Z", "tasks" : [
+{"savingtarget_id" : "537faa6b09473a9dd41c433d", "completed" : "true", "start_date" : "2014-03-28T11:07:46.677Z", "end_date" : "2014-05-28T11:07:46.677Z", "tasks" : [
 {"task_id" : "537e114675299ca6a23be159", "start_date" : "2014-04-01T00:00:00.000Z", "end_date" : "2014-05-18T14:17:46.111Z", "completed" : "true" }
 ]},
-{"savingtarget_id" : "537faa6b09473a9dd41c433e", "end_date" : "2014-07-28T11:07:46.677Z"}
+{"savingtarget_id" : "537faa7709473a9dd41c4340 ", "end_date" : "2014-07-28T11:07:46.677Z"}
 ]
 }
 
@@ -22,9 +22,9 @@
 "email" : "test@test.com", 
 "registration_date" : "20-05-2014",
 "savingtargets" : [
-{"savingtarget_id" : "538314816cca49020073e962 ", "completed" : "true", "start_date" : "2014-03-28T11:07:46.677Z", "end_date" : "2014-05-28T11:07:46.677Z", "tasks" : [
+{"savingtarget_id" : "538314816cca49020073e962", "completed" : "true", "start_date" : "2014-03-28T11:07:46.677Z", "end_date" : "2014-05-28T11:07:46.677Z", "tasks" : [
 {"task_id" : "53830c1f42b0250200e0f4d8", "start_date" : "2014-04-01T00:00:00.000Z", "end_date" : "2014-05-18T14:17:46.111Z", "completed" : "true" }
 ]},
-{"savingtarget_id" : "538314986cca49020073e965 ", "end_date" : "2014-07-28T11:07:46.677Z"}
+{"savingtarget_id" : "538314986cca49020073e965", "end_date" : "2014-07-28T11:07:46.677Z"}
 ]
 }

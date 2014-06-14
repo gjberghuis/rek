@@ -49,7 +49,7 @@ var SavingTarget = new Schema({
 
 // validation
 SavingTarget.path('name').validate(function (v) {
-    return v.length > 2 && v.length < 70;
+    //return v.length > 2 && v.length < 70;
 });
 
 var SavingTargetModel = mongoose.model('SavingTarget', SavingTarget);
@@ -106,7 +106,7 @@ var User = new Schema({
 
 // validation
 User.path('name').validate(function (v) {
-    return v.length > 2 && v.length < 70;
+    //return v.length > 2 && v.length < 70;
 });
 
 /*User.path('email').validate(function (email) {

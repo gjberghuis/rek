@@ -1,14 +1,11 @@
-{ "name":"Kip", "short_description" : "Een kip voorziet in eieren en vlees", "description" : "Als je voor een kip spaart betekent dat dat je mensen in staat stelt om dagelijks te kunnen eten van de kip. Daarnaast zijn eieren ook gewoon heel mooi", 
-"images":[
-{
-"kind":"detail", 
-"url":"http://www.recensiekoning.nl/wp-content/uploads/2010/12/header-kip.jpg"},
- {
-"kind":"thumbnail",
- "url":"http://cdns2.freepik.com/vrije-photo/kip--ios-7-interface-symbool_318-35424.jpg"
-}],
- "amount":"5" }
- 
+{ "user_id": "537fa9ed09473a9dd41c433a", 
+"savingtarget_id" : "537faa6b09473a9dd41c433d ",
+"completed" : "Als je voor een kip spaart betekent dat dat je mensen in staat stelt om dagelijks te kunnen eten van de kip. Daarnaast zijn eieren ook gewoon heel mooi", 
+"start_date": "12-02-2013",
+"end_date":"5-10-2014" 
+ }
+
+537fa9ed09473a9dd41c433a 
  
  { "name":"Waterput", "short_description" : "Een waterput is de belangrijkste levensvoorziening", "description" : "Water is van levensbelang voor alle mensen. Daarom is het ook zo belangrijk dat er genoeg waterputten zijn", 
 "images":[
