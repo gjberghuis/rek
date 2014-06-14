@@ -340,7 +340,7 @@ app.get('/users/:id', auth, function(req, res) {
                          console.log("savingtarget with id: " + savingtarget['savingtarget_id'] + " not founded");   
                         }
                           if(++counter == len) {
-                            res.jsonp(user);
+                            res.jsonp({ 'user':user});
                         }
                     });
                });
