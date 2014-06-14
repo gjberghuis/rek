@@ -28,3 +28,24 @@
 {"savingtarget_id" : "538314986cca49020073e965", "end_date" : "2014-07-28T11:07:46.677Z"}
 ]
 }
+
+
+
+Live:
+{"__v":1,"_id":"538314b86cca49020073e969","email":"test@test.com","firstname":"Gert-Jan","name":"Berghuis","registration_date":"20-05-2014","savingtargets":[{"savingtarget_id":"538314816cca49020073e962","end_date":"2014-05-28T11:07:46.677Z","_id":"5385ced6fc2503020076bec9","tasks":[
+{"task_id":"53830c1f42b0250200e0f4d8",
+"end_date":"2014-05-18T14:17:46.111Z",
+"_id":"5385ced6fc2503020076beca",
+"completed":true,
+"amount: 10,
+"start_date":"2014-04-01T00:00:00.000Z",
+"name":"Wc schoonmaken"},
+{"task_id":"53830c1f42b0250200e0f4d9",
+"end_date":"2014-05-28T14:17:46.111Z",
+"_id":"5385ced6fc2503020076beca",
+"completed":true,
+"amount: 25,
+"start_date":"2014-04-01T00:00:00.000Z",
+"name":"Auto wassen"}
+],
+"completed":true,"start_date":"2014-03-28T11:07:46.677Z","name":"Waterput","description":"Water is van levensbelang voor alle mensen. Daarom is het ook zo belangrijk dat er genoeg waterputten zijn","short_description":"Een waterput is de belangrijkste levensvoorziening","amount":"150","images":[{"kind":"detail","url":"http://verduijntherapieentraining.nl/wp-content/uploads/2012/10/water1.jpg","_id":"538314816cca49020073e964"},{"kind":"thumbnail","url":"http://bin.snmmd.nl/m/m1nxf88awf9a_sqr256.jpg","_id":"538314816cca49020073e963"}]},{"savingtarget_id":"538314986cca49020073e965","end_date":"2014-07-28T11:07:46.677Z","_id":"5385ced6fc2503020076bec8","tasks":[],"completed":false,"start_date":"2014-05-28T11:56:06.849Z","name":"Kip","description":"Als je voor een kip spaart betekent dat dat je mensen in staat stelt om dagelijks te kunnen eten van de kip. Daarnaast zijn eieren ook gewoon heel mooi","short_description":"Een kip voorziet in eieren en vlees","amount":"5","images":[{"kind":"detail","url":"http://www.recensiekoning.nl/wp-content/uploads/2010/12/header-kip.jpg","_id":"538314986cca49020073e967"},{"kind":"thumbnail","url":"http://cdns2.freepik.com/vrije-photo/kip--ios-7-interface-symbool_318-35424.jpg","_id":"538314986cca49020073e966"}]}]}
