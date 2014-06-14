@@ -310,7 +310,6 @@ app.get('/users/:id', auth, function(req, res) {
                 var len = user.savingtargets.length;
                 var counter = 0;
                 
-                
               user.savingtargets.forEach(function(savingtarget){
                   console.log(savingtarget['savingtarget_id']);
                   if(savingtarget.tasks.length > 0)
@@ -321,6 +320,7 @@ app.get('/users/:id', auth, function(req, res) {
                             {
                                 task['name'] = q.name;
                                 task['description'] = q.description;
+                                   task['amount'] = q.amount
                             }
                             else{
                              console.log("task with id: " + task['task_id'] + " not founded");   
