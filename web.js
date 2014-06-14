@@ -312,6 +312,7 @@ app.get('/users/:id', auth, function(req, res) {
                 
                 
               user.savingtargets.forEach(function(savingtarget){
+                  console.log(savingtarget['savingtarget_id']);
                   if(savingtarget.tasks.length > 0)
                   {
                       savingtarget.tasks.forEach(function(task){
@@ -363,7 +364,6 @@ app.get('/users/:id', auth, function(req, res) {
         });
     }
 });
-
             
 app.put('/users/:id', auth, function (req, res){
     var userModel = UserModel.findById(req.params.id, function (err, user) {

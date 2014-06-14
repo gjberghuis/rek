@@ -6,6 +6,9 @@ var uristring = process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
   config.get('mongoose:uri');
 
+/*
+* Database connection using mongoose
+*/
 
 mongoose.connect(uristring, function (err, res) {
   if (err) {
@@ -27,7 +30,7 @@ db.once('open', function callback () {
 var Schema = mongoose.Schema;
 
 /*
-* SavingTargets
+* SavingTargets schema & model
 */
 
 var Images = new Schema({
@@ -49,7 +52,7 @@ var SavingTarget = new Schema({
 
 // validation
 SavingTarget.path('name').validate(function (v) {
-    //return v.length > 2 && v.length < 70;
+    return v.length > 2 && v.length < 70;
 });
 
 var SavingTargetModel = mongoose.model('SavingTarget', SavingTarget);
@@ -57,7 +60,7 @@ var SavingTargetModel = mongoose.model('SavingTarget', SavingTarget);
 module.exports.SavingTargetModel = SavingTargetModel;
 
 /*
-* Tasks
+* Tasks schema & model
 */
 
 var Task = new Schema({
@@ -76,7 +79,7 @@ var TaskModel = mongoose.model('Task', Task);
 module.exports.TaskModel = TaskModel;
 
 /*
-* Users
+* Users schema & model
 */
 
 var Tasks = new Schema({
@@ -103,10 +106,9 @@ var User = new Schema({
     savingtargets: [SavingTargets],
 });
 
-
 // validation
 User.path('name').validate(function (v) {
-    //return v.length > 2 && v.length < 70;
+    return v.length > 2 && v.length < 70;
 });
 
 /*User.path('email').validate(function (email) {
