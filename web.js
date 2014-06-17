@@ -3,7 +3,7 @@
      log = require('./libs/log')(module),
      config = require('./libs/config'),
      basicAuth = require('basic-auth'),    
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
     methodOverride = require('method-override');
 
 app.use(bodyParser()); // JSON parsing
@@ -41,11 +41,10 @@ var auth = function (req, res, next) {
 /*
 * SavingTargets
 */
-    
-var SavingTargetModel= require('./routes/mongoose').SavingTargetModel;
 
+var SavingTargetModel= require('./routes/mongoose').SavingTargetModel;
 app.get('/savingtargets', function(req, res) {
-    return SavingTargetModel.find(function(err, savingtargets){
+    return SavingTargetModel.find({}).sort('name').lean().exec(function(err, savingtargets){
         if(!err) {
             return res.jsonp({ savingtargets:savingtargets });
         }

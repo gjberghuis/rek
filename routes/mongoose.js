@@ -99,12 +99,39 @@ var SavingTargets = new Schema({
 });
 
 var User = new Schema({
+    username: { type: String, required: true, unique: true },
+    password: { type: String, required: true},
     firstname: { type: String, required: true },
     name: { type: String, required: true },
     email: { type: String, required: true },
     registration_date: { type: String, required: false },
     savingtargets: [SavingTargets],
 });
+ 
+// Bcrypt middleware on UserSchema
+User.pre('save', function(next) {
+  var user = this;
+ 
+  if (!user.isModified('password')) return next();
+ 
+  bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+    if (err) return next(err);
+ 
+    bcrypt.hash(user.password, salt, function(err, hash) {
+        if (err) return next(err);
+        user.password = hash;
+        next();
+    });
+  });
+});
+ 
+//Password verification
+User.methods.comparePassword = function(password, cb) {
+    bcrypt.compare(password, this.password, function(err, isMatch) {
+        if (err) return cb(err);
+        cb(isMatch);
+    });
+};
 
 // validation
 User.path('name').validate(function (v) {
@@ -116,6 +143,34 @@ User.path('name').validate(function (v) {
    return emailRegex.test(email.text); // Assuming email has a text attribute
 }, 'The e-mail field cannot be empty.')
 */
+
+exports.login = function(req, res) {
+    var username = req.body.username || '';
+    var password = req.body.password || '';
+ 
+    if (username == '' || password == '') {
+        return res.send(401);
+    }
+ 
+    db.userModel.findOne({username: username}, function (err, user) {
+        if (err) {
+            console.log(err);
+            return res.send(401);
+        }
+ 
+        user.comparePassword(password, function(isMatch) {
+            if (!isMatch) {
+                console.log("Attempt failed to login with " + user.username);
+                return res.send(401);
+            }
+ 
+            var token = jwt.sign(user, secret.secretToken, { expiresInMinutes: 60 });
+ 
+            return res.json({token:token});
+        });
+ 
+    });
+};
 var UserModel = mongoose.model('User', User);
 
 module.exports.UserModel = UserModel;
