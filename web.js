@@ -309,7 +309,7 @@ app.get('/users/:id', auth, function(req, res) {
                 var len = user.savingtargets.length;
                 var counter = 0;
                 
-                if(user.savingtargets.length > 0)
+                if(user.savingtargets != null && user.savingtargets != 'undefined' && user.savingtargets.length > 0)
                 {
                     user.savingtargets.forEach(function(savingtarget){
                         console.log(savingtarget['savingtarget_id']);
