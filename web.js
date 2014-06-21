@@ -309,41 +309,47 @@ app.get('/users/:id', auth, function(req, res) {
                 var len = user.savingtargets.length;
                 var counter = 0;
                 
-              user.savingtargets.forEach(function(savingtarget){
-                  console.log(savingtarget['savingtarget_id']);
-                  if(savingtarget.tasks.length > 0)
-                  {
-                      savingtarget.tasks.forEach(function(task){
-                        TaskModel.findById(task['task_id']).lean().exec(function(err, q){
+                if(user.savingtargets.length > 0)
+                {
+                    user.savingtargets.forEach(function(savingtarget){
+                        console.log(savingtarget['savingtarget_id']);
+                        if(savingtarget.tasks.length > 0)
+                        {
+                            savingtarget.tasks.forEach(function(task){
+                                TaskModel.findById(task['task_id']).lean().exec(function(err, q){
+                                    if(q)
+                                    {
+                                        task['name'] = q.name;
+                                        task['description'] = q.description;
+                                           task['amount'] = q.amount
+                                    }
+                                    else{
+                                     console.log("task with id: " + task['task_id'] + " not founded");   
+                                    }
+                                });
+                              });
+                        }
+                        SavingTargetModel.findById(savingtarget['savingtarget_id']).lean().exec(function(err, q){
                             if(q)
                             {
-                                task['name'] = q.name;
-                                task['description'] = q.description;
-                                   task['amount'] = q.amount
+                                savingtarget['name'] = q.name;
+                                savingtarget['description'] = q.description;
+                                savingtarget['short_description'] = q.short_description;
+                                savingtarget['amount'] = q.amount;
+                                savingtarget['images'] = q.images;                         
                             }
                             else{
-                             console.log("task with id: " + task['task_id'] + " not founded");   
+                             console.log("savingtarget with id: " + savingtarget['savingtarget_id'] + " not founded");   
+                            }
+                              if(++counter == len) {
+                                res.jsonp({ 'user':user});
                             }
                         });
-                      });
-                  }
-                    SavingTargetModel.findById(savingtarget['savingtarget_id']).lean().exec(function(err, q){
-                        if(q)
-                        {
-                            savingtarget['name'] = q.name;
-                            savingtarget['description'] = q.description;
-                            savingtarget['short_description'] = q.short_description;
-                            savingtarget['amount'] = q.amount;
-                            savingtarget['images'] = q.images;                         
-                        }
-                        else{
-                         console.log("savingtarget with id: " + savingtarget['savingtarget_id'] + " not founded");   
-                        }
-                          if(++counter == len) {
-                            res.jsonp({ 'user':user});
-                        }
                     });
-               });
+                }
+                else {
+                    res.jsonp({ 'user':user});
+                }
             }
         });
     }
