@@ -99,44 +99,17 @@ var SavingTargets = new Schema({
 });
 
 var User = new Schema({
-    username: { type: String, required: true, unique: true },
-    password: { type: String, required: true},
     firstname: { type: String, required: true },
     name: { type: String, required: true },
     email: { type: String, required: true },
     registration_date: { type: String, required: false },
-    savingtargets: [SavingTargets],
+    savingtargets: [SavingTargets]
 });
- 
-// Bcrypt middleware on UserSchema
-User.pre('save', function(next) {
-  var user = this;
- 
-  if (!user.isModified('password')) return next();
- 
-  bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-    if (err) return next(err);
- 
-    bcrypt.hash(user.password, salt, function(err, hash) {
-        if (err) return next(err);
-        user.password = hash;
-        next();
-    });
-  });
-});
- 
-//Password verification
-User.methods.comparePassword = function(password, cb) {
-    bcrypt.compare(password, this.password, function(err, isMatch) {
-        if (err) return cb(err);
-        cb(isMatch);
-    });
-};
 
 // validation
-User.path('name').validate(function (v) {
-    return v.length > 2 && v.length < 70;
-});
+//User.path('name').validate(function (v) {
+//    return v.length > 2 && v.length < 70;
+//});
 
 /*User.path('email').validate(function (email) {
    var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
