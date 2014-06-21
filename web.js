@@ -306,11 +306,10 @@ app.get('/users/:id', auth, function(req, res) {
                 return res.jsonp({ error: 'Not found' });
             }
             if (!err) { 
-                var len = user.savingtargets.length;
-                var counter = 0;
-                
                 if(user.savingtargets != null && user.savingtargets != 'undefined' && user.savingtargets.length > 0)
                 {
+                    var len = user.savingtargets.length;
+                var counter = 0;
                     user.savingtargets.forEach(function(savingtarget){
                         console.log(savingtarget['savingtarget_id']);
                         if(savingtarget.tasks.length > 0)
