@@ -397,9 +397,7 @@ app.put('/users/:id', function (req, res){
         user.email = req.body.email;
         user.registration_date = req.body.registration_date;
         user.savingtargets = req.body.savingtargets;
-        
-            
-            
+                  
         return user.save(function (err) {
             if (!err) {
                 log.info("user updated");
