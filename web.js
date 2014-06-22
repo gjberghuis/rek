@@ -386,7 +386,7 @@ app.get('/users/:id', auth, function(req, res) {
     }
 });
             
-app.put('/users/:id', auth, function (req, res){
+app.put('/users/:id', function (req, res){
     var userModel = UserModel.findById(req.params.id, function (err, user) {
         if(!user) {
             res.statusCode = 404;
