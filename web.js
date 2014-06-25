@@ -34,7 +34,7 @@ if (req.method === 'OPTIONS') {
       res.end();
 } 
     else {    
-        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Origin", "http://gjberghuis.nl");
         res.header("Access-Control-Allow-Headers", "X-Requested-With, Authorization");
         res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");  
         res.header("Access-Control-Allow-Credentials", "true"); // 24 hours  
