@@ -51,7 +51,7 @@ var auth = function (req, res, next) {
   };
   var user = basicAuth(req);
 
-    console.log(user);
+    console.log("user: " + user);
   if (!user || !user.name || !user.pass) {
     return unauthorized(res);
   };
