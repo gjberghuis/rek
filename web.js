@@ -49,9 +49,9 @@ var auth = function (req, res, next) {
     res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
     return res.send(401);
   };
-
   var user = basicAuth(req);
 
+    console.log(user);
   if (!user || !user.name || !user.pass) {
     return unauthorized(res);
   };
