@@ -4,14 +4,22 @@
      config = require('./libs/config'),
      basicAuth = require('basic-auth'),    
     bodyParser = require('body-parser'),
-    methodOverride = require('method-override');
+    methodOverride = require('method-override'),
+     http = require('http');
 
 app.use(bodyParser()); // JSON parsing
 app.use(methodOverride()); // HTTP PUT and DELETE support
 //app.use(app.router); // simple route management
 //app.use(express.static(path.join(__dirname, "public"))); // starting static fileserver, that will watch `public` folder (in our case there will be `index.html`)
 
+
+
+
 app.all('*', function(req, res, next) {
+    
+    
+          var authheader = req.headers['authorization'];  // auth is in base64(username:password)  so we need to decode the base64
+        console.log("Authorization Header is: ", authheader);
     
 if (req.method === 'OPTIONS') {
       console.log('!OPTIONS');
@@ -35,6 +43,7 @@ if (req.method === 'OPTIONS') {
   next();
     }
 });
+ 
  
 
 var auth = function (req, res, next) {
