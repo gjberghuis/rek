@@ -8,7 +8,6 @@
      http = require('http'),
      cors = require('cors');
 
-app.use(allowCrossDomain)
 app.use(bodyParser()); // JSON parsing
 app.use(methodOverride()); // HTTP PUT and DELETE support
 app.use(cors());
