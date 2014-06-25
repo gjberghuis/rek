@@ -13,10 +13,7 @@ app.use(methodOverride()); // HTTP PUT and DELETE support
 app.use(cors());
 //app.use(app.router); // simple route management
 //app.use(express.static(path.join(__dirname, "public"))); // starting static fileserver, that will watch `public` folder (in our case there will be `index.html`)
-
-
    
-
 app.all('*', function(req, res, next) {
     
     
