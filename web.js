@@ -38,7 +38,7 @@ if (req.method === 'OPTIONS') {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');    
         res.header["Access-Control-Max-Age"] = '86400'; // 24 hours
-      res.header["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept";
+      res.header["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Authorization";
  res.header["Access-Control-Allow-Credentials "] = "true"; // 24 hours
   next();
     }
