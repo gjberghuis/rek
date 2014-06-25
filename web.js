@@ -5,15 +5,18 @@
      basicAuth = require('basic-auth'),    
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
-     http = require('http');
+     http = require('http'),
+     cors = require('cors');
 
+app.use(allowCrossDomain)
 app.use(bodyParser()); // JSON parsing
 app.use(methodOverride()); // HTTP PUT and DELETE support
+app.use(cors());
 //app.use(app.router); // simple route management
 //app.use(express.static(path.join(__dirname, "public"))); // starting static fileserver, that will watch `public` folder (in our case there will be `index.html`)
 
 
-
+   
 
 app.all('*', function(req, res, next) {
     
@@ -22,7 +25,7 @@ app.all('*', function(req, res, next) {
         console.log("Authorization Header is: ", authheader);
     
 if (req.method === 'OPTIONS') {
-      console.log('!OPTIONS');
+    
       var headers = {};
       // IE8 does not allow domains to be specified, just the *
       // headers["Access-Control-Allow-Origin"] = req.headers.origin;
@@ -30,16 +33,15 @@ if (req.method === 'OPTIONS') {
       headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
      headers["Access-Control-Allow-Credentials "] = "true"; // 24 hours
       headers["Access-Control-Max-Age"] = '86400'; // 24 hours
-      headers["Access-Control-Allow-Headers"] = "*";
+      headers["Access-Control-Allow-Headers"] = "Authorization";
       res.writeHead(200, headers);
       res.end();
 } 
-    else {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');    
-        res.header["Access-Control-Max-Age"] = '86400'; // 24 hours
-      res.header["Access-Control-Allow-Headers"] = "*";
- res.header["Access-Control-Allow-Credentials "] = "true"; // 24 hours
+    else {    
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With, Authorization");
+        res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");  
+        res.header("Access-Control-Allow-Credentials", "true"); // 24 hours  
   next();
     }
 });
