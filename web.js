@@ -51,7 +51,6 @@ var auth = function (req, res, next) {
   };
   var user = basicAuth(req);
 
-    console.log("user: " + user);
   if (!user || !user.name || !user.pass) {
     return unauthorized(res);
   };
@@ -82,7 +81,7 @@ app.get('/savingtargets', function(req, res) {
     });
 });
 
-app.post('/savingtargets', auth, function(req, res) {
+app.post('/savingtargets', function(req, res) {
     var savingtarget = new SavingTargetModel({
        
         name: req.body.name,
@@ -110,7 +109,7 @@ app.post('/savingtargets', auth, function(req, res) {
     });
 });
  
-app.get('/savingtargets/:id', auth, function(req, res) {
+app.get('/savingtargets/:id', function(req, res) {
         return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
@@ -126,7 +125,7 @@ app.get('/savingtargets/:id', auth, function(req, res) {
     });
 });
 
-app.put('/savingtargets/:id', auth, function (req, res){
+app.put('/savingtargets/:id', function (req, res){
         return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
@@ -157,7 +156,7 @@ app.put('/savingtargets/:id', auth, function (req, res){
     });
 });   
 
-app.delete('/savingtargets/:id', auth, function (req, res){
+app.delete('/savingtargets/:id', function (req, res){
        return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
@@ -216,7 +215,7 @@ app.post('/tasks', function(req, res) {
     });
 });
  
-app.get('/tasks/:id', auth, function(req, res) {
+app.get('/tasks/:id', function(req, res) {
         return TaskModel.findById(req.params.id, function (err, tasks) {
         if(!tasks) {
             res.statusCode = 404;
@@ -282,7 +281,7 @@ app.delete('/task/:id', function (req, res){
 
 var UserModel = require('./routes/mongoose').UserModel;
 
-app.get('/users', auth, function(req, res) {
+app.get('/users', function(req, res) {
     return UserModel.find(function(err, users){
         if(!err) {
                 return res.jsonp({ users:users }); 
@@ -295,7 +294,7 @@ app.get('/users', auth, function(req, res) {
     });
 });
 
-app.post('/users', auth, function(req, res) {
+app.post('/users', function(req, res) {
     console.log(req.body);
     var user = new UserModel({
         firstname: req.body.firstname,
@@ -323,7 +322,7 @@ app.post('/users', auth, function(req, res) {
     });
 });
  
-app.get('/users/:id', auth, function(req, res) {
+app.get('/users/:id', function(req, res) {
     if(req.query.resolve != null)
     {
         var userModel = UserModel.findById(req.params.id).lean().exec(function (err, user) {
@@ -395,7 +394,7 @@ app.get('/users/:id', auth, function(req, res) {
     }
 });
             
-app.put('/users/:id', auth, function (req, res){
+app.put('/users/:id', function (req, res){
     var userModel = UserModel.findById(req.params.id, function (err, user) {
         if(!user) {
             res.statusCode = 404;
