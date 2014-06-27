@@ -23,13 +23,13 @@ app.all('*', function(req, res, next) {
           headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
          headers["Access-Control-Allow-Credentials "] = "true"; // 24 hours
           headers["Access-Control-Max-Age"] = '86400'; // 24 hours
-          headers["Access-Control-Allow-Headers"] = "X-Requested-With, Authorization";
+          headers["Access-Control-Allow-Headers"] = "X-Requested-With, Authorization, Content-Type";
           res.writeHead(200, headers);
           res.end();
     } 
     else {    
         res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "X-Requested-With, Authorization");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With, Authorization, Content-Type");
         res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");  
         res.header("Access-Control-Allow-Credentials", "true"); // 24 hours  
   next();
