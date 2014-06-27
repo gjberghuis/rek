@@ -12,27 +12,21 @@ var auth = require("http-auth");
 
 app.use(bodyParser()); // JSON parsing
 app.use(methodOverride()); // HTTP PUT and DELETE support
-//app.use(app.router); // simple route management
-//app.use(express.static(path.join(__dirname, "public"))); // starting static fileserver, that will watch `public` folder (in our case there will be `index.html`)
-   
+ 
 app.all('*', function(req, res, next) {
-    
-      var auth2 = req.headers['authorization'];  // auth is in base64(username:password)  so we need to decode the base64
-        console.log("Authorization Header is: ", auth2);
-    
-if (req.method === 'OPTIONS') {
-    
-      var headers = {};
-      // IE8 does not allow domains to be specified, just the *
-      // headers["Access-Control-Allow-Origin"] = req.headers.origin;
-      headers["Access-Control-Allow-Origin"] = "*";
-      headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
-     headers["Access-Control-Allow-Credentials "] = "true"; // 24 hours
-      headers["Access-Control-Max-Age"] = '86400'; // 24 hours
-      headers["Access-Control-Allow-Headers"] = "X-Requested-With, Authorization";
-      res.writeHead(200, headers);
-      res.end();
-} 
+    if (req.method === 'OPTIONS') {
+        
+          var headers = {};
+          // IE8 does not allow domains to be specified, just the *
+          // headers["Access-Control-Allow-Origin"] = req.headers.origin;
+          headers["Access-Control-Allow-Origin"] = "*";
+          headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+         headers["Access-Control-Allow-Credentials "] = "true"; // 24 hours
+          headers["Access-Control-Max-Age"] = '86400'; // 24 hours
+          headers["Access-Control-Allow-Headers"] = "X-Requested-With, Authorization";
+          res.writeHead(200, headers);
+          res.end();
+    } 
     else {    
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With, Authorization");
@@ -295,7 +289,6 @@ app.get('/users', function(req, res) {
 });
 
 app.post('/users', function(req, res) {
-    console.log(req.body);
     var user = new UserModel({
         firstname: req.body.firstname,
         name: req.body.name,
