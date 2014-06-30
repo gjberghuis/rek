@@ -337,8 +337,7 @@ app.get('/users/:id', function(req, res) {
                                     if(q)
                                     {
                                         task['name'] = q.name;
-                                        task['description'] = q.description;
-                                           task['amount'] = q.amount
+                                        task['description'] = q.description
                                     }
                                     else{
                                      console.log("task with id: " + task['task_id'] + " not founded");   
