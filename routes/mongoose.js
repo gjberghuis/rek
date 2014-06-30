@@ -88,7 +88,7 @@ var Tasks = new Schema({
     end_date: { type: Date, required: false },
     completed : { type: Boolean, default: false },
     amount : { type: String, required: false },
-    completedBy: { type: String, require: false}
+    completed_by: { type: String, require: false}
 });
 
 var SavingTargets = new Schema({
