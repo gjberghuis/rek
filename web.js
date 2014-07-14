@@ -7,13 +7,37 @@
       path = require('path'),
     methodOverride = require('method-override'),
      http = require('http');
-var http = require("http");
 var auth = require("http-auth");
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 //test/
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(bodyParser()); // JSON parsing
 app.use(methodOverride()); // HTTP PUT and DELETE support
     app.use(express.static(path.join(__dirname, 'public')));
+
+
+var auth = function (req, res, next) {
+  function unauthorized(res) {
+    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+    return res.send(401);
+  };
+
+  var user = basicAuth(req);
+
+  if (!user || !user.name || !user.pass) {
+    return unauthorized(res);
+  };
+
+  if (user.name === 'foo' && user.pass === 'bar') {
+    return next();
+  } else {
+    return unauthorized(res);
+  };
+}
 
 app.all('*', function(req, res, next) {
     if (req.method === 'OPTIONS') {
@@ -58,7 +82,41 @@ var auth = function (req, res, next) {
   };
 }
 
+/*
+* Passport js authentication
+*/
+app.get('/login', function(req, res) {
+  res.sendfile('views/login.html');
+});
 
+app.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/loginSuccess',
+    failureRedirect: '/loginFailure'
+  })
+);
+ 
+app.get('/loginFailure', function(req, res, next) {
+  res.send('Failed to authenticate');
+});
+ 
+app.get('/loginSuccess', function(req, res, next) {
+  res.send('Successfully authenticated');
+});
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+ 
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.use(new LocalStrategy(function(username, password, done) {
+  process.nextTick(function() {
+    // Auth Check Logic
+  });
+}));
 /*
 * SavingTargets
 */
