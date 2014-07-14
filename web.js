@@ -13,6 +13,10 @@ var auth = require("http-auth");
 app.use(bodyParser()); // JSON parsing
 app.use(methodOverride()); // HTTP PUT and DELETE support
  
+app.configure(function () {
+    app.use(express.static(path.join(__dirname, 'public')));
+});
+
 app.all('*', function(req, res, next) {
     if (req.method === 'OPTIONS') {
         
