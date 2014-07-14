@@ -4,6 +4,7 @@
      config = require('./libs/config'),
      basicAuth = require('basic-auth'),    
     bodyParser = require('body-parser'),
+      path = require('path'),
     methodOverride = require('method-override'),
      http = require('http');
 var http = require("http");
@@ -12,10 +13,7 @@ var auth = require("http-auth");
 //test/
 app.use(bodyParser()); // JSON parsing
 app.use(methodOverride()); // HTTP PUT and DELETE support
- 
-app.configure(function () {
     app.use(express.static(path.join(__dirname, 'public')));
-});
 
 app.all('*', function(req, res, next) {
     if (req.method === 'OPTIONS') {
