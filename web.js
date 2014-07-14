@@ -2,7 +2,6 @@
      app = express(),
      log = require('./libs/log')(module),
      config = require('./libs/config'),
-     basicAuth = require('basic-auth'),    
     bodyParser = require('body-parser'),
       path = require('path'),
     methodOverride = require('method-override'),
@@ -154,6 +153,10 @@ app.delete('/savingtargets/:id', function (req, res){
     });
 });
 
+ /*
+  * Tasks
+  */
+
 var TaskModel = require('./routes/mongoose').TaskModel;
 
 app.get('/tasks', function(req, res) {
@@ -257,6 +260,10 @@ app.delete('/task/:id', function (req, res){
         });
     });
 });
+
+ /*
+  * Users
+  */
 
 var UserModel = require('./routes/mongoose').UserModel;
 
@@ -403,10 +410,9 @@ app.put('/users/:id', function (req, res){
     return userModel;
 });
 
-/*
- app.delete('/users/:id', auth, function (req, res){
+ app.delete('/users/:id', function (req, res){
      return UserModel.findById(req.params.id, function (err, user) {
-         if(!user) {
+        if(!user) {
              res.statusCode = 404;
              return res.send({ error: 'Not found' });
          }
@@ -421,13 +427,12 @@ app.put('/users/:id', function (req, res){
              }
          });
      });
- });*/
-
-
+ });
 
 /*
 * Passport js authentication
 */
+
 app.get('/login', function(req, res) {
   res.sendfile('views/login.html');
 });
@@ -458,7 +463,7 @@ passport.deserializeUser(function(user, done) {
 passport.use(new LocalStrategy(function(email, password, done) {
   process.nextTick(function() {
     UserModel.findOne({
-      'email': email, 
+      'email': email
     }, function(err, user) {
       if (err) {
         return done(err);
