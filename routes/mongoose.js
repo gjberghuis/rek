@@ -104,7 +104,8 @@ var User = new Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
     registration_date: { type: String, required: false },
-    savingtargets: [SavingTargets]
+    savingtargets: [SavingTargets],
+    password: { type: String, required: false }
 });
 
 // validation
