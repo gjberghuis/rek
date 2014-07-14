@@ -286,7 +286,8 @@ app.post('/users', function(req, res) {
         name: req.body.name,
         email: req.body.email,
         registration_date: req.body.registration_date,
-        savingtargets : req.body.savingtargets
+        savingtargets : req.body.savingtargets,
+        password: req.body.password
     });
     
     user.save(function (err) {
@@ -389,7 +390,8 @@ app.put('/users/:id', function (req, res){
         user.email = req.body.email;
         user.registration_date = req.body.registration_date;
         user.savingtargets = req.body.savingtargets;
-                  
+        user.password = req.body.password;
+
         return user.save(function (err) {
             if (!err) {
                 log.info("user updated");
