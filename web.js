@@ -297,6 +297,7 @@ app.post('/users', function(req, res) {
         firstname: req.body.firstname,
         name: req.body.name,
         email: req.body.email,
+        password: req.body.password,
         registration_date: req.body.registration_date,
         savingtargets : req.body.savingtargets
     });
