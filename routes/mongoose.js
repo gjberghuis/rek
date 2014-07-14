@@ -20,6 +20,7 @@ mongoose.connect(uristring, function (err, res) {
 
 var db = mongoose.connection;
 
+
 db.on('error', function (err) {
     log.error('connection error:', err.message);
 });
@@ -104,8 +105,7 @@ var User = new Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
     registration_date: { type: String, required: false },
-    savingtargets: [SavingTargets],
-    password: { type: String, required: false }
+    savingtargets: [SavingTargets]
 });
 
 // validation

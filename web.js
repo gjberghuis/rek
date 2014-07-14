@@ -16,7 +16,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser()); // JSON parsing
 app.use(methodOverride()); // HTTP PUT and DELETE support
-    app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.all('*', function(req, res, next) {
     if (req.method === 'OPTIONS') {
@@ -37,35 +37,16 @@ app.all('*', function(req, res, next) {
         res.header("Access-Control-Allow-Headers", "X-Requested-With, Authorization, Content-Type");
         res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");  
         res.header("Access-Control-Allow-Credentials", "true"); // 24 hours  
-  next();
+        next();
     }
 });
  
-
-
-var auth = function (req, res, next) {
-  function unauthorized(res) {
-    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
-    return res.send(401);
-  };
-  var user = basicAuth(req);
-
-  if (!user || !user.name || !user.pass) {
-    return unauthorized(res);
-  };
-
-  if (user.name === 'foo' && user.pass === 'bar') {
-    return next();
-  } else {
-    return unauthorized(res);
-  };
-}
-
 /*
 * SavingTargets
 */
 
 var SavingTargetModel= require('./routes/mongoose').SavingTargetModel;
+
 app.get('/savingtargets', function(req, res) {
     return SavingTargetModel.find({}).sort('name').lean().exec(function(err, savingtargets){
         if(!err) {
@@ -297,7 +278,6 @@ app.post('/users', function(req, res) {
         firstname: req.body.firstname,
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password,
         registration_date: req.body.registration_date,
         savingtargets : req.body.savingtargets
     });
@@ -421,26 +401,28 @@ app.put('/users/:id', function (req, res){
     });
    
     return userModel;
-});   
-
-app.delete('/users/:id', auth, function (req, res){
-       return UserModel.findById(req.params.id, function (err, user) {
-        if(!user) {
-            res.statusCode = 404;
-            return res.send({ error: 'Not found' });
-        }
-        return user.remove(function (err) {
-            if (!err) {
-                log.info("user removed");
-                return res.send({ status: 'OK' });
-            } else {
-                res.statusCode = 500;
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
-                return res.send({ error: 'Server error' });
-            }
-        });
-    });
 });
+
+/*
+ app.delete('/users/:id', auth, function (req, res){
+     return UserModel.findById(req.params.id, function (err, user) {
+         if(!user) {
+             res.statusCode = 404;
+             return res.send({ error: 'Not found' });
+         }
+         return user.remove(function (err) {
+             if (!err) {
+                 log.info("user removed");
+                 return res.send({ status: 'OK' });
+             } else {
+                 res.statusCode = 500;
+                 log.error('Internal error(%d): %s',res.statusCode,err.message);
+                 return res.send({ error: 'Server error' });
+             }
+         });
+     });
+ });*/
+
 
 
 /*
