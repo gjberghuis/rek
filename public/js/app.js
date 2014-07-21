@@ -174,7 +174,10 @@ App.Doel.reopenClass({
 
 App.ApplicationRoute = App.AuthenticatedRoute.extend({
     model: function(){
+        if(localStorage.getItem('token'))
+        {
             return App.User.find('538314b86cca49020073e969');
+        }
     }
 });
 
@@ -365,7 +368,10 @@ App.KlusBySavingtargetRoute = Ember.Route.extend({
 
 App.SettingsRoute = App.AuthenticatedRoute.extend({
     model: function(){
-        return App.User.find('538314b86cca49020073e969');
+        if(localStorage.getItem('token'))
+        {
+            return App.User.find('538314b86cca49020073e969');
+        }
     }
 });
 
