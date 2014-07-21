@@ -15,8 +15,6 @@ App = Ember.Application.create();
 
 
 App.AuthenticatedRoute = Ember.Route.extend({
-
-
     beforeModel: function(transition) {
         if (!this.controllerFor('login').get('token')) {
             this.redirectToLogin(transition);
@@ -95,7 +93,6 @@ App.User.reopenClass({
         });
     },
     find: function(id, token, callback){
-
         return $.ajax
         ({
             token: token,
@@ -141,9 +138,11 @@ App.User.reopenClass({
                 return response.user;
         });
     },
-    findSavingTarget: function(id, savingtarget_id){
+    findSavingTarget: function(id, token, savingtarget_id){
+        debugger;
         return $.ajax
         ({
+            token: token,
             type: "GET",
             contentType: "application/json",
             data: {
@@ -200,14 +199,14 @@ App.User.reopenClass({
 App.Doel = Ember.Object.extend({});
 
 App.Doel.reopenClass({
-    all: function() {
+    all: function(token) {
         return $.ajax({
+            token: token,
             type: "GET",
             url: "http://redeenkind.herokuapp.com/savingtargets",
             dataType: 'jsonp',
+            contentType: "application/json",
             async: false,
-            username: 'foo',
-            password: 'bar',
             success: function (){
             }
         }).then(function(response) {
@@ -249,9 +248,14 @@ App.ApplicationRoute = App.AuthenticatedRoute.extend({
     }
 });
 
-App.DoelenRoute = Ember.Route.extend({
+App.DoelenRoute = App.AuthenticatedRoute.extend({
     model: function() {
-        return App.Doel.all();
+        if(this.controllerFor('login').get('token'))
+        {
+            debugger;
+            var token = this.controllerFor('login').get('token');
+            return App.Doel.all(token);
+        }
     },
     setupController: function(controller, model){
         controller.set('doelen', model);
@@ -326,9 +330,14 @@ App.DoelRoute = Ember.Route.extend({
     }
 });
 
-App.DoelByUserRoute = Ember.Route.extend({
+App.DoelByUserRoute = App.AuthenticatedRoute.extend({
     model: function(params) {
-        return App.User.findSavingTarget('538314b86cca49020073e969', params.doel_id);
+        debugger;
+        if(this.controllerFor('login').get('token'))
+        {
+            var token = this.controllerFor('login').get('token');
+            return App.User.findSavingTarget('538314b86cca49020073e969', token, params.doel_id);
+        }
     },
     serialize: function(model, params) {
         return {
@@ -444,6 +453,16 @@ App.KlusBySavingtargetRoute = Ember.Route.extend({
     }
 });
 
+App.SettingsRoute = App.AuthenticatedRoute.extend({
+    model: function(){
+        if(this.controllerFor('login').get('token'))
+        {
+            var token = this.controllerFor('login').get('token');
+            return App.User.find('538314b86cca49020073e969', token);
+        }
+    }
+});
+
 /*
 * Authentication
  */
@@ -455,7 +474,6 @@ App.LoginRoute = Ember.Route.extend({
 
 // Controllers
 App.LoginController = Ember.Controller.extend({
-
     reset: function() {
         this.setProperties({
             username: "",
@@ -463,7 +481,6 @@ App.LoginController = Ember.Controller.extend({
             errorMessage: ""
         });
     },
-
     token: localStorage.token,
     tokenChanged: function() {
         localStorage.token = this.get('token');

@@ -35,7 +35,7 @@
 	          <li>{{#link-to 'index'}}Home{{/link-to}}</li>
 	          <li>{{#link-to 'doelen'}}Doelen{{/link-to}}</li>
 	          <li>{{#link-to 'klussen'}}Klussen{{/link-to}}</li>
-	          <li>{{#link-to 'login'}}Inloggen{{/link-to}}</li>
+	          <li>{{#link-to 'settings'}}Settings{{/link-to}}</li>
 	        </ul>
 	    </nav>
 	    
@@ -272,7 +272,22 @@
       {{/if}}
     {{/if}}
   </script>
-
+    <script type="text/x-handlebars" data-template-name="settings">
+setttings
+    {{#if loggedIn}}
+      <p>You are already logged in!</p>
+    {{else}}
+      <form class="form-inline" {{action login on="submit"}}>
+        <h2>Log In</h2>
+        {{input value=username type="text" placeholder="Username"}}
+        {{input value=password type="password" placeholder="Password"}}
+        {{input class="btn" type="submit" value="Log In"}}
+      </form>
+      {{#if errorMessage}}
+        <div class="alert alert-error">{{errorMessage}}</div>
+      {{/if}}
+    {{/if}}
+  </script>
 	
 		
 	<script src="js/libs/jquery.js"></script>
