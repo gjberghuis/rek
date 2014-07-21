@@ -23,8 +23,6 @@ App.AuthenticatedRoute = Ember.Route.extend({
         }
     },
     redirectToLogin: function(transition) {
-        alert('You must log in!');
-
         var loginController = this.controllerFor('login');
         loginController.set('attemptedTransition', transition);
         this.transitionTo('login');
@@ -107,11 +105,12 @@ App.User.reopenClass({
                 'resolve': 'true'
             },
             async: false,
-            url: "http://redeenkind.herokuapp.com/users/" + id,
+            url: "http://localhost:5000/users/" + id,
             dataType: 'jsonp',
             success: function (response){
             }
         }).then(function(response) {
+            alert(response);
             var savingtargetsByUser = [];
             if(response.user != null && response.user.savingtargets != null && response.user.savingtargets.length > 0)
             {
@@ -242,8 +241,11 @@ App.Doel.reopenClass({
 
 App.ApplicationRoute = App.AuthenticatedRoute.extend({
     model: function(){
-        var token = this.controllerFor('login').get('token');
-        return App.User.find('538314b86cca49020073e969', token);
+        if(this.controllerFor('login').get('token'))
+        {
+            var token = this.controllerFor('login').get('token');
+            return App.User.find('538314b86cca49020073e969', token);
+        }
     }
 });
 
