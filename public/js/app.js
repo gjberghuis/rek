@@ -26,6 +26,11 @@ App.AuthenticatedRoute = Ember.Route.extend({
         this.transitionTo('login');
     },
 
+    getJSONWithToken: function(url) {
+        var token = this.controllerFor('login').get('token');
+        return $.getJSON(url, { token: token });
+    },
+
     events: {
         error: function(reason, transition) {
             if (reason.status === 401) {
@@ -44,7 +49,7 @@ App.Task = Ember.Object.extend();
 
 App.Task.reopenClass({
     all: function() {
-        return $.getJSON("http://redeenkind.herokuapp.com/tasks?format=jsonp&callback=?").then(function(response) {
+        return $.getJSON("http://redeenkind.herokuapp.com/tasks?format=jsonp&callback=?", { token: localStorage.getItem('token')}).then(function(response) {
             var tasks = [];
             response.tasks.forEach( function (task) {
                 tasks.push( App.Task.create(task) );
@@ -53,15 +58,7 @@ App.Task.reopenClass({
         });
     },
     find: function(task_id){
-        return $.ajax
-        ({
-            type: "GET",
-            url: "http://redeenkind.herokuapp.com/tasks/" + task_id,
-            dataType: 'jsonp',
-            async: false,
-            success: function (){
-            }
-        }).then(function(response) {
+        return $.getJSON("http://redeenkind.herokuapp.com/tasks/" + task_id, { token: localStorage.getItem('token')}).then(function(response) {
             return response.task;
         });
     }
@@ -74,86 +71,43 @@ App.User = Ember.Object.extend({
 });
 
 App.User.reopenClass({
-    all: function() {
-        return $.ajax
-        ({
-            type: "GET",
-            url: "http://redeenkind.herokuapp.com/users",
-            dataType: 'jsonp',
-            async: false,
-            success: function (){
-            }
-        }).then(function(response) {
-            var users = [];
-            response.users.forEach( function (user) {
-                users.push( App.Task.create(user) );
-            });
+    find: function(id, callback){
+        return $.getJSON("http://redeenkind.herokuapp.com/users/" + id, { token: localStorage.getItem('token'), resolve: true})
+            .then(function(response) {
+                var savingtargetsByUser = [];
+                if(response.user != null && response.user.savingtargets != null && response.user.savingtargets.length > 0)
+                {
+                    response.user.savingtargets.forEach( function (savingtarget) {
+                        var moneyNeeded = savingtarget.amount;
+                        var moneySaved = 0;
+                        savingtarget.tasks.forEach(function(task){
+                            task.savingtarget_user_id = savingtarget._id;
+                            if(task.completed && !isNaN(task.amount))
+                            {
+                                moneySaved += parseInt(task.amount);
+                            }
+                        });
+                        savingtarget.money_needed = moneyNeeded;
+                        savingtarget.money_saved = moneySaved;
+                        savingtarget.money_left = moneyNeeded - moneySaved;
 
-            return users;
-        });
-    },
-    find: function(id, token, callback){
-        return $.ajax
-        ({
-            token: token,
-            type: "GET",
-            contentType: "application/json",
-            data: {
-                'resolve': 'true'
-            },
-            async: false,
-            url: "http://redeenkind.herokuapp.com/users/" + id,
-            dataType: 'jsonp',
-            success: function (response){
-            }
-        }).then(function(response) {
-            alert(response);
-            var savingtargetsByUser = [];
-            if(response.user != null && response.user.savingtargets != null && response.user.savingtargets.length > 0)
-            {
-                response.user.savingtargets.forEach( function (savingtarget) {
-                    var moneyNeeded = savingtarget.amount;
-                    var moneySaved = 0;
-                    savingtarget.tasks.forEach(function(task){
-                        task.savingtarget_user_id = savingtarget._id;
-                        if(task.completed && !isNaN(task.amount))
-                        {
-                            moneySaved += parseInt(task.amount);
-                        }
+                        now = Math.floor( Date.now() / (3600*24*1000)); //days as integer from..
+                        end   = Math.floor( Date.parse(savingtarget.end_date) / (3600*24*1000)); //days as integer from..
+                        daysDiff = end - now;// exact dates
+                        savingtarget.days_left = daysDiff;
+                        savingtargetsByUser.push( App.Task.create(savingtarget) );
                     });
-                    savingtarget.money_needed = moneyNeeded;
-                    savingtarget.money_saved = moneySaved;
-                    savingtarget.money_left = moneyNeeded - moneySaved;
+                }
 
-                    now = Math.floor( Date.now() / (3600*24*1000)); //days as integer from..
-                    end   = Math.floor( Date.parse(savingtarget.end_date) / (3600*24*1000)); //days as integer from..
-                    daysDiff = end - now;// exact dates
-                    savingtarget.days_left = daysDiff;
-                    savingtargetsByUser.push( App.Task.create(savingtarget) );
-                });
-            }
             if(callback)
                 callback(response.user);
             else
                 return response.user;
         });
     },
-    findSavingTarget: function(id, token, savingtarget_id){
-        debugger;
-        return $.ajax
-        ({
-            token: token,
-            type: "GET",
-            contentType: "application/json",
-            data: {
-                'resolve': 'true'
-            },
-            async: false,
-            url: "http://redeenkind.herokuapp.com/users/" + id,
-            dataType: 'jsonp',
-            success: function (response){
-            }
-        }).then(function(response) {
+    findSavingTarget: function(id, savingtarget_id){
+        return $.getJSON("http://redeenkind.herokuapp.com/users/" + id, { token: localStorage.getItem('token'), resolve: true})
+            .then(function(response) {
             var currentSavingTarget;
             if(response.user != null && response.user.savingtargets != null && response.user.savingtargets.length > 0)
             {
@@ -171,15 +125,12 @@ App.User.reopenClass({
             return currentSavingTarget;
         });
     },
-    save: function(user, transitionTo){
-        //  { "name":"Auto wassen", "short_description" : "Autowassen van je vader", "description" : "Auto wassen is leuk, want auto's zijn tof" }
-
+    save: function(user){
         return $.ajax
         ({
+            token: localStorage.getItem('token'),
             type: "PUT",
             url: "http://redeenkind.herokuapp.com/users/" + user._id,
-            //dataType: 'json',
-            crossDomain: true,
             async: false,
             contentType: "application/json",
             dataType: "json",
@@ -199,17 +150,8 @@ App.User.reopenClass({
 App.Doel = Ember.Object.extend({});
 
 App.Doel.reopenClass({
-    all: function(token) {
-        return $.ajax({
-            token: token,
-            type: "GET",
-            url: "http://redeenkind.herokuapp.com/savingtargets",
-            dataType: 'jsonp',
-            contentType: "application/json",
-            async: false,
-            success: function (){
-            }
-        }).then(function(response) {
+    all: function() {
+        return $.getJSON("http://redeenkind.herokuapp.com/savingtargets", { token: localStorage.getItem('token')}).then(function(response) {
             var doelenArray = [];
             response.savingtargets.forEach(function(savingtarget) {
                 var model = App.Doel.create(savingtarget);
@@ -220,15 +162,7 @@ App.Doel.reopenClass({
         });
     },
     find: function(savingtarget_id){
-        return $.ajax
-        ({
-            type: "GET",
-            url: "http://redeenkind.herokuapp.com/savingtargets/" + savingtarget_id,
-            dataType: 'jsonp',
-            async: false,
-            success: function (){
-            }
-        }).then(function(response) {
+        $.getJSON("http://redeenkind.herokuapp.com/savingtargets", { token: localStorage.getItem('token')}).then(function(response) {
             return response.savingtarget;
         });
     }
@@ -240,31 +174,22 @@ App.Doel.reopenClass({
 
 App.ApplicationRoute = App.AuthenticatedRoute.extend({
     model: function(){
-        if(this.controllerFor('login').get('token'))
-        {
-            var token = this.controllerFor('login').get('token');
-            return App.User.find('538314b86cca49020073e969', token);
-        }
+            return App.User.find('538314b86cca49020073e969');
     }
 });
 
 App.DoelenRoute = App.AuthenticatedRoute.extend({
     model: function() {
-        if(this.controllerFor('login').get('token'))
-        {
-            debugger;
-            var token = this.controllerFor('login').get('token');
-            return App.Doel.all(token);
-        }
+            return App.Doel.all();
     },
     setupController: function(controller, model){
         controller.set('doelen', model);
     }
 });
 
-App.DoelRoute = Ember.Route.extend({
+App.DoelRoute = App.AuthenticatedRoute.extend({
     model: function(params) {
-        return App.Doel.find(params.doel_id);
+            return App.Doel.find(params.doel_id);
     },
     serialize: function(model, params) {
         return {
@@ -297,7 +222,7 @@ App.DoelRoute = Ember.Route.extend({
             };
 
             var saveModel = true;
-            var userModel = App.User.find('538314b86cca49020073e969', function (response) {
+            var userModel = App.User.find('538314b86cca49020073e969', localStorage.getItem('token'), function (response) {
                 if(response.savingtargets != null)
                 {
                     // check if there is a current and not completed savingtarget. If so, adding a new savingtarget is not allowed.
@@ -332,12 +257,7 @@ App.DoelRoute = Ember.Route.extend({
 
 App.DoelByUserRoute = App.AuthenticatedRoute.extend({
     model: function(params) {
-        debugger;
-        if(this.controllerFor('login').get('token'))
-        {
-            var token = this.controllerFor('login').get('token');
-            return App.User.findSavingTarget('538314b86cca49020073e969', token, params.doel_id);
-        }
+        return App.User.findSavingTarget('538314b86cca49020073e969', params.doel_id);
     },
     serialize: function(model, params) {
         return {
@@ -346,26 +266,16 @@ App.DoelByUserRoute = App.AuthenticatedRoute.extend({
     }
 });
 
-/*
- App.KlussenToevoegen = Ember.Route.extend({
- model: function(){
- return App.Task.all();
- },
- setupController: function(controller, model){
- controller.set('klussen', model);
- }
- });
- */
-App.KlussenRoute = Ember.Route.extend({
+App.KlussenRoute = App.AuthenticatedRoute.extend({
     model: function(){
-        return App.Task.all();
+       return App.Task.all();
     },
     setupController: function(controller, model){
         controller.set('klussenbyuser', model);
     }
 });
 
-App.KlusRoute = Ember.Route.extend({
+App.KlusRoute = App.AuthenticatedRoute.extend({
     model: function(params) {
         return App.Task.find(params.klus_id);
     },
@@ -430,7 +340,7 @@ App.KlusBySavingtargetRoute = Ember.Route.extend({
                 completed: true,
                 end_date: jsonDate
             };
-            var userModel = App.User.find('538314b86cca49020073e969', function (response) {
+            var userModel = App.User.find('538314b86cca49020073e969', localStorage.getItem('token'), function (response) {
                 if(response.savingtargets != null)
                 {
                     response.savingtargets.forEach(function (savingtarget) {
@@ -455,11 +365,7 @@ App.KlusBySavingtargetRoute = Ember.Route.extend({
 
 App.SettingsRoute = App.AuthenticatedRoute.extend({
     model: function(){
-        if(this.controllerFor('login').get('token'))
-        {
-            var token = this.controllerFor('login').get('token');
-            return App.User.find('538314b86cca49020073e969', token);
-        }
+        return App.User.find('538314b86cca49020073e969');
     }
 });
 
@@ -497,13 +403,11 @@ App.LoginController = Ember.Controller.extend({
             self.set('errorMessage', response.message);
             if (response.success) {
                 self.set('token', response.token);
-
                 var attemptedTransition = self.get('attemptedTransition');
                 if (attemptedTransition) {
                     attemptedTransition.retry();
                     self.set('attemptedTransition', null);
                 } else {
-                    // Redirect to 'articles' by default.
                     self.transitionToRoute('index');
                 }
             }
