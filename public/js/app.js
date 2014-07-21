@@ -105,7 +105,7 @@ App.User.reopenClass({
                 'resolve': 'true'
             },
             async: false,
-            url: "http://localhost:5000/users/" + id,
+            url: "http://redeenkind.herokuapp.com/users/" + id,
             dataType: 'jsonp',
             success: function (response){
             }
