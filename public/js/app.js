@@ -13,6 +13,34 @@ Handlebars.registerHelper("debug", function(optionalValue) {
 
 App = Ember.Application.create();
 
+
+App.AuthenticatedRoute = Ember.Route.extend({
+
+
+    beforeModel: function(transition) {
+        if (!this.controllerFor('login').get('token')) {
+            this.redirectToLogin(transition);
+        }
+    },
+    redirectToLogin: function(transition) {
+        alert('You must log in!');
+
+        var loginController = this.controllerFor('login');
+        loginController.set('attemptedTransition', transition);
+        this.transitionTo('login');
+    },
+
+    events: {
+        error: function(reason, transition) {
+            if (reason.status === 401) {
+                this.redirectToLogin(transition);
+            } else {
+                alert('Something went wrong');
+            }
+        }
+    }
+});
+
 /*
  * Task objects
  */
@@ -68,9 +96,11 @@ App.User.reopenClass({
             return users;
         });
     },
-    find: function(id, callback){
+    find: function(id, token, callback){
+
         return $.ajax
         ({
+            token: token,
             type: "GET",
             contentType: "application/json",
             data: {
@@ -210,9 +240,10 @@ App.Doel.reopenClass({
  * Routes
  */
 
-App.ApplicationRoute = Ember.Route.extend({
+App.ApplicationRoute = App.AuthenticatedRoute.extend({
     model: function(){
-        return App.User.find('538314b86cca49020073e969');
+        var token = this.controllerFor('login').get('token');
+        return App.User.find('538314b86cca49020073e969', token);
     }
 });
 
@@ -411,6 +442,56 @@ App.KlusBySavingtargetRoute = Ember.Route.extend({
     }
 });
 
+/*
+* Authentication
+ */
+App.LoginRoute = Ember.Route.extend({
+    setupController: function(controller, context) {
+        controller.reset();
+    }
+});
+
+// Controllers
+App.LoginController = Ember.Controller.extend({
+
+    reset: function() {
+        this.setProperties({
+            username: "",
+            password: "",
+            errorMessage: ""
+        });
+    },
+
+    token: localStorage.token,
+    tokenChanged: function() {
+        localStorage.token = this.get('token');
+    }.observes('token'),
+
+    login: function() {
+
+        var self = this, data = this.getProperties('username', 'password');
+
+        // Clear out any error messages.
+        this.set('errorMessage', null);
+
+        $.post('/login', data).then(function(response) {
+            self.set('errorMessage', response.message);
+            if (response.success) {
+                self.set('token', response.token);
+
+                var attemptedTransition = self.get('attemptedTransition');
+                if (attemptedTransition) {
+                    attemptedTransition.retry();
+                    self.set('attemptedTransition', null);
+                } else {
+                    // Redirect to 'articles' by default.
+                    self.transitionToRoute('index');
+                }
+            }
+        });
+    }
+});
+
 App.Router.map(function() {
     this.resource('doelen', {path: '/doelen'}, function(){
     });
@@ -420,7 +501,7 @@ App.Router.map(function() {
     this.route('klussen', {path: '/klussen'}, function(){});
     this.route('klus', {path: 'klus/:klus_id'}, function(){});
     this.route('klusBySavingtarget', {path: 'klusbysavingtarget/:klus_id'}, function(){});
-
+    this.route('login');
     this.route('settings');
 
 });

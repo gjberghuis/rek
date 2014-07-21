@@ -35,7 +35,7 @@
 	          <li>{{#link-to 'index'}}Home{{/link-to}}</li>
 	          <li>{{#link-to 'doelen'}}Doelen{{/link-to}}</li>
 	          <li>{{#link-to 'klussen'}}Klussen{{/link-to}}</li>
-	          <li>{{#link-to 'settings'}}Settings{{/link-to}}</li>
+	          <li>{{#link-to 'login'}}Inloggen{{/link-to}}</li>
 	        </ul>
 	    </nav>
 	    
@@ -149,7 +149,6 @@
    	</script>
 
     <script type='text/x-handlebars' data-template-name='klusBySavingtarget'>
-test
         {{#if completed}}
             <div class="text">
                 <p>{{content.name}}</p></br>
@@ -258,11 +257,21 @@ test
    		 <button {{action 'add'}}>Klusje toevoegen</button>
    	</script>
 
-	<script type='text/x-handlebars' data-template-name='settings'>
-    	<h1>Settings</h1>
-	</script>
-	
-	
+    <script type="text/x-handlebars" data-template-name="login">
+    {{#if loggedIn}}
+      <p>You are already logged in!</p>
+    {{else}}
+      <form class="form-inline" {{action login on="submit"}}>
+        <h2>Log In</h2>
+        {{input value=username type="text" placeholder="Username"}}
+        {{input value=password type="password" placeholder="Password"}}
+        {{input class="btn" type="submit" value="Log In"}}
+      </form>
+      {{#if errorMessage}}
+        <div class="alert alert-error">{{errorMessage}}</div>
+      {{/if}}
+    {{/if}}
+  </script>
 
 	
 		

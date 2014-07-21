@@ -47,47 +47,53 @@ app.all('*', function(req, res, next) {
 var SavingTargetModel= require('./routes/mongoose').SavingTargetModel;
 
 app.get('/savingtargets', function(req, res) {
-    return SavingTargetModel.find({}).sort('name').lean().exec(function(err, savingtargets){
-        if(!err) {
-            return res.jsonp({ savingtargets:savingtargets });
-        }
-        else {
-            res.statusCode = 500;
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.jsonp({ error: 'Server error' });
-        }    
-    });
+    if (validTokenProvided(req, res)) {
+        return SavingTargetModel.find({}).sort('name').lean().exec(function(err, savingtargets){
+            if(!err) {
+                return res.jsonp({ savingtargets:savingtargets });
+            }
+            else {
+                res.statusCode = 500;
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                return res.jsonp({ error: 'Server error' });
+            }
+        });
+    }
 });
 
 app.post('/savingtargets', function(req, res) {
-    var savingtarget = new SavingTargetModel({
-       
-        name: req.body.name,
-        short_description: req.body.short_description,
-        description: req.body.description,
-        images: req.body.images,
-        amount: req.body.amount
-    });
-    
-    savingtarget.save(function (err) {
-        if (!err) {
-            log.info("savingtarget created");
-            return res.jsonp({ status: 'OK', savingtarget:savingtarget });
-        } else {
-            console.log(err);
-            if(err.name == 'ValidationError') {
-                res.statusCode = 400;
-                res.jsonp({ error: 'Validation error' });
+    if (validTokenProvided(req, res)) {
+
+        var savingtarget = new SavingTargetModel({
+
+            name: req.body.name,
+            short_description: req.body.short_description,
+            description: req.body.description,
+            images: req.body.images,
+            amount: req.body.amount
+        });
+
+        savingtarget.save(function (err) {
+            if (!err) {
+                log.info("savingtarget created");
+                return res.jsonp({ status: 'OK', savingtarget:savingtarget });
             } else {
-                res.statusCode = 500;
-                res.jsonp({ error: 'Server error' });
+                console.log(err);
+                if(err.name == 'ValidationError') {
+                    res.statusCode = 400;
+                    res.jsonp({ error: 'Validation error' });
+                } else {
+                    res.statusCode = 500;
+                    res.jsonp({ error: 'Server error' });
+                }
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
             }
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
-        }
-    });
+        });
+    }
 });
  
 app.get('/savingtargets/:id', function(req, res) {
+    if (validTokenProvided(req, res)) {
         return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
@@ -100,10 +106,12 @@ app.get('/savingtargets/:id', function(req, res) {
             log.error('Internal error(%d): %s',res.statusCode,err.message);
             return res.send({ error: 'Server error' });
         }
-    });
+        });
+    }
 });
 
 app.put('/savingtargets/:id', function (req, res){
+    if (validTokenProvided(req, res)) {
         return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
@@ -131,7 +139,8 @@ app.put('/savingtargets/:id', function (req, res){
                 log.error('Internal error(%d): %s',res.statusCode,err.message);
             }
         });
-    });
+        });
+    }
 });   
 
 app.delete('/savingtargets/:id', function (req, res){
@@ -160,16 +169,18 @@ app.delete('/savingtargets/:id', function (req, res){
 var TaskModel = require('./routes/mongoose').TaskModel;
 
 app.get('/tasks', function(req, res) {
-    return TaskModel.find(function(err, tasks){
-        if(!err) {
-           return res.jsonp({ tasks:tasks });
-        }
-        else {
-            res.statusCode = 500;
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.jsonp({ error: 'Server error' });
-        }    
-    });
+    if (validTokenProvided(req, res)) {
+        return TaskModel.find(function(err, tasks){
+            if(!err) {
+               return res.jsonp({ tasks:tasks });
+            }
+            else {
+                res.statusCode = 500;
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                return res.jsonp({ error: 'Server error' });
+            }
+        });
+    }
 });
 
 app.post('/tasks', function(req, res) {
@@ -198,6 +209,7 @@ app.post('/tasks', function(req, res) {
 });
  
 app.get('/tasks/:id', function(req, res) {
+    if (validTokenProvided(req, res)) {
         return TaskModel.findById(req.params.id, function (err, tasks) {
         if(!tasks) {
             res.statusCode = 404;
@@ -210,7 +222,8 @@ app.get('/tasks/:id', function(req, res) {
             log.error('Internal error(%d): %s',res.statusCode,err.message);
             return res.jsonp({ error: 'Server error' });
         }
-    });
+        });
+    }
 });
 
 app.put('/tasks/:id', function (req, res){
@@ -309,73 +322,75 @@ app.post('/users', function(req, res) {
 });
  
 app.get('/users/:id', function(req, res) {
-    if(req.query.resolve != null)
-    {
-        var userModel = UserModel.findById(req.params.id).lean().exec(function (err, user) {
-            if(!user) {
-                res.statusCode = 404;
-                return res.jsonp({ error: 'Not found' });
-            }
-            if (!err) { 
-                if(user.savingtargets != null && user.savingtargets != 'undefined' && user.savingtargets.length > 0)
-                {
-                    var len = user.savingtargets.length;
-                var counter = 0;
-                    user.savingtargets.forEach(function(savingtarget){
-                        console.log(savingtarget['savingtarget_id']);
-                        if(savingtarget.tasks.length > 0)
-                        {
-                            savingtarget.tasks.forEach(function(task){
-                                TaskModel.findById(task['task_id']).lean().exec(function(err, q){
-                                    if(q)
-                                    {
-                                        task['name'] = q.name;
-                                        task['description'] = q.description
-                                    }
-                                    else{
-                                     console.log("task with id: " + task['task_id'] + " not founded");   
-                                    }
-                                });
-                              });
-                        }
-                        SavingTargetModel.findById(savingtarget['savingtarget_id']).lean().exec(function(err, q){
-                            if(q)
+    if (validTokenProvided(req, res)) {
+        if(req.query.resolve != null)
+        {
+            var userModel = UserModel.findById(req.params.id).lean().exec(function (err, user) {
+                if(!user) {
+                    res.statusCode = 404;
+                    return res.jsonp({ error: 'Not found' });
+                }
+                if (!err) {
+                    if(user.savingtargets != null && user.savingtargets != 'undefined' && user.savingtargets.length > 0)
+                    {
+                        var len = user.savingtargets.length;
+                    var counter = 0;
+                        user.savingtargets.forEach(function(savingtarget){
+                            console.log(savingtarget['savingtarget_id']);
+                            if(savingtarget.tasks.length > 0)
                             {
-                                savingtarget['name'] = q.name;
-                                savingtarget['description'] = q.description;
-                                savingtarget['short_description'] = q.short_description;
-                                savingtarget['amount'] = q.amount;
-                                savingtarget['images'] = q.images;                         
+                                savingtarget.tasks.forEach(function(task){
+                                    TaskModel.findById(task['task_id']).lean().exec(function(err, q){
+                                        if(q)
+                                        {
+                                            task['name'] = q.name;
+                                            task['description'] = q.description
+                                        }
+                                        else{
+                                         console.log("task with id: " + task['task_id'] + " not founded");
+                                        }
+                                    });
+                                  });
                             }
-                            else{
-                             console.log("savingtarget with id: " + savingtarget['savingtarget_id'] + " not founded");   
-                            }
-                              if(++counter == len) {
-                                res.jsonp({ 'user':user});
-                            }
+                            SavingTargetModel.findById(savingtarget['savingtarget_id']).lean().exec(function(err, q){
+                                if(q)
+                                {
+                                    savingtarget['name'] = q.name;
+                                    savingtarget['description'] = q.description;
+                                    savingtarget['short_description'] = q.short_description;
+                                    savingtarget['amount'] = q.amount;
+                                    savingtarget['images'] = q.images;
+                                }
+                                else{
+                                 console.log("savingtarget with id: " + savingtarget['savingtarget_id'] + " not founded");
+                                }
+                                  if(++counter == len) {
+                                    res.jsonp({ 'user':user});
+                                }
+                            });
                         });
-                    });
+                    }
+                    else {
+                        res.jsonp({ 'user':user});
+                    }
                 }
-                else {
-                    res.jsonp({ 'user':user});
+            });
+        }
+        else {
+            return UserModel.findById(req.params.id, function (err, user) {
+                if(!user) {
+                    res.statusCode = 404;
+                    return res.jsonp({ error: 'Not found' });
                 }
-            }
-        });
-    }
-    else {
-        return UserModel.findById(req.params.id, function (err, user) {
-            if(!user) {
-                res.statusCode = 404;
-                return res.jsonp({ error: 'Not found' });
-            }
-            if (!err) {
-                    return res.jsonp({ user:user});
-            } else {
-                res.statusCode = 500;
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
-                return res.jsonp({ error: 'Server error' });
-            }
-        });
+                if (!err) {
+                        return res.jsonp({ user:user});
+                } else {
+                    res.statusCode = 500;
+                    log.error('Internal error(%d): %s',res.statusCode,err.message);
+                    return res.jsonp({ error: 'Server error' });
+                }
+            });
+        }
     }
 });
             
@@ -412,7 +427,7 @@ app.put('/users/:id', function (req, res){
     return userModel;
 });
 
- app.delete('/users/:id', function (req, res){
+app.delete('/users/:id', function (req, res){
      return UserModel.findById(req.params.id, function (err, user) {
         if(!user) {
              res.statusCode = 404;
@@ -445,14 +460,36 @@ app.post('/login',
     failureRedirect: '/loginFailure'
   })
 );
- 
+
+var currentToken;
 app.get('/loginFailure', function(req, res, next) {
-  res.send('Failed to authenticate');
+  res.send({
+    success: true,
+    message: 'Failed to authenticate'
+  });    
 });
- 
+
 app.get('/loginSuccess', function(req, res, next) {
-  res.send('Successfully authenticated');
+    currentToken = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    res.send({
+    success: true,
+    token: currentToken,
+    message: 'Successfully authenticated'
+  });
 });
+
+function validTokenProvided(req, res) {
+
+  // Check POST, GET, and headers for supplied token.
+  var userToken = req.body.token || req.param('token') || req.headers.token;
+
+  if (!currentToken || userToken != currentToken) {
+    res.send(401, { error: 'Invalid token. You provided: ' + userToken });
+    return false;
+  }
+
+  return true;
+}
 
 passport.serializeUser(function(user, done) {
   done(null, user);
