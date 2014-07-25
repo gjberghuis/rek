@@ -17,7 +17,7 @@ App = Ember.Application.create();
 App.AuthenticatedRoute = Ember.Route.extend({
     beforeModel: function(transition) {
         debugger;
-        if (!this.controllerFor('login').get('token')) {
+        if (!localStorage.getItem('token')) {
             debugger;
             this.redirectToLogin(transition);
         }
@@ -382,7 +382,6 @@ App.SettingsRoute = App.AuthenticatedRoute.extend({
         logout : function(){
             debugger;
             localStorage.removeItem('token');
-            this.controllerFor('login').tokenChanged();
             this.get('controller').transitionTo('index');
         }
     }
