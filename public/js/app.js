@@ -382,6 +382,7 @@ App.SettingsRoute = App.AuthenticatedRoute.extend({
         logout : function(){
             debugger;
             localStorage.removeItem('token');
+            this.controllerFor('login').tokenChanged();
             this.get('controller').transitionTo('index');
         }
     }
