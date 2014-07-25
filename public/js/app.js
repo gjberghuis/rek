@@ -172,19 +172,9 @@ App.Doel.reopenClass({
  * Routes
  */
 
-/*App.ApplicationRoute = App.AuthenticatedRoute.extend({
-    model: function(){
-        if(localStorage.getItem('token'))
-        {
-            var user = App.User.find('538314b86cca49020073e969');
-            debugger;
-            return user;
-        }
-    }
-});*/
-
 App.IndexRoute = App.AuthenticatedRoute.extend({
     model: function(){
+        debugger;
         if(localStorage.getItem('token'))
         {
             var user = App.User.find('538314b86cca49020073e969');
