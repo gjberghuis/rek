@@ -19,8 +19,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/webtemp.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/webtempnew.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="redeenkind.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,25 +50,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="436" column="49" selection-start="14268" selection-end="14273" vertical-scroll-proportion="-224.42308" vertical-offset="0" max-vertical-offset="6435">
+            <state line="189" column="65" selection-start="6579" selection-end="6579" vertical-scroll-proportion="0.55873495" vertical-offset="1819" max-vertical-offset="6405">
               <folding>
                 <element signature="e#60#306#0" expanded="false" />
                 <element signature="e#1253#1856#0" expanded="false" />
                 <element signature="e#1914#1917#0" expanded="false" />
                 <element signature="e#5319#6100#0" expanded="false" />
-                <element signature="e#13113#13203#0" expanded="false" />
+                <element signature="e#13085#13175#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="13" selection-start="1394" selection-end="1394" vertical-scroll-proportion="0.703125" vertical-offset="165" max-vertical-offset="3750">
+            <state line="41" column="13" selection-start="1394" selection-end="1394" vertical-scroll-proportion="-9.0" vertical-offset="165" max-vertical-offset="3750">
               <folding>
                 <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
                 <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
@@ -98,8 +96,8 @@
       <list>
         <option value="$PROJECT_DIR$/public/js/test" />
         <option value="$PROJECT_DIR$/web.js" />
-        <option value="$PROJECT_DIR$/public/js/app.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/js/app.js" />
       </list>
     </option>
   </component>
@@ -315,7 +313,7 @@
             <element signature="e#1253#1856#0" expanded="false" />
             <element signature="e#1914#1917#0" expanded="false" />
             <element signature="e#5319#6100#0" expanded="false" />
-            <element signature="e#13113#13203#0" expanded="false" />
+            <element signature="e#13085#13175#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -368,15 +366,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/app.js">
+    <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="436" column="49" selection-start="14268" selection-end="14273" vertical-scroll-proportion="-224.42308" vertical-offset="0" max-vertical-offset="6435">
+        <state line="41" column="13" selection-start="1394" selection-end="1394" vertical-scroll-proportion="-9.0" vertical-offset="165" max-vertical-offset="3750">
           <folding>
-            <element signature="e#60#306#0" expanded="false" />
-            <element signature="e#1253#1856#0" expanded="false" />
-            <element signature="e#1914#1917#0" expanded="false" />
-            <element signature="e#5319#6100#0" expanded="false" />
-            <element signature="e#13113#13203#0" expanded="false" />
+            <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -388,16 +387,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="13" selection-start="1394" selection-end="1394" vertical-scroll-proportion="0.703125" vertical-offset="165" max-vertical-offset="3750">
+        <state line="189" column="65" selection-start="6579" selection-end="6579" vertical-scroll-proportion="0.55873495" vertical-offset="1819" max-vertical-offset="6405">
           <folding>
-            <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="e#60#306#0" expanded="false" />
+            <element signature="e#1253#1856#0" expanded="false" />
+            <element signature="e#1914#1917#0" expanded="false" />
+            <element signature="e#5319#6100#0" expanded="false" />
+            <element signature="e#13085#13175#0" expanded="false" />
           </folding>
         </state>
       </provider>
