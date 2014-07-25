@@ -337,8 +337,8 @@ App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
         add : function(){
             var now = new Date();
             var jsonDate = now.toJSON();
-            debugger;
-            var test = this.controllerFor('login');
+            var lastTransition = this.controllerFor('login').get('lastTransition');
+
             var klus ={
                 _id: this.currentModel._id,
                 task_id: this.currentModel.task_id,
@@ -365,10 +365,8 @@ App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
                     });
                 }
 
-                debugger;
-                var test = this.controllerFor('login');
-                if (this.controllerFor('login').get('lastTransition')) {
-                    App.User.save(response, this.controllerFor('login').get('lastTransition'));
+                if(lastTransition) {
+                    App.User.save(response, lastTransition);
                 }
                 else
                     App.User.save(response);

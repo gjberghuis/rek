@@ -19,7 +19,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/webtemp.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/webtempnew.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="redeenkind.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,15 +53,15 @@
       <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="340" column="51" selection-start="11371" selection-end="11371" vertical-scroll-proportion="0.15210843" vertical-offset="4309" max-vertical-offset="6165">
+            <state line="368" column="58" selection-start="12609" selection-end="12609" vertical-scroll-proportion="0.7846386" vertical-offset="4309" max-vertical-offset="6135">
               <folding>
                 <element signature="e#60#306#0" expanded="false" />
                 <element signature="e#1914#1917#0" expanded="false" />
                 <element signature="e#3750#4645#0" expanded="false" />
                 <element signature="e#8987#9219#0" expanded="false" />
                 <element signature="e#9272#9439#0" expanded="false" />
-                <element signature="e#13324#13414#0" expanded="false" />
-                <element signature="e#14539#15094#0" expanded="false" />
+                <element signature="e#13182#13272#0" expanded="false" />
+                <element signature="e#14397#14952#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -317,8 +316,8 @@
             <element signature="e#3750#4645#0" expanded="false" />
             <element signature="e#8987#9219#0" expanded="false" />
             <element signature="e#9272#9439#0" expanded="false" />
-            <element signature="e#13324#13414#0" expanded="false" />
-            <element signature="e#14539#15094#0" expanded="false" />
+            <element signature="e#13182#13272#0" expanded="false" />
+            <element signature="e#14397#14952#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -394,15 +393,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="340" column="51" selection-start="11371" selection-end="11371" vertical-scroll-proportion="0.15210843" vertical-offset="4309" max-vertical-offset="6165">
+        <state line="368" column="58" selection-start="12609" selection-end="12609" vertical-scroll-proportion="0.7846386" vertical-offset="4309" max-vertical-offset="6135">
           <folding>
             <element signature="e#60#306#0" expanded="false" />
             <element signature="e#1914#1917#0" expanded="false" />
             <element signature="e#3750#4645#0" expanded="false" />
             <element signature="e#8987#9219#0" expanded="false" />
             <element signature="e#9272#9439#0" expanded="false" />
-            <element signature="e#13324#13414#0" expanded="false" />
-            <element signature="e#14539#15094#0" expanded="false" />
+            <element signature="e#13182#13272#0" expanded="false" />
+            <element signature="e#14397#14952#0" expanded="false" />
           </folding>
         </state>
       </provider>
