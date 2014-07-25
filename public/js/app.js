@@ -141,7 +141,10 @@ App.User.reopenClass({
             }
         }).then(function(response) {
             debugger;
-           this.transitionTo(localStorage.getItem('lastTransition'));
+            var loginController = this.controllerFor('login');
+
+            var attemptedTransition = loginController.get('attemptedTransition');
+           this.transitionTo(attemptedTransition);
         });
     }
 });
@@ -173,7 +176,6 @@ App.Doel.reopenClass({
 /*
  * Routes
  */
-
 App.IndexRoute = App.AuthenticatedRoute.extend({
     model: function(){
         if(this.controllerFor('login').get('token'))
@@ -326,7 +328,9 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
 
 App.KlusBySavingtargetRoute = Ember.Route.extend({
     beforeModel: function(transition) {
-        localStorage.lastTransition = transition;
+
+        var loginController = this.controllerFor('login');
+        loginController.set('attemptedTransition', transition);
     },
     serialize: function(model, params) {
         return {
