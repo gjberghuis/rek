@@ -464,7 +464,7 @@ app.post('/login',
 var currentToken;
 app.get('/loginFailure', function(req, res, next) {
   res.send({
-    success: true,
+    success: false,
     message: 'Failed to authenticate'
   });    
 });
@@ -473,8 +473,7 @@ app.get('/loginSuccess', function(req, res, next) {
     currentToken = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     res.send({
     success: true,
-    token: currentToken,
-    message: 'Successfully authenticated'
+    token: currentToken
   });
 });
 

@@ -176,7 +176,9 @@ App.ApplicationRoute = App.AuthenticatedRoute.extend({
     model: function(){
         if(localStorage.getItem('token'))
         {
-            return App.User.find('538314b86cca49020073e969');
+            var user = App.User.find('538314b86cca49020073e969');
+            debugger;
+            return user;
         }
     }
 });
@@ -372,6 +374,12 @@ App.SettingsRoute = App.AuthenticatedRoute.extend({
         {
             return App.User.find('538314b86cca49020073e969');
         }
+    },
+    actions: {
+        logout : function(){
+            localStorage.removeItem('token');
+            this.get('controller').transitionToRoute('application');
+        }
     }
 });
 
@@ -414,7 +422,8 @@ App.LoginController = Ember.Controller.extend({
                     attemptedTransition.retry();
                     self.set('attemptedTransition', null);
                 } else {
-                    self.transitionToRoute('index');
+                    debugger;
+                    self.transitionToRoute('application', 1);
                 }
             }
         });
