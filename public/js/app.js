@@ -226,7 +226,7 @@ App.DoelRoute = App.AuthenticatedRoute.extend({
             };
 
             var saveModel = true;
-            var userModel = App.User.find('538314b86cca49020073e969', localStorage.getItem('token'), function (response) {
+            var userModel = App.User.find('538314b86cca49020073e969', function (response) {
                 if(response.savingtargets != null)
                 {
                     // check if there is a current and not completed savingtarget. If so, adding a new savingtarget is not allowed.
