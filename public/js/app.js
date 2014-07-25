@@ -326,7 +326,7 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
     }
 });
 
-App.KlusBySavingtargetRoute = Ember.Route.extend({
+App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
     beforeModel: function(transition) {
 
         var loginController = this.controllerFor('login');

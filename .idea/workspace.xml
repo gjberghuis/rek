@@ -53,7 +53,7 @@
       <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="332" column="63" selection-start="11225" selection-end="11225" vertical-scroll-proportion="0.21536145" vertical-offset="1072" max-vertical-offset="3015">
+            <state line="328" column="52" selection-start="11063" selection-end="11063" vertical-scroll-proportion="0.24246988" vertical-offset="994" max-vertical-offset="3210">
               <folding>
                 <element signature="e#60#306#0" expanded="false" />
                 <element signature="e#390#1170#0" expanded="false" />
@@ -67,8 +67,7 @@
                 <element signature="e#9150#9382#0" expanded="false" />
                 <element signature="e#9435#9602#0" expanded="false" />
                 <element signature="e#9652#11007#0" expanded="false" />
-                <element signature="e#12715#13050#0" expanded="false" />
-                <element signature="e#13114#13204#0" expanded="false" />
+                <element signature="e#13125#13215#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -330,8 +329,7 @@
             <element signature="e#9150#9382#0" expanded="false" />
             <element signature="e#9435#9602#0" expanded="false" />
             <element signature="e#9652#11007#0" expanded="false" />
-            <element signature="e#12715#13050#0" expanded="false" />
-            <element signature="e#13114#13204#0" expanded="false" />
+            <element signature="e#13125#13215#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -407,7 +405,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="332" column="63" selection-start="11225" selection-end="11225" vertical-scroll-proportion="0.21536145" vertical-offset="1072" max-vertical-offset="3015">
+        <state line="328" column="52" selection-start="11063" selection-end="11063" vertical-scroll-proportion="0.24246988" vertical-offset="994" max-vertical-offset="3210">
           <folding>
             <element signature="e#60#306#0" expanded="false" />
             <element signature="e#390#1170#0" expanded="false" />
@@ -421,8 +419,7 @@
             <element signature="e#9150#9382#0" expanded="false" />
             <element signature="e#9435#9602#0" expanded="false" />
             <element signature="e#9652#11007#0" expanded="false" />
-            <element signature="e#12715#13050#0" expanded="false" />
-            <element signature="e#13114#13204#0" expanded="false" />
+            <element signature="e#13125#13215#0" expanded="false" />
           </folding>
         </state>
       </provider>
