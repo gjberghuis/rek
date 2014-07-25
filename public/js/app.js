@@ -328,7 +328,7 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
 
 App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
     beforeModel: function(transition) {
-
+debugger;
         var loginController = this.controllerFor('login');
         loginController.set('attemptedTransition', transition);
     },
