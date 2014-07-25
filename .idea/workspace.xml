@@ -53,20 +53,19 @@
       <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="330" column="9" selection-start="11122" selection-end="11122" vertical-scroll-proportion="0.67168677" vertical-offset="844" max-vertical-offset="3315">
+            <state line="142" column="21" selection-start="5175" selection-end="5175" vertical-scroll-proportion="0.5421687" vertical-offset="600" max-vertical-offset="3750">
               <folding>
                 <element signature="e#60#306#0" expanded="false" />
-                <element signature="e#390#1170#0" expanded="false" />
                 <element signature="e#1253#1856#0" expanded="false" />
                 <element signature="e#1914#1917#0" expanded="false" />
                 <element signature="e#1976#3697#0" expanded="false" />
                 <element signature="e#3750#4645#0" expanded="false" />
-                <element signature="e#5538#6319#0" expanded="false" />
-                <element signature="e#6851#9094#0" expanded="false" />
-                <element signature="e#9150#9382#0" expanded="false" />
-                <element signature="e#9435#9602#0" expanded="false" />
-                <element signature="e#9652#11007#0" expanded="false" />
-                <element signature="e#13134#13224#0" expanded="false" />
+                <element signature="e#6795#9038#0" expanded="false" />
+                <element signature="e#9094#9326#0" expanded="false" />
+                <element signature="e#9379#9546#0" expanded="false" />
+                <element signature="e#9596#10951#0" expanded="false" />
+                <element signature="e#13070#13160#0" expanded="false" />
+                <element signature="e#14285#14840#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -301,7 +300,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/public/js/app.js</url>
+          <line>367</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -317,17 +323,16 @@
         <state line="489" column="13" selection-start="15048" selection-end="15048" vertical-scroll-proportion="0.0" vertical-offset="4575" max-vertical-offset="4575">
           <folding>
             <element signature="e#60#306#0" expanded="false" />
-            <element signature="e#390#1170#0" expanded="false" />
             <element signature="e#1253#1856#0" expanded="false" />
             <element signature="e#1914#1917#0" expanded="false" />
             <element signature="e#1976#3697#0" expanded="false" />
             <element signature="e#3750#4645#0" expanded="false" />
-            <element signature="e#5538#6319#0" expanded="false" />
-            <element signature="e#6851#9094#0" expanded="false" />
-            <element signature="e#9150#9382#0" expanded="false" />
-            <element signature="e#9435#9602#0" expanded="false" />
-            <element signature="e#9652#11007#0" expanded="false" />
-            <element signature="e#13134#13224#0" expanded="false" />
+            <element signature="e#6795#9038#0" expanded="false" />
+            <element signature="e#9094#9326#0" expanded="false" />
+            <element signature="e#9379#9546#0" expanded="false" />
+            <element signature="e#9596#10951#0" expanded="false" />
+            <element signature="e#13070#13160#0" expanded="false" />
+            <element signature="e#14285#14840#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -403,20 +408,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="330" column="9" selection-start="11122" selection-end="11122" vertical-scroll-proportion="0.67168677" vertical-offset="844" max-vertical-offset="3315">
+        <state line="142" column="21" selection-start="5175" selection-end="5175" vertical-scroll-proportion="0.5421687" vertical-offset="600" max-vertical-offset="3750">
           <folding>
             <element signature="e#60#306#0" expanded="false" />
-            <element signature="e#390#1170#0" expanded="false" />
             <element signature="e#1253#1856#0" expanded="false" />
             <element signature="e#1914#1917#0" expanded="false" />
             <element signature="e#1976#3697#0" expanded="false" />
             <element signature="e#3750#4645#0" expanded="false" />
-            <element signature="e#5538#6319#0" expanded="false" />
-            <element signature="e#6851#9094#0" expanded="false" />
-            <element signature="e#9150#9382#0" expanded="false" />
-            <element signature="e#9435#9602#0" expanded="false" />
-            <element signature="e#9652#11007#0" expanded="false" />
-            <element signature="e#13134#13224#0" expanded="false" />
+            <element signature="e#6795#9038#0" expanded="false" />
+            <element signature="e#9094#9326#0" expanded="false" />
+            <element signature="e#9379#9546#0" expanded="false" />
+            <element signature="e#9596#10951#0" expanded="false" />
+            <element signature="e#13070#13160#0" expanded="false" />
+            <element signature="e#14285#14840#0" expanded="false" />
           </folding>
         </state>
       </provider>
