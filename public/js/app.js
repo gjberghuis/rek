@@ -16,7 +16,6 @@ App = Ember.Application.create();
 
 App.AuthenticatedRoute = Ember.Route.extend({
     beforeModel: function(transition) {
-        debugger;
         if (!this.controllerFor('login').get('token')) {
             this.redirectToLogin(transition);
         }
