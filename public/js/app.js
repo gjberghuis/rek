@@ -346,7 +346,7 @@ App.KlusBySavingtargetRoute = Ember.Route.extend({
                 completed: true,
                 end_date: jsonDate
             };
-            var userModel = App.User.find('538314b86cca49020073e969', localStorage.getItem('token'), function (response) {
+            var userModel = App.User.find('538314b86cca49020073e969', function (response) {
                 if(response.savingtargets != null)
                 {
                     response.savingtargets.forEach(function (savingtarget) {
