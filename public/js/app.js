@@ -140,10 +140,8 @@ App.User.reopenClass({
             error: function(xhr, status, error) {
             }
         }).then(function(response) {
-            debugger;
-            if (this.controllerFor('login').get('transition')) {
-                this.redirectToLogin(transition);
-            }
+
+            this.transitionTo(transition);
         });
     }
 });
@@ -328,7 +326,7 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
 App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
     beforeModel: function(transition) {
         var loginController = this.controllerFor('login');
-        loginController.set('attemptedTransition', transition);
+        loginController.set('lastTransition', transition);
     },
     serialize: function(model, params) {
         return {
@@ -365,7 +363,13 @@ App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
                         }
                     });
                 }
-                App.User.save(response, );
+
+                debugger;
+                if (this.controllerFor('login').get('lastTransition')) {
+                    App.User.save(response, this.controllerFor('login').get('lastTransition'));
+                }
+                else
+                    App.User.save(response);
             });
         }
     }

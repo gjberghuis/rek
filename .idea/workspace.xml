@@ -53,19 +53,15 @@
       <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="142" column="21" selection-start="5175" selection-end="5175" vertical-scroll-proportion="0.5421687" vertical-offset="600" max-vertical-offset="3750">
+            <state line="433" column="13" selection-start="14360" selection-end="14360" vertical-scroll-proportion="0.4683735" vertical-offset="5434" max-vertical-offset="6135">
               <folding>
                 <element signature="e#60#306#0" expanded="false" />
-                <element signature="e#1253#1856#0" expanded="false" />
                 <element signature="e#1914#1917#0" expanded="false" />
-                <element signature="e#1976#3697#0" expanded="false" />
                 <element signature="e#3750#4645#0" expanded="false" />
-                <element signature="e#6795#9038#0" expanded="false" />
-                <element signature="e#9094#9326#0" expanded="false" />
-                <element signature="e#9379#9546#0" expanded="false" />
-                <element signature="e#9596#10951#0" expanded="false" />
-                <element signature="e#13070#13160#0" expanded="false" />
-                <element signature="e#14285#14840#0" expanded="false" />
+                <element signature="e#8987#9219#0" expanded="false" />
+                <element signature="e#9272#9439#0" expanded="false" />
+                <element signature="e#13195#13285#0" expanded="false" />
+                <element signature="e#14410#14965#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -300,13 +296,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public/js/app.js</url>
-          <line>367</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="4" />
     </breakpoint-manager>
   </component>
@@ -323,16 +312,12 @@
         <state line="489" column="13" selection-start="15048" selection-end="15048" vertical-scroll-proportion="0.0" vertical-offset="4575" max-vertical-offset="4575">
           <folding>
             <element signature="e#60#306#0" expanded="false" />
-            <element signature="e#1253#1856#0" expanded="false" />
             <element signature="e#1914#1917#0" expanded="false" />
-            <element signature="e#1976#3697#0" expanded="false" />
             <element signature="e#3750#4645#0" expanded="false" />
-            <element signature="e#6795#9038#0" expanded="false" />
-            <element signature="e#9094#9326#0" expanded="false" />
-            <element signature="e#9379#9546#0" expanded="false" />
-            <element signature="e#9596#10951#0" expanded="false" />
-            <element signature="e#13070#13160#0" expanded="false" />
-            <element signature="e#14285#14840#0" expanded="false" />
+            <element signature="e#8987#9219#0" expanded="false" />
+            <element signature="e#9272#9439#0" expanded="false" />
+            <element signature="e#13195#13285#0" expanded="false" />
+            <element signature="e#14410#14965#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -408,19 +393,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="142" column="21" selection-start="5175" selection-end="5175" vertical-scroll-proportion="0.5421687" vertical-offset="600" max-vertical-offset="3750">
+        <state line="433" column="13" selection-start="14360" selection-end="14360" vertical-scroll-proportion="0.4683735" vertical-offset="5434" max-vertical-offset="6135">
           <folding>
             <element signature="e#60#306#0" expanded="false" />
-            <element signature="e#1253#1856#0" expanded="false" />
             <element signature="e#1914#1917#0" expanded="false" />
-            <element signature="e#1976#3697#0" expanded="false" />
             <element signature="e#3750#4645#0" expanded="false" />
-            <element signature="e#6795#9038#0" expanded="false" />
-            <element signature="e#9094#9326#0" expanded="false" />
-            <element signature="e#9379#9546#0" expanded="false" />
-            <element signature="e#9596#10951#0" expanded="false" />
-            <element signature="e#13070#13160#0" expanded="false" />
-            <element signature="e#14285#14840#0" expanded="false" />
+            <element signature="e#8987#9219#0" expanded="false" />
+            <element signature="e#9272#9439#0" expanded="false" />
+            <element signature="e#13195#13285#0" expanded="false" />
+            <element signature="e#14410#14965#0" expanded="false" />
           </folding>
         </state>
       </provider>
