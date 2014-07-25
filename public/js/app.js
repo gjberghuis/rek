@@ -140,7 +140,8 @@ App.User.reopenClass({
             error: function(xhr, status, error) {
             }
         }).then(function(response) {
-           this.transitionTo(localStorage.getItem('transition'));
+            debugger;
+           this.transitionTo(localStorage.getItem('lastTransition'));
         });
     }
 });
