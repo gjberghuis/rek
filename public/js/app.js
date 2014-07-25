@@ -16,14 +16,11 @@ App = Ember.Application.create();
 
 App.AuthenticatedRoute = Ember.Route.extend({
     beforeModel: function(transition) {
-        debugger;
         if (!localStorage.getItem('token')) {
-            debugger;
             this.redirectToLogin(transition);
         }
     },
     redirectToLogin: function(transition) {
-        debugger;
         var loginController = this.controllerFor('login');
         loginController.set('attemptedTransition', transition);
         this.transitionTo('login');
@@ -177,7 +174,6 @@ App.Doel.reopenClass({
 
 App.IndexRoute = App.AuthenticatedRoute.extend({
     model: function(){
-        debugger;
         if(localStorage.getItem('token'))
         {
             var user = App.User.find('538314b86cca49020073e969');
@@ -380,7 +376,6 @@ App.SettingsRoute = App.AuthenticatedRoute.extend({
     },
     actions: {
         logout : function(){
-            debugger;
             localStorage.removeItem('token');
             this.get('controller').transitionTo('index');
         }
