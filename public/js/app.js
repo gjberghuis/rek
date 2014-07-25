@@ -140,6 +140,7 @@ App.User.reopenClass({
             error: function(xhr, status, error) {
             }
         }).then(function(response) {
+           this.transitionTo(localStorage.getItem('transition'));
         });
     }
 });
@@ -323,8 +324,8 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
 });
 
 App.KlusBySavingtargetRoute = Ember.Route.extend({
-    model: function() {
-        return {};
+    beforeModel: function(transition) {
+        localStorage.lastTransition = transition;
     },
     serialize: function(model, params) {
         return {
