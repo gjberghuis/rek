@@ -125,7 +125,7 @@ App.User.reopenClass({
             return currentSavingTarget;
         });
     },
-    save: function(user, transition){
+    save: function(user, callback){
         return $.ajax
         ({
             token: localStorage.getItem('token'),
@@ -140,8 +140,8 @@ App.User.reopenClass({
             error: function(xhr, status, error) {
             }
         }).then(function(response) {
-
-            this.transitionTo(transition);
+            if(callback)
+                callback(response.user);
         });
     }
 });
@@ -219,6 +219,7 @@ App.DoelRoute = App.AuthenticatedRoute.extend({
         selectDate : function(controller, model){
             var now = new Date(this.currentModel.selectdate);
             var jsonDate = now.toJSON();
+            var thisModel = this;
 
             var savingtarget ={
                 name: this.currentModel.name,
@@ -252,7 +253,7 @@ App.DoelRoute = App.AuthenticatedRoute.extend({
 
                 if(saveModel){
                     if(App.User.save(response)){
-                        App.Router.transitionTo('doelByUser');
+                        thisModel.transitionTo('doelByUser');
                     }
                 }
             });
@@ -261,13 +262,21 @@ App.DoelRoute = App.AuthenticatedRoute.extend({
 });
 
 App.DoelByUserRoute = App.AuthenticatedRoute.extend({
+    beforeModel: function(transition) {
+        var loginController = this.controllerFor('login');
+        loginController.set('previousTransition', transition);
+    },
     model: function(params) {
-        return App.User.findSavingTarget('538314b86cca49020073e969', params.doel_id);
+        var user = App.User.findSavingTarget('538314b86cca49020073e969', params.doel_id);
+        return user;
     },
     serialize: function(model, params) {
         return {
             doel_id: model._id
         };
+    },
+    afterModel: function(model) {
+       // this.modelFor('DoelByUser').reload();
     }
 });
 
@@ -305,6 +314,8 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
                 completed_by: this.currentModel.doneBy,
                 amount: this.currentModel.amount
             };
+            var thisModel = this;
+
             var userModel = App.User.find('538314b86cca49020073e969', function (response) {
                 if(response.savingtargets != null)
                 {
@@ -316,18 +327,15 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
                         }
                     });
                 }
-                App.User.save(response);
-                window.transitionTo('klussen');
+                App.User.save(response, function(){
+                    thisModel.transitionTo('doelByUser','53c42a54b5120f020050a3fc');
+                });
             });
         }
     }
 });
 
 App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
-    beforeModel: function(transition) {
-        var loginController = this.controllerFor('login');
-        loginController.set('lastTransition', transition);
-    },
     serialize: function(model, params) {
         return {
             klus_id: model._id
@@ -337,7 +345,9 @@ App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
         add : function(){
             var now = new Date();
             var jsonDate = now.toJSON();
-            var lastTransition = this.controllerFor('login').get('lastTransition');
+
+            var controller = this.get('controller');
+            var thisModel = this;
 
             var klus ={
                 _id: this.currentModel._id,
@@ -365,11 +375,9 @@ App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
                     });
                 }
 
-                if(lastTransition) {
-                    App.User.save(response, lastTransition);
-                }
-                else
-                    App.User.save(response);
+                App.User.save(response, function(user){
+                    thisModel.transitionTo('doelByUser','53c42a54b5120f020050a3fc');
+                });
             });
         }
     }

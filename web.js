@@ -514,7 +514,7 @@ passport.use(new LocalStrategy(function(email, password, done) {
       if (user.password != password) {
         return done(null, false);
       }
- 
+                debugger;
       return done(null, user);
     });
   });
