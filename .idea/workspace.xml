@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5d292b5-cb78-4bda-84df-cd2cf441e5a0" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web.js" afterPath="$PROJECT_DIR$/web.js" />
     </list>
     <ignored path="redeenkind.iws" />
@@ -31,7 +32,7 @@
       <file leaf-file-name="web.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="472" column="24" selection-start="16444" selection-end="16444" vertical-scroll-proportion="0.8893805" vertical-offset="6477" max-vertical-offset="8220">
+            <state line="473" column="24" selection-start="16471" selection-end="16471" vertical-scroll-proportion="0.2699115" vertical-offset="6912" max-vertical-offset="8235">
               <folding />
             </state>
           </provider>
@@ -392,7 +393,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="472" column="24" selection-start="16444" selection-end="16444" vertical-scroll-proportion="0.8893805" vertical-offset="6477" max-vertical-offset="8220">
+        <state line="473" column="24" selection-start="16471" selection-end="16471" vertical-scroll-proportion="0.2699115" vertical-offset="6912" max-vertical-offset="8235">
           <folding />
         </state>
       </provider>

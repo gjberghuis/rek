@@ -9,6 +9,7 @@
 var auth = require("http-auth");
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+ var hat = require('hat');
 
 //test/
 app.use(passport.initialize());
@@ -470,7 +471,7 @@ app.get('/loginFailure', function(req, res, next) {
 });
 
 app.get('/loginSuccess', function(req, res, next) {
-    currentToken = 'poep';
+    currentToken = hat();
     res.send({
     success: true,
     token: currentToken
