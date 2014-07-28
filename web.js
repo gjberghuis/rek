@@ -470,7 +470,7 @@ app.get('/loginFailure', function(req, res, next) {
 });
 
 app.get('/loginSuccess', function(req, res, next) {
-    currentToken = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    currentToken = 'poep';
     res.send({
     success: true,
     token: currentToken
@@ -514,7 +514,6 @@ passport.use(new LocalStrategy(function(email, password, done) {
       if (user.password != password) {
         return done(null, false);
       }
-                debugger;
       return done(null, user);
     });
   });
