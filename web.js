@@ -455,12 +455,32 @@ app.get('/login', function(req, res) {
   res.sendfile('views/login.html');
 });
 
-app.post('/login',
+/*app.post('/login',
   passport.authenticate('local', {
     successRedirect: '/loginSuccess',
     failureRedirect: '/loginFailure'
   })
-);
+);*/
+
+ app.post('/login', function(req, res, next) {
+     passport.authenticate('local', function(err, user, info) {
+         debugger;
+         if (err) { return next(err); }
+
+         if (!user) { return res.redirect('/'); }
+
+         req.logIn(user, function(err) {
+             debugger;
+             if (err) { return next(err); }
+             currentToken = hat();
+             return res.send({
+                 userid: user._doc._id.toString(),
+                 success: true,
+                 token: currentToken
+             });
+         });
+     })(req, res, next);
+ });
 
 var currentToken;
 app.get('/loginFailure', function(req, res, next) {
@@ -471,6 +491,7 @@ app.get('/loginFailure', function(req, res, next) {
 });
 
 app.get('/loginSuccess', function(req, res, next) {
+    debugger;
     currentToken = hat();
     res.send({
     success: true,

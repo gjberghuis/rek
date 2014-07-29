@@ -49,7 +49,7 @@ App.Task = Ember.Object.extend();
 
 App.Task.reopenClass({
     all: function() {
-        return $.getJSON("http://redeenkind.herokuapp.com/tasks?format=jsonp&callback=?", { token: localStorage.getItem('token')}).then(function(response) {
+        return $.getJSON("/tasks?format=jsonp&callback=?", { token: localStorage.getItem('token')}).then(function(response) {
             var tasks = [];
             response.tasks.forEach( function (task) {
                 tasks.push( App.Task.create(task) );
@@ -58,7 +58,7 @@ App.Task.reopenClass({
         });
     },
     find: function(task_id){
-        return $.getJSON("http://redeenkind.herokuapp.com/tasks/" + task_id, { token: localStorage.getItem('token')}).then(function(response) {
+        return $.getJSON("/tasks/" + task_id, { token: localStorage.getItem('token')}).then(function(response) {
             return response.task;
         });
     }
@@ -72,7 +72,7 @@ App.User = Ember.Object.extend({
 
 App.User.reopenClass({
     find: function(id, callback){
-        return $.getJSON("http://redeenkind.herokuapp.com/users/" + id, { token: localStorage.getItem('token'), resolve: true})
+        return $.getJSON("/users/" + id, { token: localStorage.getItem('token'), resolve: true})
             .then(function(response) {
                 var savingtargetsByUser = [];
                 if(response.user != null && response.user.savingtargets != null && response.user.savingtargets.length > 0)
@@ -106,7 +106,7 @@ App.User.reopenClass({
         });
     },
     findSavingTarget: function(id, savingtarget_id){
-        return $.getJSON("http://redeenkind.herokuapp.com/users/" + id, { token: localStorage.getItem('token'), resolve: true})
+        return $.getJSON("/users/" + id, { token: localStorage.getItem('token'), resolve: true})
             .then(function(response) {
             var currentSavingTarget;
             if(response.user != null && response.user.savingtargets != null && response.user.savingtargets.length > 0)
@@ -130,7 +130,7 @@ App.User.reopenClass({
         ({
             token: localStorage.getItem('token'),
             type: "PUT",
-            url: "http://redeenkind.herokuapp.com/users/" + user._id,
+            url: "/users/" + user._id,
             async: false,
             contentType: "application/json",
             dataType: "json",
@@ -153,7 +153,7 @@ App.Doel = Ember.Object.extend({});
 
 App.Doel.reopenClass({
     all: function() {
-        return $.getJSON("http://redeenkind.herokuapp.com/savingtargets", { token: localStorage.getItem('token')}).then(function(response) {
+        return $.getJSON("/savingtargets", { token: localStorage.getItem('token')}).then(function(response) {
             var doelenArray = [];
             response.savingtargets.forEach(function(savingtarget) {
                 var model = App.Doel.create(savingtarget);
@@ -164,7 +164,7 @@ App.Doel.reopenClass({
         });
     },
     find: function(savingtarget_id){
-        $.getJSON("http://redeenkind.herokuapp.com/savingtargets", { token: localStorage.getItem('token')}).then(function(response) {
+        $.getJSON("/savingtargets", { token: localStorage.getItem('token')}).then(function(response) {
             return response.savingtarget;
         });
     }
@@ -177,7 +177,7 @@ App.IndexRoute = App.AuthenticatedRoute.extend({
     model: function(){
         if(this.controllerFor('login').get('token'))
         {
-            var user = App.User.find('538314b86cca49020073e969');
+            var user = App.User.find(this.controllerFor('login').get('userid'));
             return user;
         }
     }
@@ -228,7 +228,7 @@ App.DoelRoute = App.AuthenticatedRoute.extend({
             };
 
             var saveModel = true;
-            var userModel = App.User.find('538314b86cca49020073e969', function (response) {
+            var userModel = App.User.find(this.controllerFor('login').get('userid'), function (response) {
                 if(response.savingtargets != null)
                 {
                     // check if there is a current and not completed savingtarget. If so, adding a new savingtarget is not allowed.
@@ -267,7 +267,7 @@ App.DoelByUserRoute = App.AuthenticatedRoute.extend({
         loginController.set('previousTransition', transition);
     },
     model: function(params) {
-        var user = App.User.findSavingTarget('538314b86cca49020073e969', params.doel_id);
+        var user = App.User.find(this.controllerFor('login').get('userid'), params.doel_id);
         return user;
     },
     serialize: function(model, params) {
@@ -316,7 +316,7 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
             };
             var thisModel = this;
 
-            var userModel = App.User.find('538314b86cca49020073e969', function (response) {
+            var userModel = App.User.find(this.controllerFor('login').get('userid'), function (response) {
                 if(response.savingtargets != null)
                 {
                     response.savingtargets.forEach(function (savingtarget) {
@@ -328,7 +328,7 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
                     });
                 }
                 App.User.save(response, function(){
-                    thisModel.transitionTo('doelByUser','53c42a54b5120f020050a3fc');
+                    thisModel.transitionTo('doelByUser','539c9bb4dc20b60000c9892e');
                 });
             });
         }
@@ -357,7 +357,7 @@ App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
                 completed: true,
                 end_date: jsonDate
             };
-            var userModel = App.User.find('538314b86cca49020073e969', function (response) {
+            var userModel = App.User.find(this.controllerFor('login').get('userid'), function (response) {
                 if(response.savingtargets != null)
                 {
                     response.savingtargets.forEach(function (savingtarget) {
@@ -376,7 +376,7 @@ App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
                 }
 
                 App.User.save(response, function(user){
-                    thisModel.transitionTo('doelByUser','53c42a54b5120f020050a3fc');
+                    thisModel.transitionTo('doelByUser','539c9bb4dc20b60000c9892e');
                 });
             });
         }
@@ -387,7 +387,7 @@ App.SettingsRoute = App.AuthenticatedRoute.extend({
     model: function(){
         if(localStorage.getItem('token'))
         {
-            return App.User.find('538314b86cca49020073e969');
+            return App.User.find(this.controllerFor('login').get('userid'));
         }
     },
     actions: {
@@ -420,6 +420,7 @@ App.LoginController = Ember.Controller.extend({
     tokenChanged: function() {
         localStorage.token = this.get('token');
     }.observes('token'),
+    userid: localStorage.userid,
 
     login: function() {
 
@@ -431,7 +432,9 @@ App.LoginController = Ember.Controller.extend({
         $.post('/login', data).then(function(response) {
             self.set('errorMessage', response.message);
             if (response.success) {
+                self.set('userid', response.userid);
                 self.set('token', response.token);
+
                 var attemptedTransition = self.get('attemptedTransition');
                 if (attemptedTransition) {
                     attemptedTransition.retry();
