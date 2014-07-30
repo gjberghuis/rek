@@ -315,8 +315,8 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
                 amount: this.currentModel.amount
             };
             var thisModel = this;
-
-            var userModel = App.User.find(this.controllerFor('login').get('userid'), function (response) {
+            var userid = this.controllerFor('login').get('userid');
+            var userModel = App.User.find(userid, function (response) {
                 if(response.savingtargets != null)
                 {
                     response.savingtargets.forEach(function (savingtarget) {
@@ -328,7 +328,7 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
                     });
                 }
                 App.User.save(response, function(){
-                    thisModel.transitionTo('doelByUser','539c9bb4dc20b60000c9892e');
+                    thisModel.transitionTo('doelByUser', userid);
                 });
             });
         }
@@ -348,6 +348,7 @@ App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
 
             var controller = this.get('controller');
             var thisModel = this;
+            var userid = this.controllerFor('login').get('userid');
 
             var klus ={
                 _id: this.currentModel._id,
@@ -376,7 +377,7 @@ App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
                 }
 
                 App.User.save(response, function(user){
-                    thisModel.transitionTo('doelByUser','539c9bb4dc20b60000c9892e');
+                    thisModel.transitionTo('doelByUser', userid);
                 });
             });
         }
