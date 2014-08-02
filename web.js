@@ -1,15 +1,15 @@
- var express = require('express'),
-     app = express(),
-     log = require('./libs/log')(module),
-     config = require('./libs/config'),
+var express = require('express'),
+    app = express(),
+    log = require('./libs/log')(module),
+    config = require('./libs/config'),
     bodyParser = require('body-parser'),
-      path = require('path'),
+    path = require('path'),
     methodOverride = require('method-override'),
-     http = require('http');
+    http = require('http');
 var auth = require("http-auth");
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
- var hat = require('hat');
+var hat = require('hat');
 
 //test/
 app.use(passport.initialize());
@@ -20,30 +20,30 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.all('*', function(req, res, next) {
     if (req.method === 'OPTIONS') {
-        
-          var headers = {};
-          // IE8 does not allow domains to be specified, just the *
-          // headers["Access-Control-Allow-Origin"] = req.headers.origin;
-          headers["Access-Control-Allow-Origin"] = "*";
-          headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
-         headers["Access-Control-Allow-Credentials "] = "true"; // 24 hours
-          headers["Access-Control-Max-Age"] = '86400'; // 24 hours
-          headers["Access-Control-Allow-Headers"] = "X-Requested-With, Authorization, Content-Type";
-          res.writeHead(200, headers);
-          res.end();
-    } 
-    else {    
+
+        var headers = {};
+        // IE8 does not allow domains to be specified, just the *
+        // headers["Access-Control-Allow-Origin"] = req.headers.origin;
+        headers["Access-Control-Allow-Origin"] = "*";
+        headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+        headers["Access-Control-Allow-Credentials "] = "true"; // 24 hours
+        headers["Access-Control-Max-Age"] = '86400'; // 24 hours
+        headers["Access-Control-Allow-Headers"] = "X-Requested-With, Authorization, Content-Type";
+        res.writeHead(200, headers);
+        res.end();
+    }
+    else {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With, Authorization, Content-Type");
-        res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");  
+        res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
         res.header("Access-Control-Allow-Credentials", "true"); // 24 hours  
         next();
     }
 });
- 
+
 /*
-* SavingTargets
-*/
+ * SavingTargets
+ */
 
 var SavingTargetModel= require('./routes/mongoose').SavingTargetModel;
 
@@ -92,21 +92,21 @@ app.post('/savingtargets', function(req, res) {
         });
     }
 });
- 
+
 app.get('/savingtargets/:id', function(req, res) {
     if (validTokenProvided(req, res)) {
         return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
-        if(!savingtarget) {
-            res.statusCode = 404;
-            return res.jsonp({ error: 'Not found' });
-        }
-        if (!err) {
-            return res.jsonp({ savingtarget:savingtarget });
-        } else {
-            res.statusCode = 500;
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.send({ error: 'Server error' });
-        }
+            if(!savingtarget) {
+                res.statusCode = 404;
+                return res.jsonp({ error: 'Not found' });
+            }
+            if (!err) {
+                return res.jsonp({ savingtarget:savingtarget });
+            } else {
+                res.statusCode = 500;
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                return res.send({ error: 'Server error' });
+            }
         });
     }
 });
@@ -114,38 +114,38 @@ app.get('/savingtargets/:id', function(req, res) {
 app.put('/savingtargets/:id', function (req, res){
     if (validTokenProvided(req, res)) {
         return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
-        if(!savingtarget) {
-            res.statusCode = 404;
-            return res.jsonp({ error: 'Not found' });
-        }
-
-        savingtarget.name = req.body.name;
-        savingtarget.description = req.body.description;
-        savingtarget.short_description = req.body.short_description;
-        savingtarget.images = req.body.images;
-        savingtarget.amount = req.body.amount;
-            
-        return savingtarget.save(function (err) {
-            if (!err) {
-                log.info("savingtarget updated");
-                return res.jsonp({ status: 'OK', savingtarget:savingtarget });
-            } else {
-                if(err.name == 'ValidationError') {
-                    res.statusCode = 400;
-                    res.jsonp({ error: 'Validation error' });
-                } else {
-                    res.statusCode = 500;
-                    res.jsonp({ error: 'Server error' });
-                }
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
+            if(!savingtarget) {
+                res.statusCode = 404;
+                return res.jsonp({ error: 'Not found' });
             }
-        });
+
+            savingtarget.name = req.body.name;
+            savingtarget.description = req.body.description;
+            savingtarget.short_description = req.body.short_description;
+            savingtarget.images = req.body.images;
+            savingtarget.amount = req.body.amount;
+
+            return savingtarget.save(function (err) {
+                if (!err) {
+                    log.info("savingtarget updated");
+                    return res.jsonp({ status: 'OK', savingtarget:savingtarget });
+                } else {
+                    if(err.name == 'ValidationError') {
+                        res.statusCode = 400;
+                        res.jsonp({ error: 'Validation error' });
+                    } else {
+                        res.statusCode = 500;
+                        res.jsonp({ error: 'Server error' });
+                    }
+                    log.error('Internal error(%d): %s',res.statusCode,err.message);
+                }
+            });
         });
     }
-});   
+});
 
 app.delete('/savingtargets/:id', function (req, res){
-       return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
+    return SavingTargetModel.findById(req.params.id, function (err, savingtarget) {
         if(!savingtarget) {
             res.statusCode = 404;
             return res.jsonp({ error: 'Not found' });
@@ -163,9 +163,9 @@ app.delete('/savingtargets/:id', function (req, res){
     });
 });
 
- /*
-  * Tasks
-  */
+/*
+ * Tasks
+ */
 
 var TaskModel = require('./routes/mongoose').TaskModel;
 
@@ -173,7 +173,7 @@ app.get('/tasks', function(req, res) {
     if (validTokenProvided(req, res)) {
         return TaskModel.find(function(err, tasks){
             if(!err) {
-               return res.jsonp({ tasks:tasks });
+                return res.jsonp({ tasks:tasks });
             }
             else {
                 res.statusCode = 500;
@@ -190,7 +190,7 @@ app.post('/tasks', function(req, res) {
         short_description: req.body.short_description,
         description: req.body.description
     });
-    
+
     task.save(function (err) {
         if (!err) {
             log.info("task created");
@@ -208,27 +208,27 @@ app.post('/tasks', function(req, res) {
         }
     });
 });
- 
+
 app.get('/tasks/:id', function(req, res) {
     if (validTokenProvided(req, res)) {
         return TaskModel.findById(req.params.id, function (err, tasks) {
-        if(!tasks) {
-            res.statusCode = 404;
-            return res.jsonp({ error: 'Not found' });
-        }
-        if (!err) {
-            return res.jsonp({ task:tasks });
-        } else {
-            res.statusCode = 500;
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.jsonp({ error: 'Server error' });
-        }
+            if(!tasks) {
+                res.statusCode = 404;
+                return res.jsonp({ error: 'Not found' });
+            }
+            if (!err) {
+                return res.jsonp({ task:tasks });
+            } else {
+                res.statusCode = 500;
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                return res.jsonp({ error: 'Server error' });
+            }
         });
     }
 });
 
 app.put('/tasks/:id', function (req, res){
-        return TaskModel.findById(req.params.id, function (err, task) {
+    return TaskModel.findById(req.params.id, function (err, task) {
         if(!task) {
             res.statusCode = 404;
             return res.jsonp({ error: 'Not found' });
@@ -237,7 +237,7 @@ app.put('/tasks/:id', function (req, res){
         task.name = req.body.name;
         task.description = req.body.description;
         task.short_description = req.body.short_description;
-            
+
         return task.save(function (err) {
             if (!err) {
                 log.info("task updated");
@@ -254,10 +254,10 @@ app.put('/tasks/:id', function (req, res){
             }
         });
     });
-});   
+});
 
 app.delete('/task/:id', function (req, res){
-       return TaskModel.findById(req.params.id, function (err, task) {
+    return TaskModel.findById(req.params.id, function (err, task) {
         if(!task) {
             res.statusCode = 404;
             return res.jsonp({ error: 'Not found' });
@@ -275,22 +275,22 @@ app.delete('/task/:id', function (req, res){
     });
 });
 
- /*
-  * Users
-  */
+/*
+ * Users
+ */
 
 var UserModel = require('./routes/mongoose').UserModel;
 
 app.get('/users', function(req, res) {
     return UserModel.find(function(err, users){
         if(!err) {
-                return res.jsonp({ users:users }); 
+            return res.jsonp({ users:users });
         }
         else {
             res.statusCode = 500;
             log.error('Internal error(%d): %s',res.statusCode,err.message);
             return res.jsonp({ error: 'Server error' });
-        }    
+        }
     });
 });
 
@@ -303,7 +303,7 @@ app.post('/users', function(req, res) {
         savingtargets : req.body.savingtargets,
         password: req.body.password
     });
-    
+
     user.save(function (err) {
         if (!err) {
             log.info("user created");
@@ -321,80 +321,80 @@ app.post('/users', function(req, res) {
         }
     });
 });
- 
+
 app.get('/users/:id', function(req, res) {
-    if (validTokenProvided(req, res)) {
-        if(req.query.resolve != null)
-        {
-            var userModel = UserModel.findById(req.params.id).lean().exec(function (err, user) {
-                if(!user) {
-                    res.statusCode = 404;
-                    return res.jsonp({ error: 'Not found' });
-                }
-                if (!err) {
-                    if(user.savingtargets != null && user.savingtargets != 'undefined' && user.savingtargets.length > 0)
-                    {
-                        var len = user.savingtargets.length;
+    //  if (validTokenProvided(req, res)) {
+    if(req.query.resolve != null)
+    {
+        var userModel = UserModel.findById(req.params.id).lean().exec(function (err, user) {
+            if(!user) {
+                res.statusCode = 404;
+                return res.jsonp({ error: 'Not found' });
+            }
+            if (!err) {
+                if(user.savingtargets != null && user.savingtargets != 'undefined' && user.savingtargets.length > 0)
+                {
+                    var len = user.savingtargets.length;
                     var counter = 0;
-                        user.savingtargets.forEach(function(savingtarget){
-                            console.log(savingtarget['savingtarget_id']);
-                            if(savingtarget.tasks.length > 0)
-                            {
-                                savingtarget.tasks.forEach(function(task){
-                                    TaskModel.findById(task['task_id']).lean().exec(function(err, q){
-                                        if(q)
-                                        {
-                                            task['name'] = q.name;
-                                            task['description'] = q.description
-                                        }
-                                        else{
-                                         console.log("task with id: " + task['task_id'] + " not founded");
-                                        }
-                                    });
-                                  });
-                            }
-                            SavingTargetModel.findById(savingtarget['savingtarget_id']).lean().exec(function(err, q){
-                                if(q)
-                                {
-                                    savingtarget['name'] = q.name;
-                                    savingtarget['description'] = q.description;
-                                    savingtarget['short_description'] = q.short_description;
-                                    savingtarget['amount'] = q.amount;
-                                    savingtarget['images'] = q.images;
-                                }
-                                else{
-                                 console.log("savingtarget with id: " + savingtarget['savingtarget_id'] + " not founded");
-                                }
-                                  if(++counter == len) {
-                                    res.jsonp({ 'user':user});
-                                }
+                    user.savingtargets.forEach(function(savingtarget){
+                        console.log(savingtarget['savingtarget_id']);
+                        if(savingtarget.tasks.length > 0)
+                        {
+                            savingtarget.tasks.forEach(function(task){
+                                TaskModel.findById(task['task_id']).lean().exec(function(err, q){
+                                    if(q)
+                                    {
+                                        task['name'] = q.name;
+                                        task['description'] = q.description
+                                    }
+                                    else{
+                                        console.log("task with id: " + task['task_id'] + " not founded");
+                                    }
+                                });
                             });
+                        }
+                        SavingTargetModel.findById(savingtarget['savingtarget_id']).lean().exec(function(err, q){
+                            if(q)
+                            {
+                                savingtarget['name'] = q.name;
+                                savingtarget['description'] = q.description;
+                                savingtarget['short_description'] = q.short_description;
+                                savingtarget['amount'] = q.amount;
+                                savingtarget['images'] = q.images;
+                            }
+                            else{
+                                console.log("savingtarget with id: " + savingtarget['savingtarget_id'] + " not founded");
+                            }
+                            if(++counter == len) {
+                                res.jsonp({ 'user':user});
+                            }
                         });
-                    }
-                    else {
-                        res.jsonp({ 'user':user});
-                    }
+                    });
                 }
-            });
-        }
-        else {
-            return UserModel.findById(req.params.id, function (err, user) {
-                if(!user) {
-                    res.statusCode = 404;
-                    return res.jsonp({ error: 'Not found' });
+                else {
+                    res.jsonp({ 'user':user});
                 }
-                if (!err) {
-                        return res.jsonp({ user:user});
-                } else {
-                    res.statusCode = 500;
-                    log.error('Internal error(%d): %s',res.statusCode,err.message);
-                    return res.jsonp({ error: 'Server error' });
-                }
-            });
-        }
+            }
+        });
     }
+    else {
+        return UserModel.findById(req.params.id, function (err, user) {
+            if(!user) {
+                res.statusCode = 404;
+                return res.jsonp({ error: 'Not found' });
+            }
+            if (!err) {
+                return res.jsonp({ user:user});
+            } else {
+                res.statusCode = 500;
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                return res.jsonp({ error: 'Server error' });
+            }
+        });
+    }
+    //  }
 });
-            
+
 app.put('/users/:id', function (req, res){
     var userModel = UserModel.findById(req.params.id, function (err, user) {
         if(!user) {
@@ -424,121 +424,121 @@ app.put('/users/:id', function (req, res){
             }
         });
     });
-   
+
     return userModel;
 });
 
 app.delete('/users/:id', function (req, res){
-     return UserModel.findById(req.params.id, function (err, user) {
+    return UserModel.findById(req.params.id, function (err, user) {
         if(!user) {
-             res.statusCode = 404;
-             return res.send({ error: 'Not found' });
-         }
-         return user.remove(function (err) {
-             if (!err) {
-                 log.info("user removed");
-                 return res.send({ status: 'OK' });
-             } else {
-                 res.statusCode = 500;
-                 log.error('Internal error(%d): %s',res.statusCode,err.message);
-                 return res.send({ error: 'Server error' });
-             }
-         });
-     });
- });
+            res.statusCode = 404;
+            return res.send({ error: 'Not found' });
+        }
+        return user.remove(function (err) {
+            if (!err) {
+                log.info("user removed");
+                return res.send({ status: 'OK' });
+            } else {
+                res.statusCode = 500;
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                return res.send({ error: 'Server error' });
+            }
+        });
+    });
+});
 
 /*
-* Passport js authentication
-*/
+ * Passport js authentication
+ */
 
 app.get('/login', function(req, res) {
-  res.sendfile('views/login.html');
+    res.sendfile('views/login.html');
 });
 
 /*app.post('/login',
-  passport.authenticate('local', {
-    successRedirect: '/loginSuccess',
-    failureRedirect: '/loginFailure'
-  })
-);*/
+ passport.authenticate('local', {
+ successRedirect: '/loginSuccess',
+ failureRedirect: '/loginFailure'
+ })
+ );*/
 
- app.post('/login', function(req, res, next) {
-     passport.authenticate('local', function(err, user, info) {
-         debugger;
-         if (err) { return next(err); }
+app.post('/login', function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+        debugger;
+        if (err) { return next(err); }
 
-         if (!user) { return res.redirect('/'); }
+        if (!user) { return res.redirect('/'); }
 
-         req.logIn(user, function(err) {
-             debugger;
-             if (err) { return next(err); }
-             currentToken = hat();
-             return res.send({
-                 userid: user._doc._id.toString(),
-                 success: true,
-                 token: currentToken
-             });
-         });
-     })(req, res, next);
- });
+        req.logIn(user, function(err) {
+            debugger;
+            if (err) { return next(err); }
+            currentToken = hat();
+            return res.send({
+                userid: user._doc._id.toString(),
+                success: true,
+                token: currentToken
+            });
+        });
+    })(req, res, next);
+});
 
 var currentToken;
 app.get('/loginFailure', function(req, res, next) {
-  res.send({
-    success: false,
-    message: 'Failed to authenticate'
-  });    
+    res.send({
+        success: false,
+        message: 'Failed to authenticate'
+    });
 });
 
 app.get('/loginSuccess', function(req, res, next) {
     debugger;
     currentToken = hat();
     res.send({
-    success: true,
-    token: currentToken
-  });
+        success: true,
+        token: currentToken
+    });
 });
 
 function validTokenProvided(req, res) {
 
-  // Check POST, GET, and headers for supplied token.
-  var userToken = req.body.token || req.param('token') || req.headers.token;
+    // Check POST, GET, and headers for supplied token.
+    var userToken = req.body.token || req.param('token') || req.headers.token;
 
-  if (!currentToken || userToken != currentToken) {
-    res.send(401, { error: 'Invalid token. You provided: ' + userToken });
-    return false;
-  }
+    if (!currentToken || userToken != currentToken) {
+        res.send(401, { error: 'Invalid token. You provided: ' + userToken });
+        return false;
+    }
 
-  return true;
+    return true;
 }
 
 passport.serializeUser(function(user, done) {
-  done(null, user);
+    done(null, user);
 });
- 
+
 passport.deserializeUser(function(user, done) {
-  done(null, user);
+    done(null, user);
 });
 
 passport.use(new LocalStrategy(function(email, password, done) {
-  process.nextTick(function() {
-    UserModel.findOne({
-      'email': email
-    }, function(err, user) {
-      if (err) {
-        return done(err);
-      }
- 
-      if (!user) {
-        return done(null, false);
-      }
- 
-      if (user.password != password) {
-        return done(null, false);
-      }
-      return done(null, user);
+    process.nextTick(function() {
+        UserModel.findOne({
+            'email': email
+        }, function(err, user) {
+            if (err) {
+                return done(err);
+            }
+
+            if (!user) {
+                return done(null, false);
+            }
+
+            if (user.password != password) {
+                return done(null, false);
+            }
+            return done(null, user);
+        });
     });
-  });
 }));
 
 var port = Number(process.env.PORT || config.get('port'));

@@ -99,31 +99,31 @@ App.User.reopenClass({
                     });
                 }
 
-            if(callback)
-                callback(response.user);
-            else
-                return response.user;
-        });
+                if(callback)
+                    callback(response.user);
+                else
+                    return response.user;
+            });
     },
     findSavingTarget: function(id, savingtarget_id){
         return $.getJSON("/users/" + id, { token: localStorage.getItem('token'), resolve: true})
             .then(function(response) {
-            var currentSavingTarget;
-            if(response.user != null && response.user.savingtargets != null && response.user.savingtargets.length > 0)
-            {
-                response.user.savingtargets.forEach( function (savingtarget) {
-                    savingtarget.tasks.forEach(function(task){
-                        task.savingtarget_user_id = savingtarget._id;
+                var currentSavingTarget;
+                if(response.user != null && response.user.savingtargets != null && response.user.savingtargets.length > 0)
+                {
+                    response.user.savingtargets.forEach( function (savingtarget) {
+                        savingtarget.tasks.forEach(function(task){
+                            task.savingtarget_user_id = savingtarget._id;
+                        });
+                        if(savingtarget._id == savingtarget_id && !savingtarget.completed)
+                        {
+                            currentSavingTarget = savingtarget;
+                            return false;
+                        }
                     });
-                    if(savingtarget._id == savingtarget_id && !savingtarget.completed)
-                    {
-                        currentSavingTarget = savingtarget;
-                        return false;
-                    }
-                });
-            }
-            return currentSavingTarget;
-        });
+                }
+                return currentSavingTarget;
+            });
     },
     save: function(user, callback){
         return $.ajax
@@ -185,7 +185,7 @@ App.IndexRoute = App.AuthenticatedRoute.extend({
 
 App.DoelenRoute = App.AuthenticatedRoute.extend({
     model: function() {
-            return App.Doel.all();
+        return App.Doel.all();
     },
     setupController: function(controller, model){
         controller.set('doelen', model);
@@ -194,7 +194,7 @@ App.DoelenRoute = App.AuthenticatedRoute.extend({
 
 App.DoelRoute = App.AuthenticatedRoute.extend({
     model: function(params) {
-            return App.Doel.find(params.doel_id);
+        return App.Doel.find(params.doel_id);
     },
     serialize: function(model, params) {
         return {
@@ -267,11 +267,8 @@ App.DoelByUserRoute = App.AuthenticatedRoute.extend({
         loginController.set('previousTransition', transition);
     },
     model: function(params) {
-        debugger;
-        App.User.find(this.controllerFor('login').get('userid'), function(user){
-            return user;
-        });
-
+        var user = App.User.findSavingTarget(this.controllerFor('login').get('userid'), params.doel_id);
+        return user;
     },
     serialize: function(model, params) {
         return {
@@ -279,13 +276,13 @@ App.DoelByUserRoute = App.AuthenticatedRoute.extend({
         };
     },
     afterModel: function(model) {
-       // this.modelFor('DoelByUser').reload();
+        // this.modelFor('DoelByUser').reload();
     }
 });
 
 App.KlussenRoute = App.AuthenticatedRoute.extend({
     model: function(){
-       return App.Task.all();
+        return App.Task.all();
     },
     setupController: function(controller, model){
         controller.set('klussenbyuser', model);
@@ -312,6 +309,8 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
     actions: {
         add : function(){
             var window = this;
+            var savingtargetid;
+
             var klus ={
                 task_id: this.currentModel._id,
                 completed_by: this.currentModel.doneBy,
@@ -326,12 +325,13 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
                         // get the current savingtarget, it's not completed yet
                         if(savingtarget.completed == false)
                         {
+                            savingtargetid = savingtarget._id;
                             savingtarget.tasks.push(klus);
                         }
                     });
                 }
                 App.User.save(response, function(){
-                    thisModel.transitionTo('doelByUser', userid);
+                    thisModel.transitionTo('doelByUser', savingtargetid);
                 });
             });
         }
@@ -348,6 +348,7 @@ App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
         add : function(){
             var now = new Date();
             var jsonDate = now.toJSON();
+            var savingtargetid;
 
             var controller = this.get('controller');
             var thisModel = this;
@@ -361,13 +362,14 @@ App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
                 completed: true,
                 end_date: jsonDate
             };
-            var userModel = App.User.find(this.controllerFor('login').get('userid'), function (response) {
+            var userModel = App.User.find(userid, function (response) {
                 if(response.savingtargets != null)
                 {
                     response.savingtargets.forEach(function (savingtarget) {
                         // get the current savingtarget, it's not completed yet
                         if(savingtarget.completed == false)
                         {
+                            savingtargetid = savingtarget._id;
                             savingtarget.tasks.forEach(function(task){
                                 if(task._id == klus._id)
                                 {
@@ -379,8 +381,8 @@ App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
                     });
                 }
 
-                App.User.save(response, function(user){
-                    thisModel.transitionTo('doelByUser', user);
+                App.User.save(response, function(){
+                    thisModel.transitionTo('doelByUser', savingtargetid);
                 });
             });
         }
@@ -403,7 +405,7 @@ App.SettingsRoute = App.AuthenticatedRoute.extend({
 });
 
 /*
-* Authentication
+ * Authentication
  */
 App.LoginRoute = Ember.Route.extend({
     setupController: function(controller, context) {
@@ -425,7 +427,7 @@ App.LoginController = Ember.Controller.extend({
         localStorage.token = this.get('token');
     }.observes('token'),
     userid: localStorage.userid,
-    userid: function() {
+    useridChanged: function() {
         localStorage.userid = this.get('userid');
     }.observes('userid'),
 
