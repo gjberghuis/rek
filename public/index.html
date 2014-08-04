@@ -66,8 +66,11 @@
             {{/each}}
             </ul>
         {{else}}
-            Selecteer een nieuw spaardoel. {{#link-to 'doelen' class="boxLink"}}Spaardoel toevoegen{{/link-to}}
+            {{#if completedsavingtargets.length}}
+               Selecteer een nieuw spaardoel. {{#link-to 'doelen' class="boxLink"}}Spaardoel toevoegen{{/link-to}}
+            {{/if}}
         {{/if}}
+
         {{#if completedsavingtargets.length }}
             <br/>
             <h1>Voltooide spaardoelen:</h1>
@@ -79,8 +82,8 @@
                                 <img {{bind-attr src=images.1.url}} />
                             </figure>
                             <div class="text">
-                                <h1>{{name}}</h1>
-                                <p>{{short_description}}
+                                <p>{{name}}</p>
+                                <p>Gespaard: {{money_saved}}
                             </div>
                         </article>
                         {{#link-to 'doelByUser' this class="boxlink"}}meer informatie{{/link-to}}

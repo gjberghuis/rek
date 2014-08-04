@@ -75,23 +75,25 @@ App.User.reopenClass({
             .then(function(response) {
                 if(response.user != null && response.user.savingtargets != null && response.user.savingtargets.length > 0)
                 {
+                    var completedSavingtargets = [];
                     response.user.savingtargets.forEach( function (savingtarget) {
                         savingtarget = CheckMoneySaved(savingtarget);
                         savingtarget = GetDaysLeft(savingtarget);
 
                         // we need the split the savingtargets in two arrays: completed and not completed
-                        var completedSavingtargets = [];
+
                         if(savingtarget.completed)
                         {
-                            debugger;
-                            response.user.savingtargets.splice($.inArray(savingtarget, response.user.savingtargets),1);
-
-                            completedSavingtargets.push(savingtarget);
+                           completedSavingtargets.push(savingtarget);
                         }
-                        response.user["completedsavingtargets"] = completedSavingtargets;
                     });
-                }
 
+                    completedSavingtargets.forEach(function(savingtarget){
+                        response.user.savingtargets.splice($.inArray(savingtarget, response.user.savingtargets),1);
+                    });
+                    response.user["completedsavingtargets"] = completedSavingtargets;
+                }
+                
                 if(callback)
                     callback(response.user);
                 else
@@ -120,6 +122,14 @@ App.User.reopenClass({
             });
     },
     save: function(user, callback){
+        // add the completed savingtargets back to the savingtargets array
+        if(user.completedsavingtargets != null)
+        {
+            user.completedsavingtargets.forEach(function(savingtarget){
+                user.savingtargets.push(savingtarget);
+            });
+        }
+
         return $.ajax
         ({
             token: localStorage.getItem('token'),
@@ -181,7 +191,6 @@ App.Doel.reopenClass({
             response.savingtargets.forEach(function(savingtarget) {
                 var model = App.Doel.create(savingtarget);
                 doelenArray.addObject(model); //fill your array step by step
-                //savingtargets.push( App.SavingTarget.create(savingtarget) );
             });
             return doelenArray;
         });
@@ -276,7 +285,7 @@ App.DoelRoute = App.AuthenticatedRoute.extend({
 
                 if(saveModel){
                     if(App.User.save(response)){
-                        thisModel.transitionTo('doelByUser');
+                        thisModel.transitionTo('index');
                     }
                 }
             });
@@ -304,6 +313,7 @@ App.DoelByUserRoute = App.AuthenticatedRoute.extend({
     actions: {
         complete : function(savingtargetid){
             var thisModel = this;
+            var savingTargetId;
             var userModel = App.User.find(this.controllerFor('login').get('userid'), function (response) {
                 if(response.savingtargets != null)
                 {
@@ -317,7 +327,7 @@ App.DoelByUserRoute = App.AuthenticatedRoute.extend({
                 }
 
                 App.User.save(response, function(){
-                    thisModel.transitionTo('doelByUser', savingtargetid);
+                    thisModel.transitionTo('index');
                 });
             });
         }
@@ -374,6 +384,7 @@ App.KlusRoute = App.AuthenticatedRoute.extend({
                         }
                     });
                 }
+
                 App.User.save(response, function(){
                     thisModel.transitionTo('doelByUser', savingtargetid);
                 });
