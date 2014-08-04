@@ -1,4 +1,6 @@
 
+App = Ember.Application.create();
+
 Handlebars.registerHelper("debug", function(optionalValue) {
     console.log("Current Context");
     console.log("====================");
@@ -10,9 +12,6 @@ Handlebars.registerHelper("debug", function(optionalValue) {
         console.log(optionalValue);
     }
 });
-
-App = Ember.Application.create();
-
 
 App.AuthenticatedRoute = Ember.Route.extend({
     beforeModel: function(transition) {
@@ -74,28 +73,22 @@ App.User.reopenClass({
     find: function(id, callback){
         return $.getJSON("/users/" + id, { token: localStorage.getItem('token'), resolve: true})
             .then(function(response) {
-                var savingtargetsByUser = [];
                 if(response.user != null && response.user.savingtargets != null && response.user.savingtargets.length > 0)
                 {
                     response.user.savingtargets.forEach( function (savingtarget) {
-                        var moneyNeeded = savingtarget.amount;
-                        var moneySaved = 0;
-                        savingtarget.tasks.forEach(function(task){
-                            task.savingtarget_user_id = savingtarget._id;
-                            if(task.completed && !isNaN(task.amount))
-                            {
-                                moneySaved += parseInt(task.amount);
-                            }
-                        });
-                        savingtarget.money_needed = moneyNeeded;
-                        savingtarget.money_saved = moneySaved;
-                        savingtarget.money_left = moneyNeeded - moneySaved;
+                        savingtarget = CheckMoneySaved(savingtarget);
+                        savingtarget = GetDaysLeft(savingtarget);
 
-                        now = Math.floor( Date.now() / (3600*24*1000)); //days as integer from..
-                        end   = Math.floor( Date.parse(savingtarget.end_date) / (3600*24*1000)); //days as integer from..
-                        daysDiff = end - now;// exact dates
-                        savingtarget.days_left = daysDiff;
-                        savingtargetsByUser.push( App.Task.create(savingtarget) );
+                        // we need the split the savingtargets in two arrays: completed and not completed
+                        var completedSavingtargets = [];
+                        if(savingtarget.completed)
+                        {
+                            debugger;
+                            response.user.savingtargets.splice($.inArray(savingtarget, response.user.savingtargets),1);
+
+                            completedSavingtargets.push(savingtarget);
+                        }
+                        response.user["completedsavingtargets"] = completedSavingtargets;
                     });
                 }
 
@@ -117,6 +110,7 @@ App.User.reopenClass({
                         });
                         if(savingtarget._id == savingtarget_id && !savingtarget.completed)
                         {
+                            savingtarget = CheckMoneySaved(savingtarget);
                             currentSavingTarget = savingtarget;
                             return false;
                         }
@@ -145,6 +139,35 @@ App.User.reopenClass({
         });
     }
 });
+
+
+function CheckMoneySaved(savingtarget){
+    // calculate the money left which is needed to complete the savingtarget
+    var moneyNeeded = savingtarget.amount;
+    var moneySaved = 0;
+    savingtarget.tasks.forEach(function(task){
+        task.savingtarget_user_id = savingtarget._id;
+        if(task.completed && !isNaN(task.amount))
+        {
+            moneySaved += parseInt(task.amount);
+        }
+    });
+    savingtarget.money_needed = moneyNeeded;
+    savingtarget.money_saved = moneySaved;
+    savingtarget.money_left = moneyNeeded - moneySaved;
+    savingtarget.money_left_needed = savingtarget.money_left > 0 ? true : false;
+    return savingtarget;
+};
+
+function GetDaysLeft(savingtarget){
+    // calculate the days left for the savingtarget
+    now = Math.floor( Date.now() / (3600*24*1000)); //days as integer from..
+    end   = Math.floor( Date.parse(savingtarget.end_date) / (3600*24*1000)); //days as integer from..
+    daysDiff = end - now;// exact dates
+    savingtarget.days_left = daysDiff;
+
+    return savingtarget;
+};
 
 /*
  * SavingTargets -> get saving targets from the server and parse them in an Ember object
@@ -277,6 +300,27 @@ App.DoelByUserRoute = App.AuthenticatedRoute.extend({
     },
     afterModel: function(model) {
         // this.modelFor('DoelByUser').reload();
+    },
+    actions: {
+        complete : function(savingtargetid){
+            var thisModel = this;
+            var userModel = App.User.find(this.controllerFor('login').get('userid'), function (response) {
+                if(response.savingtargets != null)
+                {
+                    response.savingtargets.forEach(function (savingtarget) {
+                        // get the current savingtarget, it's not completed yet
+                        if(savingtarget._id == savingtargetid)
+                        {
+                            savingtarget.completed = true;
+                        }
+                    });
+                }
+
+                App.User.save(response, function(){
+                    thisModel.transitionTo('doelByUser', savingtargetid);
+                });
+            });
+        }
     }
 });
 
@@ -350,7 +394,6 @@ App.KlusBySavingtargetRoute = App.AuthenticatedRoute.extend({
             var jsonDate = now.toJSON();
             var savingtargetid;
 
-            var controller = this.get('controller');
             var thisModel = this;
             var userid = this.controllerFor('login').get('userid');
 
