@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script src="js/libs/jquery.js"></script>
+<script>
+    $.ajax
+    ({
+
+
+
+        type: "GET",
+        url: "http://redeenkind.herokuapp.com/users/538314c06cca49020073e96a",
+        dataType: 'jsonp',
+        async: false,
+        username: 'fasoo',
+        password: 'bar',
+        success: function (data){
+            alert('Thanks for your comment!');
+        },
+        error:function(data){
+          alert("error");
+        }
+    }).then(function(response) {
+debugger;
+    });
+
+</script>
+</body>
+</html>

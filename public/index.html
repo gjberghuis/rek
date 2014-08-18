@@ -1,0 +1,319 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ieLT ie6" lang="nl"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ieLT ie7" lang="nl"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ieLT ie8" lang="nl"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ieLT ie9" lang="nl"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="nl">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+	<link rel="apple-touch-icon-precomposed" href="/gfx/iLogo.png">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-mobile-web-app-title" content="REK" />
+	
+	<title>Red een kind spaarapp </title>
+	
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="">
+	
+	<script type='text/x-handlebars'>
+	    <header class="topBar">
+	    	<h1 class="logo">REK</h1>
+	    </header>
+	    
+	    <section class='container'>
+	      {{outlet}}
+	    </section>
+		
+		 <nav class="navbar bottom">
+	    	<h1 class="hide">Menu</h1>
+	    	<ul class="group-s-4">
+	          <li>{{#link-to 'index'}}Home{{/link-to}}</li>
+	          <li>{{#link-to 'doelen'}}Doelen{{/link-to}}</li>
+	          <li>{{#link-to 'klussen'}}Klussen{{/link-to}}</li>
+	          <li>{{#link-to 'settings'}}Settings{{/link-to}}</li>
+	        </ul>
+	    </nav>
+	    
+	</script>
+	
+	<script type='text/x-handlebars' data-template-name='index'>
+    	<h1>Welkom</h1>
+        {{#if savingtargets.length}}
+        <h1>Huidige spaardoel:</h1>
+            <ul class="results current">
+            {{#each savingtargets}}
+               {{#unless completed}}
+                <li>
+                    <article>
+                        <figure class="crop">
+                            <img {{bind-attr src=images.1.url}} />
+                        </figure>
+                        <div class="text">
+                            <p>{{name}}</p>
+                            {{#if money_left_needed}}
+                                   <p>Restbedrag: {{money_left}}</p>
+                            {{/if}}
+                            <p>Dagen resterend: {{days_left}}</p>
+                        </div>
+                    </article>
+                    {{#link-to 'doelByUser' this class="boxlink"}}meer informatie{{/link-to}}
+                </li>
+              {{/unless}}
+            {{/each}}
+            </ul>
+        {{else}}
+            {{#if completedsavingtargets.length}}
+               Selecteer een nieuw spaardoel. {{#link-to 'doelen' class="boxLink"}}Spaardoel toevoegen{{/link-to}}
+            {{/if}}
+        {{/if}}
+
+        {{#if completedsavingtargets.length }}
+            <br/>
+            <h1>Voltooide spaardoelen:</h1>
+            <ul class="results completed">
+                {{#each completedsavingtargets}}
+                    <li>
+                        <article>
+                            <figure class="crop">
+                                <img {{bind-attr src=images.1.url}} />
+                            </figure>
+                            <div class="text">
+                                <p>{{name}}</p>
+                                <p>Gespaard: {{money_saved}}
+                            </div>
+                        </article>
+                        {{#link-to 'doelByUser' this class="boxlink"}}meer informatie{{/link-to}}
+                    </li>
+                {{/each}}
+                {{outlet}}
+            </ul>
+        {{/if}}
+        {{#unless savingtargets.length}}
+            {{#unless completedsavingtargets.length}}
+                Welkom bij de redeenkind app. In deze app kun je door middel klussen uitvoeren sparen voor een spaardoel.
+                Begin met het selecteren van een spaardoel. {{#link-to 'doelen' class="boxLink"}}Spaardoel toevoegen{{/link-to}}
+            {{/unless}}
+        {{/unless}}
+
+	</script>
+
+    <script type='text/x-handlebars' data-template-name='doelByUser'>
+   		<h1>Spaardoel: {{name}}</h1>
+   		<p>Beschrijving: {{description}}</p>
+   		<p>Start: {{start_date}}</p>
+   		<p>Eind: {{end_date}}</p>
+   		<p>Benodigd bedrag: {{amount}}</p>
+   		<p>Al gespaard:: {{money_saved}}</p>
+        {{#if money_left_needed}}
+           <p>Nog te sparen: {{money_left}}</p>
+       {{else}}
+            <p>Je hebt dit doel voltooid.</p>
+            {{#unless completed}}
+               <button {{action 'complete' _id}}>Spaardoel afmelden</button>
+            {{/unless}}
+        {{/if}}
+
+   		{{#link-to 'klussen' class="boxLink"}}Klusje toevoegen{{/link-to}}
+   		<ul class="results">
+   		    <h1>Openstaande klussen:</h1>
+   		    {{#each task in tasks}}
+   		        {{#unless task.completed}}
+                    <li>
+                        <article>
+                            <div class="text">
+                                <h1>{{task.name}}</h1>
+                                {{#if task.start_date}}
+                                    <p>toegevoegd: {{task.start_date}}</p>
+                                {{/if}}
+                                {{#if task.completed_by}}
+                                    <p>uitgevoerd door: {{task.completed_by}}</p>
+                                {{/if}}
+                                {{#if task.amount}}
+                                    <p>bedrag: {{task.amount}}</p>
+                                {{/if}}
+                            </div>
+                        </article>
+                        {{#link-to 'klusBySavingtarget' task class="boxLink"}}Klusje afmelden{{/link-to}}
+                    </li>
+   		        {{/unless}}
+   		    {{/each}}
+   		</ul>
+   		<ul class="results">
+   		    <h1>Uitgevoerde klussen:</h1>
+   		    {{#each task in tasks}}
+   		    {{#if task.completed}}
+   		        <li>
+   		            <article>
+                        <div class="text">
+                            <h1>{{task.name}}</h1>
+                            <p>voltooid op: {{task.end_date}}</p>
+                            <p>uitgevoerd door: {{task.completed_by}}</p>
+                            <p>bedrag: {{task.amount}}</p>
+                        </div>
+                    </article>
+   		            {{#link-to 'klusBySavingtarget' task class="boxLink"}}Details{{/link-to}}
+
+   		        </li>
+   		        {{/if}}
+   		    {{/each}}
+   		</ul>
+
+   	</script>
+
+    <script type='text/x-handlebars' data-template-name='klusBySavingtarget'>
+        {{#if completed}}
+            <div class="text">
+                <p>{{content.name}}</p></br>
+                <p>gedaan door: {{content.completed_by}}</p></br>
+                <p>klus afgemeld op: {{content.end_date}}</p>
+            </div>
+            <ul class="meta">
+                <li class="price">&euro;{{content.amount}}</li>
+            </ul>
+   		{{else}}
+            <div class="text">
+                <p>{{content.name}}</p></br>
+                <p>gedaan door: {{content.completed_by}}</p></br>
+                <p>toegevoegd op: {{content.start_date}}</p>
+            </div>
+            <ul class="meta">
+                <li class="price">&euro;{{content.amount}}</li>
+            </ul>
+             <button {{action 'add'}}>Klus afmelden</button>
+        {{/if}}
+   	</script>
+
+    <!-- algemene doelen -->
+	
+	<script type='text/x-handlebars' data-template-name='doelen' id='doelen'>
+    	<h1>Doelen</h1>
+    		<ul class="results">
+    			{{#each doel in doelen}}
+    				<li>
+    					<article>
+    						<figure class="crop">
+    							<img {{bind-attr src=doel.images.1.url}} />
+    						</figure>
+    						<div class="text">
+    							<h1>{{doel.name}}</h1>
+    							<p>{{doel.short_description}}</p>
+    						</div>
+    					</article>
+						{{#link-to 'doel' doel class="boxlink"}}meer informatie{{/link-to}}
+    				</li>
+    			{{/each}}
+    		</ul>
+            {{outlet}}
+	</script>
+
+	<script type='text/x-handlebars' data-template-name='doel'>
+   		<h1>{{content.name}}</h1>
+   		{{outlet detail}}
+   	</script>
+
+    <script type='text/x-handlebars' data-template-name='doelDetail'>
+   	<figure class="crop">
+   			<img {{bind-attr src=content.images.0.url}} />
+   		</figure>
+   		<div class="text">
+   			<p>{{content.description}}</p>
+   		</div>
+   		<ul class="meta">
+   			<li class="price">&euro;{{content.amount}}</li>
+   		</ul>
+   		 <button {{action 'add'}}>voeg spaardoel toe</button>
+   	</script>
+
+   <script type='text/x-handlebars' data-template-name='doelSelectDate'>
+
+   		<div class="text">
+   			<p>Selecteer een deadline voor het spaardoel</p>
+   			 {{view App.DateField dateBinding="startDate" valueBinding="model.selectdate"}}
+   		</div>
+        <button {{action 'selectDate'}}>selecteer deadline</button>
+   	</script>
+
+    <!-- algemene taken -->
+
+	<script type='text/x-handlebars' data-template-name='klussen' id='klussen'>
+    	<h1>Klussen</h1>
+            <ul class="results">
+    		    {{#each klus in klussenbyuser}}
+                    <li>
+                        <article>
+                            <div class="text">
+                                <h1>{{klus.name}}</h1>
+                                <p>{{klus.description}}</p>
+                            </div>
+                        </article>
+                        {{#link-to 'klus' klus class="boxlink"}}meer informatie{{/link-to}}
+                    </li>
+    			{{/each}}
+    		</ul>
+
+	</script>
+
+    <script type='text/x-handlebars' data-template-name='klus'>
+   		<h1>{{content.name}}</h1>
+   		{{outlet detail}}
+   	</script>
+
+    <script type='text/x-handlebars' data-template-name='klusDetail'>
+   		<div class="text">
+   			<p>{{name}}</p></br>
+   			<p>{{description}}</p>
+   			<p>Wordt uitgevoerd door: {{input type="text" placeholder="Bijv. Pieter" valueBinding="model.doneBy"}}</p></br>
+   			<p>Voor een bedrag van: {{input type="number" placeholder="Bijv. 10" valueBinding="model.amount"}}</p>
+   		</div>
+   		 <button {{action 'add'}}>Klusje toevoegen</button>
+   	</script>
+
+    <script type="text/x-handlebars" data-template-name="login">
+    {{#if loggedIn}}
+      <p>You are already logged in!</p>
+    {{else}}
+      <form class="form-inline" {{action login on="submit"}}>
+        <h2>Log In</h2>
+        {{input value=username type="text" placeholder="Username"}}
+        {{input value=password type="password" placeholder="Password"}}
+        {{input class="btn" type="submit" value="Log In"}}
+      </form>
+      {{#if errorMessage}}
+        <div class="alert alert-error">{{errorMessage}}</div>
+      {{/if}}
+    {{/if}}
+  </script>
+    <script type="text/x-handlebars" data-template-name="settings">
+    {{#if name}}
+      <p>Naam: {{firstname}} {{name}}</p>
+        <p>Email: {{email}}</p>
+        <p>Geregistreerd op: {{registration_date}}</p>
+        <button {{action 'logout'}}>Uitloggen</button>
+    {{else}}
+      <form class="form-inline" {{action login on="submit"}}>
+        <h2>Log In</h2>
+        {{input value=username type="text" placeholder="Username"}}
+        {{input value=password type="password" placeholder="Password"}}
+        {{input class="btn" type="submit" value="Log In"}}
+      </form>
+      {{#if errorMessage}}
+        <div class="alert alert-error">{{errorMessage}}</div>
+      {{/if}}
+    {{/if}}
+  </script>
+	
+		
+	<script src="js/libs/jquery.js"></script>
+	<script src="js/libs/handlebars-v1.3.0.min.js"></script>
+	<script src="js/libs/ember-1.5.1.js"></script>
+
+    <script src="js/libs/ember-data.js"></script>
+	<script src="js/tmpl/template.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+</html>
