@@ -48,7 +48,7 @@ app.all('*', function(req, res, next) {
 var SavingTargetModel= require('./routes/mongoose').SavingTargetModel;
 
 app.get('/savingtargets', function(req, res) {
-    if (validTokenProvided(req, res)) {
+   // if (validTokenProvided(req, res)) {
         return SavingTargetModel.find({}).sort('name').lean().exec(function(err, savingtargets){
             if(!err) {
                 return res.jsonp({ savingtargets:savingtargets });
@@ -59,7 +59,7 @@ app.get('/savingtargets', function(req, res) {
                 return res.jsonp({ error: 'Server error' });
             }
         });
-    }
+   // }
 });
 
 app.post('/savingtargets', function(req, res) {
@@ -170,7 +170,7 @@ app.delete('/savingtargets/:id', function (req, res){
 var TaskModel = require('./routes/mongoose').TaskModel;
 
 app.get('/tasks', function(req, res) {
-    if (validTokenProvided(req, res)) {
+    //if (validTokenProvided(req, res)) {
         return TaskModel.find(function(err, tasks){
             if(!err) {
                 return res.jsonp({ tasks:tasks });
@@ -181,7 +181,7 @@ app.get('/tasks', function(req, res) {
                 return res.jsonp({ error: 'Server error' });
             }
         });
-    }
+   // }
 });
 
 app.post('/tasks', function(req, res) {

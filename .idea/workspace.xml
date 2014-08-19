@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5d292b5-cb78-4bda-84df-cd2cf441e5a0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web.js" afterPath="$PROJECT_DIR$/web.js" />
     </list>
     <ignored path="redeenkind.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,10 +28,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="web.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="web.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="564" column="3" selection-start="18526" selection-end="18526" vertical-scroll-proportion="0.0" vertical-offset="7802" max-vertical-offset="8550">
+            <state line="61" column="7" selection-start="2316" selection-end="2316" vertical-scroll-proportion="0.47674417" vertical-offset="587" max-vertical-offset="8550">
               <folding />
             </state>
           </provider>
@@ -48,10 +46,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="16" selection-start="3105" selection-end="3105" vertical-scroll-proportion="0.8081571" vertical-offset="515" max-vertical-offset="5310">
+            <state line="95" column="16" selection-start="3105" selection-end="3105" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5310">
               <folding>
                 <element signature="e#95#341#0" expanded="false" />
                 <element signature="e#1252#1793#0" expanded="false" />
@@ -96,9 +94,9 @@
       <list>
         <option value="$PROJECT_DIR$/public/js/test" />
         <option value="$PROJECT_DIR$/public/js/tempasdf" />
-        <option value="$PROJECT_DIR$/web.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
+        <option value="$PROJECT_DIR$/web.js" />
       </list>
     </option>
   </component>
@@ -278,9 +276,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2081545" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15126051" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -302,6 +300,49 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/web.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="564" column="3" selection-start="18526" selection-end="18526" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8550">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="17" selection-start="2617" selection-end="2617" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="4860">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="16" selection-start="3105" selection-end="3105" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5310">
+          <folding>
+            <element signature="e#95#341#0" expanded="false" />
+            <element signature="e#1252#1793#0" expanded="false" />
+            <element signature="e#3317#4319#0" expanded="false" />
+            <element signature="n#!!block;n#CheckMoneySaved#0" expanded="false" />
+            <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
+            <element signature="e#7076#7287#0" expanded="false" />
+            <element signature="e#7339#7501#0" expanded="false" />
+            <element signature="e#9889#11254#0" expanded="false" />
+            <element signature="e#11307#11475#0" expanded="false" />
+            <element signature="e#13180#14894#0" expanded="false" />
+            <element signature="e#14948#15298#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/tempasdf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="483" column="0" selection-start="15690" selection-end="15690" vertical-scroll-proportion="0.0" vertical-offset="6587" max-vertical-offset="7335">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="564" column="3" selection-start="18526" selection-end="18526" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8550">
@@ -563,31 +604,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../redeenkind copy 2/web.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="437" column="3" selection-start="14714" selection-end="15352" vertical-scroll-proportion="0.0" vertical-offset="6555" max-vertical-offset="6990" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="475" column="38" selection-start="16091" selection-end="16091" vertical-scroll-proportion="0.0" vertical-offset="2235" max-vertical-offset="2235">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../redeenkind copy/web.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5970" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../redeenkind copy 2/web.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="437" column="3" selection-start="14714" selection-end="15352" vertical-scroll-proportion="0.0" vertical-offset="6037" max-vertical-offset="6990" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../redeenkind copy/web.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5970" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/test">
@@ -600,13 +621,6 @@
         <state line="99" column="18" selection-start="2435" selection-end="2435" vertical-scroll-proportion="0.3241279" vertical-offset="1262" max-vertical-offset="1950" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="564" column="3" selection-start="18526" selection-end="18526" vertical-scroll-proportion="0.0" vertical-offset="7802" max-vertical-offset="8550">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/tempasdf">
       <provider selected="true" editor-type-id="text-editor">
         <state line="483" column="0" selection-start="15690" selection-end="15690" vertical-scroll-proportion="0.0" vertical-offset="6587" max-vertical-offset="7335">
@@ -617,16 +631,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="17" selection-start="2617" selection-end="2617" vertical-scroll-proportion="-19.375" vertical-offset="585" max-vertical-offset="4860">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="16" selection-start="3105" selection-end="3105" vertical-scroll-proportion="0.8081571" vertical-offset="515" max-vertical-offset="5310">
+        <state line="95" column="16" selection-start="3105" selection-end="3105" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5310">
           <folding>
             <element signature="e#95#341#0" expanded="false" />
             <element signature="e#1252#1793#0" expanded="false" />
@@ -640,6 +647,20 @@
             <element signature="e#13180#14894#0" expanded="false" />
             <element signature="e#14948#15298#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="17" selection-start="2617" selection-end="2617" vertical-scroll-proportion="-19.375" vertical-offset="585" max-vertical-offset="4860">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="7" selection-start="2316" selection-end="2316" vertical-scroll-proportion="0.47674417" vertical-offset="587" max-vertical-offset="8550">
+          <folding />
         </state>
       </provider>
     </entry>
