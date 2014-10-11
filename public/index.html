@@ -41,64 +41,34 @@
 	</script>
 	
 	<script type='text/x-handlebars' data-template-name='index'>
-    	<h1>Welkom</h1>
-        {{#if savingtargets.length}}
-        <h1>Huidige spaardoel:</h1>
-            <ul class="results current">
-            {{#each savingtargets}}
-               {{#unless completed}}
-                <li>
-                    <article>
-                        <figure class="crop">
-                            <img {{bind-attr src=images.1.url}} />
-                        </figure>
-                        <div class="text">
-                            <p>{{name}}</p>
-                            {{#if money_left_needed}}
-                                   <p>Restbedrag: {{money_left}}</p>
-                            {{/if}}
-                            <p>Dagen resterend: {{days_left}}</p>
-                        </div>
-                    </article>
-                    {{#link-to 'doelByUser' this class="boxlink"}}meer informatie{{/link-to}}
-                </li>
-              {{/unless}}
-            {{/each}}
-            </ul>
-        {{else}}
-            {{#if completedsavingtargets.length}}
-               Selecteer een nieuw spaardoel. {{#link-to 'doelen' class="boxLink"}}Spaardoel toevoegen{{/link-to}}
+        {{#if name}}
+            {{#if almostthere}}
+                <h1>Bijna bij je spaardoel</h1>
+            {{else}}
+                {{#if money_left_needed}}
+                    <h1>Je moet nog even doorsparen</h1>
+                {{else}}
+                    <h1>Je hebt dit spaardoel voltooid</h1>
+                {{/if}}
+
             {{/if}}
+            <article class="article earn">
+                <h1 class="hide">{{name}}</h1>
+                <figure class="crop">
+                     <img {{bind-attr src=images.1.url}} />
+                </figure>
+                <h5>Er staan nog <strong>{{taskUncompletedCount}}</strong> klussen open</h5>
+                {{#if money_left_needed}}
+                    <h2><strong class="price">Nog &euro; {{money_left}} te gaan binnen {{days_left}} dagen</strong></h2>
+                {{else}}
+                    <h2><strong class="price">Je hebt &euro; {{money_saved}} gespaard voor dit spaardoel</strong></h2>
+                {{/if}}
+                <a href="#klussen" class="btn">Bekijk je klussen</a>
+            </article>
+		{{else}}
+            Welkom bij de redeenkind app. In deze app kun je door middel klussen uitvoeren sparen voor een spaardoel.
+            Begin met het selecteren van een spaardoel. {{#link-to 'doelen' class="boxLink"}}Spaardoel toevoegen{{/link-to}}
         {{/if}}
-
-        {{#if completedsavingtargets.length }}
-            <br/>
-            <h1>Voltooide spaardoelen:</h1>
-            <ul class="results completed">
-                {{#each completedsavingtargets}}
-                    <li>
-                        <article>
-                            <figure class="crop">
-                                <img {{bind-attr src=images.1.url}} />
-                            </figure>
-                            <div class="text">
-                                <p>{{name}}</p>
-                                <p>Gespaard: {{money_saved}}
-                            </div>
-                        </article>
-                        {{#link-to 'doelByUser' this class="boxlink"}}meer informatie{{/link-to}}
-                    </li>
-                {{/each}}
-                {{outlet}}
-            </ul>
-        {{/if}}
-        {{#unless savingtargets.length}}
-            {{#unless completedsavingtargets.length}}
-                Welkom bij de redeenkind app. In deze app kun je door middel klussen uitvoeren sparen voor een spaardoel.
-                Begin met het selecteren van een spaardoel. {{#link-to 'doelen' class="boxLink"}}Spaardoel toevoegen{{/link-to}}
-            {{/unless}}
-        {{/unless}}
-
 	</script>
 
     <script type='text/x-handlebars' data-template-name='doelByUser'>
@@ -165,26 +135,38 @@
    	</script>
 
     <script type='text/x-handlebars' data-template-name='klusBySavingtarget'>
-        {{#if completed}}
-            <div class="text">
-                <p>{{content.name}}</p></br>
-                <p>gedaan door: {{content.completed_by}}</p></br>
-                <p>klus afgemeld op: {{content.end_date}}</p>
-            </div>
-            <ul class="meta">
-                <li class="price">&euro;{{content.amount}}</li>
-            </ul>
-   		{{else}}
-            <div class="text">
-                <p>{{content.name}}</p></br>
-                <p>gedaan door: {{content.completed_by}}</p></br>
-                <p>toegevoegd op: {{content.start_date}}</p>
-            </div>
-            <ul class="meta">
-                <li class="price">&euro;{{content.amount}}</li>
-            </ul>
-             <button {{action 'add'}}>Klus afmelden</button>
-        {{/if}}
+        <article class="article">
+        <h1>{{content.name}}</h1>
+            {{#if completed}}
+                <form>
+                    <fieldset>
+                        <label for="user">Gedaan door</label>
+                         {{input type="text" id="user" placeholder="Bijv. Pieter" disabled="disabled" valueBinding="content.completed_by"}}
+
+                        <label for="price">Voor het bedrag</label>
+                         {{input type="number" id="price" placeholder="Bijv. € 0.50" disabled="disabled" valueBinding="content.amount"}}
+
+                        <label for="price">Klus afgemeld op</label>
+                         {{input type="text" id="enddate2" placeholder="Bijv. € 0.50" disabled="disabled" valueBinding="content.end_date"}}
+                    </fieldset>
+                </form>
+            {{else}}
+                <form>
+                    <fieldset>
+                        <label for="user">Gedaan door</label>
+                        {{input type="text" id="user" placeholder="Bijv. Pieter" disabled="disabled" valueBinding="content.completed_by"}}
+
+                        <label for="price">Voor het bedrag</label>
+                        {{input type="number" id="price" placeholder="Bijv. € 0.50" disabled="disabled" valueBinding="content.amount"}}
+
+                        <label for="spaardoel">Klus toegevoegd op:</label>
+                        {{input type="text" id="enddate2" placeholder="Bijv. € 0.50" disabled="disabled" valueBinding="content.start_date"}}
+
+                    </fieldset>
+                    <input type="submit" {{action 'add'}} value="Klus afmelden" class="btn">
+                </form>
+            {{/if}}
+        </article>
    	</script>
 
     <!-- algemene doelen -->
@@ -211,65 +193,140 @@
 	</script>
 
 	<script type='text/x-handlebars' data-template-name='doel'>
-   		<h1>{{content.name}}</h1>
-   		{{outlet detail}}
+    	<h1 class="hide">spaardoel</h1>
+		<article class="article">
+            <h1>{{content.name}}</h1>
+            {{outlet detail}}
+		</article>
+    </section>
    	</script>
 
     <script type='text/x-handlebars' data-template-name='doelDetail'>
-   	<figure class="crop">
+   	    <figure class="crop">
    			<img {{bind-attr src=content.images.0.url}} />
    		</figure>
-   		<div class="text">
-   			<p>{{content.description}}</p>
-   		</div>
+   		<h2>
+   		    {{content.short_description}}
+   		</h2>
+        <p>
+            {{content.description}}
+        </p>
    		<ul class="meta">
    			<li class="price">&euro;{{content.amount}}</li>
    		</ul>
-   		 <button {{action 'add'}}>voeg spaardoel toe</button>
+   		<a href="#linknaarform" {{action 'add'}} class="btn">Voeg spaardoel toe</a>
    	</script>
 
    <script type='text/x-handlebars' data-template-name='doelSelectDate'>
+<form>
+					<fieldset>
+						<label for="date">Kies einddatum voor het gekozen spaardoel</label>
+							 {{view App.DateField dateBinding="startDate" valueBinding="model.selectdate"}}
 
-   		<div class="text">
-   			<p>Selecteer een deadline voor het spaardoel</p>
-   			 {{view App.DateField dateBinding="startDate" valueBinding="model.selectdate"}}
-   		</div>
-        <button {{action 'selectDate'}}>selecteer deadline</button>
+					</fieldset>
+					<input type="submit" {{action 'selectDate'}} value="Voegspaar periode toe" class="btn">
+				</form>
    	</script>
 
     <!-- algemene taken -->
 
-	<script type='text/x-handlebars' data-template-name='klussen' id='klussen'>
-    	<h1>Klussen</h1>
-            <ul class="results">
-    		    {{#each klus in klussenbyuser}}
-                    <li>
-                        <article>
-                            <div class="text">
-                                <h1>{{klus.name}}</h1>
-                                <p>{{klus.description}}</p>
-                            </div>
-                        </article>
-                        {{#link-to 'klus' klus class="boxlink"}}meer informatie{{/link-to}}
-                    </li>
-    			{{/each}}
-    		</ul>
-
+    <script type='text/x-handlebars' data-template-name='klussen' id='klussen'>
+  	<h1>Klussen overzicht</h1>
+ 		<ul class="results">
+ 		{{#if content.taskUncompletedCount}}
+   		    <h1>Openstaande klussen:</h1>
+   		    {{#each task in unCompletedTasks}}
+   		      <li class="{{task.cssClass}}">
+				<article>
+					<div class="text">
+						<h1>{{task.name}}</h1>
+					</div>
+                  {{#link-to 'klusBySavingtarget' task class="boxLink"}}meer info{{/link-to}}
+				</article>
+              </li>
+   		    {{/each}}
+   		  {{else}}
+   		        <h1>Voeg je eerste klusje toe</h1>
+   		    {{/if}}
+   		</ul>
+   		{{#link-to 'klusAdd' class="btn blanc new"}}Nieuw{{/link-to}}
 	</script>
 
-    <script type='text/x-handlebars' data-template-name='klus'>
-   		<h1>{{content.name}}</h1>
-   		{{outlet detail}}
+    <script type='text/x-handlebars' data-template-name='klusAdd'>
+   		<article class="article">
+            {{#if stepOne}}
+                <h1>Voeg klusje toe</h1>
+                <form>
+                    <fieldset>
+                        <label for="klus">Kies een klus:</label>
+                      {{view Ember.Select
+                        prompt="kies hier"
+                        content=content
+                        optionValuePath="content._id"
+                        optionLabelPath="content.name"
+                        selectionBinding=selectedTask}}
+
+                        <label for="newklus">Of voeg uw eigen klus toe</label>
+                        {{input type="text" valueBinding="model.name" placeholder="vb: kamer op ruimen" id="newklus"}}
+
+                    </fieldset>
+                     <input {{action 'toStepTwo'}} type="submit" value="Bewaren" class="btn">
+                </form>
+            {{/if}}
+            {{#if stepTwo}}
+                 <form>
+                <fieldset>
+                    <label for="price">Bedrag in euro;</label>
+                    {{input type="number" id="price" placeholder="Bijv. € 0.50" valueBinding="model.amount"}}
+
+                    <label for="people">Wie voert deze klus uit?</label>
+                    {{input type="text" placeholder="Bijv. Pieter" valueBinding="model.doneBy"}}
+                </fieldset>
+                <input {{action 'save'}} type="submit" value="Opslaan" class="btn">
+                </form>
+            {{/if}}
+		</article>
    	</script>
 
-    <script type='text/x-handlebars' data-template-name='klusDetail'>
-   		<div class="text">
-   			<p>{{name}}</p></br>
-   			<p>{{description}}</p>
-   			<p>Wordt uitgevoerd door: {{input type="text" placeholder="Bijv. Pieter" valueBinding="model.doneBy"}}</p></br>
-   			<p>Voor een bedrag van: {{input type="number" placeholder="Bijv. 10" valueBinding="model.amount"}}</p>
-   		</div>
-   		 <button {{action 'add'}}>Klusje toevoegen</button>
+    <script type='text/x-handlebars' data-template-name='klusAddDate'>
+    	<h1 class="hide">spaardoel</h1>
+		<article class="article">
+
+				<h1>Spaarperiode</h1>
+
+				<form>
+					<fieldset>
+						<label for="date">Kies einddatum voor spaardoel</label>
+						<input type="date" placeholder="dd/mm/jjjj">
+
+					</fieldset>
+					<input type="submit" value="Voegspaar periode toe" class="btn">
+				</form>
+		</article>
+   	</script>
+
+    <script type='text/x-handlebars' data-template-name='klusDone'>
+    	<h1 class="">Yes, je hebt een klus afgemeld!</h1>
+		<article class="article earn">
+    			<h1 class="hide">{{currentTask.name}}</h1>
+				<figure class="crop">
+					 <img {{bind-attr src=images.1.url}} />
+				</figure>
+				<h2><strong class="price add">€ {{currentTask.amount}} verdient</strong>
+				</h2><h2><strong class="price">Nog € {{money_left}} te gaan</strong></h2>
+		</article>
+   	</script>
+
+    <script type='text/x-handlebars' data-template-name='savingTargetDone'>
+    	<h1 class="">Goed gedaan, je hebt het spaardoel voltooid!</h1>
+		<article class="article earn">
+    			<h1 class="hide">{{name}}</h1>
+				<figure class="crop">
+					 <img {{bind-attr src=images.1.url}} />
+				</figure>
+				<h2><strong class="price add">Je hebt € {{amount}} gespaard</strong>
+				</h2><h2><strong>voor het spaardoel {{name}}</strong></h2>
+		</article>
    	</script>
 
     <script type="text/x-handlebars" data-template-name="login">
@@ -281,6 +338,7 @@
         {{input value=username type="text" placeholder="Username"}}
         {{input value=password type="password" placeholder="Password"}}
         {{input class="btn" type="submit" value="Log In"}}
+        <a href="#informatie" class="btn icn info">Informatie</a>
       </form>
       {{#if errorMessage}}
         <div class="alert alert-error">{{errorMessage}}</div>

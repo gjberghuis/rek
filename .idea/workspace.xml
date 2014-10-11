@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5d292b5-cb78-4bda-84df-cd2cf441e5a0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web.js" afterPath="$PROJECT_DIR$/web.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/mongoose.js" afterPath="$PROJECT_DIR$/routes/mongoose.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/redeenkind.iml" afterPath="$PROJECT_DIR$/.idea/redeenkind.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="redeenkind.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,10 +33,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="web.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="web.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="7" selection-start="2316" selection-end="2316" vertical-scroll-proportion="0.47674417" vertical-offset="587" max-vertical-offset="8550">
+            <state line="61" column="7" selection-start="2316" selection-end="2316" vertical-scroll-proportion="0.0" vertical-offset="587" max-vertical-offset="8550">
               <folding />
             </state>
           </provider>
@@ -40,42 +45,74 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="17" selection-start="2617" selection-end="2617" vertical-scroll-proportion="-19.375" vertical-offset="585" max-vertical-offset="4860">
+            <state line="44" column="29" selection-start="1495" selection-end="1506" vertical-scroll-proportion="-3.98" vertical-offset="461" max-vertical-offset="1770">
+              <folding>
+                <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
+                <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+                <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
+                <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
+                <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
+                <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
+                <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
+                <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+                <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
+                <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
+                <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
+                <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
+                <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="122" column="8" selection-start="3797" selection-end="3797" vertical-scroll-proportion="-0.31296572" vertical-offset="585" max-vertical-offset="10605">
+              <folding>
+                <element signature="e#95#341#0" expanded="false" />
+                <element signature="e#418#1253#0" expanded="false" />
+                <element signature="e#1301#2081#0" expanded="false" />
+                <element signature="e#2085#2107#0" expanded="false" />
+                <element signature="e#2164#3254#0" expanded="false" />
+                <element signature="e#3258#3280#0" expanded="false" />
+                <element signature="e#3312#3315#0" expanded="false" />
+                <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
+                <element signature="e#10761#11401#0" expanded="false" />
+                <element signature="e#11745#11907#0" expanded="false" />
+                <element signature="e#16710#16775#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mongoose.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/mongoose.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="68" column="54" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="1950">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/app.js">
+      <file leaf-file-name="test.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="16" selection-start="3105" selection-end="3105" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5310">
-              <folding>
-                <element signature="e#95#341#0" expanded="false" />
-                <element signature="e#1252#1793#0" expanded="false" />
-                <element signature="e#3317#4319#0" expanded="false" />
-                <element signature="n#!!block;n#CheckMoneySaved#0" expanded="false" />
-                <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
-                <element signature="e#7076#7287#0" expanded="false" />
-                <element signature="e#7339#7501#0" expanded="false" />
-                <element signature="e#9889#11254#0" expanded="false" />
-                <element signature="e#11307#11475#0" expanded="false" />
-                <element signature="e#13180#14894#0" expanded="false" />
-                <element signature="e#14948#15298#0" expanded="false" />
-              </folding>
+            <state line="32" column="26" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1095">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="tempasdf" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/tempasdf">
+          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state line="483" column="0" selection-start="15690" selection-end="15690" vertical-scroll-proportion="0.0" vertical-offset="6587" max-vertical-offset="7335">
               <folding />
             </state>
-          </provider>
-          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-            <state />
           </provider>
         </entry>
       </file>
@@ -94,17 +131,19 @@
       <list>
         <option value="$PROJECT_DIR$/public/js/test" />
         <option value="$PROJECT_DIR$/public/js/tempasdf" />
+        <option value="$PROJECT_DIR$/web.js" />
+        <option value="$PROJECT_DIR$/test.php" />
+        <option value="$PROJECT_DIR$/routes/mongoose.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
-        <option value="$PROJECT_DIR$/web.js" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1440" />
-    <option name="height" value="806" />
+    <option name="width" value="1920" />
+    <option name="height" value="817" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -146,7 +185,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="redeenkind" />
+              <option name="myItemId" value="rek" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -156,11 +195,57 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="rek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
               <option name="myItemId" value="redeenkind" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rek" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="routes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="redeenkind" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="redeenkind" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -170,10 +255,14 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Development/restwebapi/redeenkind" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
     <property name="SearchEverywhereHistory" value="" />
+    <property name="options.lastSelected" value="preferences.general" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -238,15 +327,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="806" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="22" width="1920" height="817" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2081545" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21618743" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -276,9 +365,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2081545" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15126051" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15126051" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -296,10 +385,145 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="8" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/web.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="7" selection-start="2316" selection-end="2316" vertical-scroll-proportion="0.0" vertical-offset="587" max-vertical-offset="8550">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/mongoose.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="41" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.0" vertical-offset="1110" max-vertical-offset="1950">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="7" selection-start="779" selection-end="779" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1095">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="17" selection-start="2654" selection-end="2654" vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="4890">
+          <folding>
+            <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="6" selection-start="3265" selection-end="3265" vertical-scroll-proportion="0.0" vertical-offset="1515" max-vertical-offset="8250">
+          <folding>
+            <element signature="e#95#341#0" expanded="false" />
+            <element signature="e#418#1253#0" expanded="false" />
+            <element signature="e#1301#2081#0" expanded="false" />
+            <element signature="e#2085#2107#0" expanded="false" />
+            <element signature="e#2164#3254#0" expanded="false" />
+            <element signature="e#3258#3280#0" expanded="false" />
+            <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
+            <element signature="e#10761#11401#0" expanded="false" />
+            <element signature="e#11745#11907#0" expanded="false" />
+            <element signature="e#16710#16775#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/tempasdf">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="483" column="0" selection-start="15690" selection-end="15690" vertical-scroll-proportion="0.0" vertical-offset="6587" max-vertical-offset="7335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="7" selection-start="2316" selection-end="2316" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8550">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/mongoose.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="41" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.0" vertical-offset="1110" max-vertical-offset="1950">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="17" selection-start="2617" selection-end="2617" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="4860">
+          <folding>
+            <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="16" selection-start="3105" selection-end="3105" vertical-scroll-proportion="0.0" vertical-offset="1425" max-vertical-offset="8175">
+          <folding>
+            <element signature="e#95#341#0" expanded="false" />
+            <element signature="e#418#1253#0" expanded="false" />
+            <element signature="e#1301#2081#0" expanded="false" />
+            <element signature="e#2085#2107#0" expanded="false" />
+            <element signature="e#2164#3254#0" expanded="false" />
+            <element signature="e#3258#3280#0" expanded="false" />
+            <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
+            <element signature="e#10761#11401#0" expanded="false" />
+            <element signature="e#11745#11907#0" expanded="false" />
+            <element signature="e#16710#16775#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/tempasdf">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="483" column="0" selection-start="15690" selection-end="15690" vertical-scroll-proportion="0.0" vertical-offset="6587" max-vertical-offset="7335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="564" column="3" selection-start="18526" selection-end="18526" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8550">
@@ -310,7 +534,21 @@
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="70" column="17" selection-start="2617" selection-end="2617" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="4860">
-          <folding />
+          <folding>
+            <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -319,28 +557,28 @@
         <state line="95" column="16" selection-start="3105" selection-end="3105" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5310">
           <folding>
             <element signature="e#95#341#0" expanded="false" />
-            <element signature="e#1252#1793#0" expanded="false" />
-            <element signature="e#3317#4319#0" expanded="false" />
-            <element signature="n#!!block;n#CheckMoneySaved#0" expanded="false" />
-            <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
-            <element signature="e#7076#7287#0" expanded="false" />
-            <element signature="e#7339#7501#0" expanded="false" />
-            <element signature="e#9889#11254#0" expanded="false" />
-            <element signature="e#11307#11475#0" expanded="false" />
-            <element signature="e#13180#14894#0" expanded="false" />
-            <element signature="e#14948#15298#0" expanded="false" />
+            <element signature="e#418#1253#0" expanded="false" />
+            <element signature="e#1301#2081#0" expanded="false" />
+            <element signature="e#2085#2107#0" expanded="false" />
+            <element signature="e#2164#3254#0" expanded="false" />
+            <element signature="e#3258#3280#0" expanded="false" />
+            <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
+            <element signature="e#10761#11401#0" expanded="false" />
+            <element signature="e#11745#11907#0" expanded="false" />
+            <element signature="e#16710#16775#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/tempasdf">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="483" column="0" selection-start="15690" selection-end="15690" vertical-scroll-proportion="0.0" vertical-offset="6587" max-vertical-offset="7335">
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web.js">
@@ -353,7 +591,21 @@
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="107" column="46" selection-start="4069" selection-end="4069" vertical-scroll-proportion="0.0" vertical-offset="1605" max-vertical-offset="4740">
-          <folding />
+          <folding>
+            <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -362,28 +614,28 @@
         <state line="86" column="70" selection-start="2760" selection-end="2760" vertical-scroll-proportion="0.0" vertical-offset="1290" max-vertical-offset="3855">
           <folding>
             <element signature="e#95#341#0" expanded="false" />
-            <element signature="e#1252#1793#0" expanded="false" />
-            <element signature="e#3317#4319#0" expanded="false" />
-            <element signature="n#!!block;n#CheckMoneySaved#0" expanded="false" />
-            <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
-            <element signature="e#7076#7287#0" expanded="false" />
-            <element signature="e#7339#7501#0" expanded="false" />
-            <element signature="e#9889#11254#0" expanded="false" />
-            <element signature="e#11307#11475#0" expanded="false" />
-            <element signature="e#13180#14894#0" expanded="false" />
-            <element signature="e#14948#15298#0" expanded="false" />
+            <element signature="e#418#1253#0" expanded="false" />
+            <element signature="e#1301#2081#0" expanded="false" />
+            <element signature="e#2085#2107#0" expanded="false" />
+            <element signature="e#2164#3254#0" expanded="false" />
+            <element signature="e#3258#3280#0" expanded="false" />
+            <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
+            <element signature="e#10761#11401#0" expanded="false" />
+            <element signature="e#11745#11907#0" expanded="false" />
+            <element signature="e#16710#16775#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/tempasdf">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="483" column="0" selection-start="15690" selection-end="15690" vertical-scroll-proportion="0.0" vertical-offset="6587" max-vertical-offset="7335">
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web.js">
@@ -396,7 +648,21 @@
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="107" column="46" selection-start="4069" selection-end="4069" vertical-scroll-proportion="0.0" vertical-offset="1605" max-vertical-offset="4740">
-          <folding />
+          <folding>
+            <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -405,28 +671,28 @@
         <state line="86" column="70" selection-start="2760" selection-end="2760" vertical-scroll-proportion="0.0" vertical-offset="1290" max-vertical-offset="3855">
           <folding>
             <element signature="e#95#341#0" expanded="false" />
-            <element signature="e#1252#1793#0" expanded="false" />
-            <element signature="e#3317#4319#0" expanded="false" />
-            <element signature="n#!!block;n#CheckMoneySaved#0" expanded="false" />
-            <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
-            <element signature="e#7076#7287#0" expanded="false" />
-            <element signature="e#7339#7501#0" expanded="false" />
-            <element signature="e#9889#11254#0" expanded="false" />
-            <element signature="e#11307#11475#0" expanded="false" />
-            <element signature="e#13180#14894#0" expanded="false" />
-            <element signature="e#14948#15298#0" expanded="false" />
+            <element signature="e#418#1253#0" expanded="false" />
+            <element signature="e#1301#2081#0" expanded="false" />
+            <element signature="e#2085#2107#0" expanded="false" />
+            <element signature="e#2164#3254#0" expanded="false" />
+            <element signature="e#3258#3280#0" expanded="false" />
+            <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
+            <element signature="e#10761#11401#0" expanded="false" />
+            <element signature="e#11745#11907#0" expanded="false" />
+            <element signature="e#16710#16775#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/tempasdf">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="483" column="0" selection-start="15690" selection-end="15690" vertical-scroll-proportion="0.0" vertical-offset="6587" max-vertical-offset="7335">
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web.js">
@@ -439,7 +705,21 @@
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="96" column="36" selection-start="3620" selection-end="3620" vertical-scroll-proportion="0.0" vertical-offset="1288" max-vertical-offset="4620">
-          <folding />
+          <folding>
+            <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -448,28 +728,28 @@
         <state line="445" column="42" selection-start="0" selection-end="15690" vertical-scroll-proportion="0.0" vertical-offset="6675" max-vertical-offset="7335">
           <folding>
             <element signature="e#95#341#0" expanded="false" />
-            <element signature="e#1252#1793#0" expanded="false" />
-            <element signature="e#3317#4319#0" expanded="false" />
-            <element signature="n#!!block;n#CheckMoneySaved#0" expanded="false" />
-            <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
-            <element signature="e#7076#7287#0" expanded="false" />
-            <element signature="e#7339#7501#0" expanded="false" />
-            <element signature="e#9889#11254#0" expanded="false" />
-            <element signature="e#11307#11475#0" expanded="false" />
-            <element signature="e#13180#14894#0" expanded="false" />
-            <element signature="e#14948#15298#0" expanded="false" />
+            <element signature="e#418#1253#0" expanded="false" />
+            <element signature="e#1301#2081#0" expanded="false" />
+            <element signature="e#2085#2107#0" expanded="false" />
+            <element signature="e#2164#3254#0" expanded="false" />
+            <element signature="e#3258#3280#0" expanded="false" />
+            <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
+            <element signature="e#10761#11401#0" expanded="false" />
+            <element signature="e#11745#11907#0" expanded="false" />
+            <element signature="e#16710#16775#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/tempasdf">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="483" column="0" selection-start="15690" selection-end="15690" vertical-scroll-proportion="0.0" vertical-offset="6587" max-vertical-offset="7335">
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web.js">
@@ -484,16 +764,16 @@
         <state line="309" column="25" selection-start="10303" selection-end="10303" vertical-scroll-proportion="0.0" vertical-offset="4635" max-vertical-offset="7185">
           <folding>
             <element signature="e#95#341#0" expanded="false" />
-            <element signature="e#1252#1793#0" expanded="false" />
-            <element signature="e#3317#4319#0" expanded="false" />
-            <element signature="n#!!block;n#CheckMoneySaved#0" expanded="false" />
-            <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
-            <element signature="e#7076#7287#0" expanded="false" />
-            <element signature="e#7339#7501#0" expanded="false" />
-            <element signature="e#9889#11254#0" expanded="false" />
-            <element signature="e#11307#11475#0" expanded="false" />
-            <element signature="e#13180#14894#0" expanded="false" />
-            <element signature="e#14948#15298#0" expanded="false" />
+            <element signature="e#418#1253#0" expanded="false" />
+            <element signature="e#1301#2081#0" expanded="false" />
+            <element signature="e#2085#2107#0" expanded="false" />
+            <element signature="e#2164#3254#0" expanded="false" />
+            <element signature="e#3258#3280#0" expanded="false" />
+            <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
+            <element signature="e#10761#11401#0" expanded="false" />
+            <element signature="e#11745#11907#0" expanded="false" />
+            <element signature="e#16710#16775#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -501,7 +781,21 @@
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="149" column="0" selection-start="5613" selection-end="5613" vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="4620">
-          <folding />
+          <folding>
+            <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -517,16 +811,16 @@
         <state line="309" column="25" selection-start="10303" selection-end="10303" vertical-scroll-proportion="0.0" vertical-offset="4635" max-vertical-offset="7185">
           <folding>
             <element signature="e#95#341#0" expanded="false" />
-            <element signature="e#1252#1793#0" expanded="false" />
-            <element signature="e#3317#4319#0" expanded="false" />
-            <element signature="n#!!block;n#CheckMoneySaved#0" expanded="false" />
-            <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
-            <element signature="e#7076#7287#0" expanded="false" />
-            <element signature="e#7339#7501#0" expanded="false" />
-            <element signature="e#9889#11254#0" expanded="false" />
-            <element signature="e#11307#11475#0" expanded="false" />
-            <element signature="e#13180#14894#0" expanded="false" />
-            <element signature="e#14948#15298#0" expanded="false" />
+            <element signature="e#418#1253#0" expanded="false" />
+            <element signature="e#1301#2081#0" expanded="false" />
+            <element signature="e#2085#2107#0" expanded="false" />
+            <element signature="e#2164#3254#0" expanded="false" />
+            <element signature="e#3258#3280#0" expanded="false" />
+            <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
+            <element signature="e#10761#11401#0" expanded="false" />
+            <element signature="e#11745#11907#0" expanded="false" />
+            <element signature="e#16710#16775#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -534,7 +828,21 @@
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="149" column="0" selection-start="5613" selection-end="5613" vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="4620">
-          <folding />
+          <folding>
+            <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -550,16 +858,16 @@
         <state line="141" column="36" selection-start="5151" selection-end="5151" vertical-scroll-proportion="0.0" vertical-offset="2115" max-vertical-offset="6135">
           <folding>
             <element signature="e#95#341#0" expanded="false" />
-            <element signature="e#1252#1793#0" expanded="false" />
-            <element signature="e#3317#4319#0" expanded="false" />
-            <element signature="n#!!block;n#CheckMoneySaved#0" expanded="false" />
-            <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
-            <element signature="e#7076#7287#0" expanded="false" />
-            <element signature="e#7339#7501#0" expanded="false" />
-            <element signature="e#9889#11254#0" expanded="false" />
-            <element signature="e#11307#11475#0" expanded="false" />
-            <element signature="e#13180#14894#0" expanded="false" />
-            <element signature="e#14948#15298#0" expanded="false" />
+            <element signature="e#418#1253#0" expanded="false" />
+            <element signature="e#1301#2081#0" expanded="false" />
+            <element signature="e#2085#2107#0" expanded="false" />
+            <element signature="e#2164#3254#0" expanded="false" />
+            <element signature="e#3258#3280#0" expanded="false" />
+            <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
+            <element signature="e#10761#11401#0" expanded="false" />
+            <element signature="e#11745#11907#0" expanded="false" />
+            <element signature="e#16710#16775#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -567,7 +875,21 @@
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="123" column="50" selection-start="4762" selection-end="4780" vertical-scroll-proportion="0.0" vertical-offset="1845" max-vertical-offset="4635">
-          <folding />
+          <folding>
+            <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -583,16 +905,16 @@
         <state line="489" column="13" selection-start="15048" selection-end="15048" vertical-scroll-proportion="0.0" vertical-offset="4575" max-vertical-offset="4575">
           <folding>
             <element signature="e#95#341#0" expanded="false" />
-            <element signature="e#1252#1793#0" expanded="false" />
-            <element signature="e#3317#4319#0" expanded="false" />
-            <element signature="n#!!block;n#CheckMoneySaved#0" expanded="false" />
-            <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
-            <element signature="e#7076#7287#0" expanded="false" />
-            <element signature="e#7339#7501#0" expanded="false" />
-            <element signature="e#9889#11254#0" expanded="false" />
-            <element signature="e#11307#11475#0" expanded="false" />
-            <element signature="e#13180#14894#0" expanded="false" />
-            <element signature="e#14948#15298#0" expanded="false" />
+            <element signature="e#418#1253#0" expanded="false" />
+            <element signature="e#1301#2081#0" expanded="false" />
+            <element signature="e#2085#2107#0" expanded="false" />
+            <element signature="e#2164#3254#0" expanded="false" />
+            <element signature="e#3258#3280#0" expanded="false" />
+            <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
+            <element signature="e#10761#11401#0" expanded="false" />
+            <element signature="e#11745#11907#0" expanded="false" />
+            <element signature="e#16710#16775#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -600,7 +922,21 @@
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="259" column="62" selection-start="9314" selection-end="9319" vertical-scroll-proportion="0.0" vertical-offset="3885" max-vertical-offset="4395">
-          <folding />
+          <folding>
+            <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -616,51 +952,74 @@
         <state line="400" column="3" selection-start="10711" selection-end="10711" vertical-scroll-proportion="0.0" vertical-offset="5068" max-vertical-offset="6090" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/mongoose.js">
+    <entry file="file://$PROJECT_DIR$/web.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="18" selection-start="2435" selection-end="2435" vertical-scroll-proportion="0.3241279" vertical-offset="1262" max-vertical-offset="1950" />
+        <state line="61" column="7" selection-start="2316" selection-end="2316" vertical-scroll-proportion="0.0" vertical-offset="587" max-vertical-offset="8550">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="26" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1095">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/tempasdf">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="483" column="0" selection-start="15690" selection-end="15690" vertical-scroll-proportion="0.0" vertical-offset="6587" max-vertical-offset="7335">
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/app.js">
+    <entry file="file://$PROJECT_DIR$/routes/mongoose.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="16" selection-start="3105" selection-end="3105" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5310">
-          <folding>
-            <element signature="e#95#341#0" expanded="false" />
-            <element signature="e#1252#1793#0" expanded="false" />
-            <element signature="e#3317#4319#0" expanded="false" />
-            <element signature="n#!!block;n#CheckMoneySaved#0" expanded="false" />
-            <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
-            <element signature="e#7076#7287#0" expanded="false" />
-            <element signature="e#7339#7501#0" expanded="false" />
-            <element signature="e#9889#11254#0" expanded="false" />
-            <element signature="e#11307#11475#0" expanded="false" />
-            <element signature="e#13180#14894#0" expanded="false" />
-            <element signature="e#14948#15298#0" expanded="false" />
-          </folding>
+        <state line="68" column="54" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="1950">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="17" selection-start="2617" selection-end="2617" vertical-scroll-proportion="-19.375" vertical-offset="585" max-vertical-offset="4860">
-          <folding />
+        <state line="44" column="29" selection-start="1495" selection-end="1506" vertical-scroll-proportion="-3.98" vertical-offset="461" max-vertical-offset="1770">
+          <folding>
+            <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#4;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#6;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#8;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web.js">
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="7" selection-start="2316" selection-end="2316" vertical-scroll-proportion="0.47674417" vertical-offset="587" max-vertical-offset="8550">
-          <folding />
+        <state line="122" column="8" selection-start="3797" selection-end="3797" vertical-scroll-proportion="-0.31296572" vertical-offset="585" max-vertical-offset="10605">
+          <folding>
+            <element signature="e#95#341#0" expanded="false" />
+            <element signature="e#418#1253#0" expanded="false" />
+            <element signature="e#1301#2081#0" expanded="false" />
+            <element signature="e#2085#2107#0" expanded="false" />
+            <element signature="e#2164#3254#0" expanded="false" />
+            <element signature="e#3258#3280#0" expanded="false" />
+            <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
+            <element signature="e#10761#11401#0" expanded="false" />
+            <element signature="e#11745#11907#0" expanded="false" />
+            <element signature="e#16710#16775#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

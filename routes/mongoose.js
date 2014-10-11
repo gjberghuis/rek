@@ -66,7 +66,7 @@ module.exports.SavingTargetModel = SavingTargetModel;
 
 var Task = new Schema({
     name: { type: String, required: true },
-    short_description: { type: String, required: true },
+    short_description: { type: String, required: false },
     description: { type: String, required: false }
 });
 
