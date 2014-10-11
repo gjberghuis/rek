@@ -234,24 +234,29 @@
 
     <script type='text/x-handlebars' data-template-name='klussen' id='klussen'>
   	<h1>Klussen overzicht</h1>
- 		<ul class="results">
- 		{{#if content.taskUncompletedCount}}
-   		    <h1>Openstaande klussen:</h1>
-   		    {{#each task in unCompletedTasks}}
-   		      <li class="{{task.cssClass}}">
-				<article>
-					<div class="text">
-						<h1>{{task.name}}</h1>
-					</div>
-                  {{#link-to 'klusBySavingtarget' task class="boxLink"}}meer info{{/link-to}}
-				</article>
-              </li>
-   		    {{/each}}
-   		  {{else}}
-   		        <h1>Voeg je eerste klusje toe</h1>
-   		    {{/if}}
-   		</ul>
-   		{{#link-to 'klusAdd' class="btn blanc new"}}Nieuw{{/link-to}}
+  	t{{name}}
+  	    {{#if name}}
+            <ul class="results">
+            {{#if content.taskUncompletedCount}}
+                <h1>Openstaande klussen:</h1>
+                {{#each task in unCompletedTasks}}
+                  <li class="{{task.cssClass}}">
+                    <article>
+                        <div class="text">
+                            <h1>{{task.name}}</h1>
+                        </div>
+                      {{#link-to 'klusBySavingtarget' task class="boxLink"}}meer info{{/link-to}}
+                    </article>
+                  </li>
+                {{/each}}
+              {{else}}
+                    <h1>Voeg je eerste klusje toe</h1>
+                {{/if}}
+            </ul>
+            {{#link-to 'klusAdd' class="btn blanc new"}}Nieuw{{/link-to}}
+        {{else}}
+          {{#link-to 'doelen' class="btn blanc new"}}Voeg eerst een spaardoel toe{{/link-to}}
+        {{/if}}
 	</script>
 
     <script type='text/x-handlebars' data-template-name='klusAdd'>
