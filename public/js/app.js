@@ -322,7 +322,6 @@ App.IndexRoute = App.AuthenticatedRoute.extend({
         if(this.controllerFor('login').get('token'))
         {
             var user = App.User.findSavingTarget(this.controllerFor('login').get('userid'));
-
             return user;
         }
     }
@@ -330,7 +329,19 @@ App.IndexRoute = App.AuthenticatedRoute.extend({
 
 App.DoelenRoute = App.AuthenticatedRoute.extend({
     model: function() {
-        return App.Doel.all();
+        var model = this;
+        return App.Doel.all().then(function(doelen){
+            return App.User.findSavingTarget(model.controllerFor('login').get('userid')).then(function(user){
+                if(user != null)
+                {
+                    doelen.forEach(function(doel){
+                        doel.hasActiveSavingTarget = true;
+                    });
+                }
+
+                return doelen;
+            });
+        });
     },
     setupController: function(controller, model){
         controller.set('doelen', model);
@@ -406,6 +417,7 @@ App.DoelRoute = App.AuthenticatedRoute.extend({
     }
 });
 
+/*
 App.DoelByUserRoute = App.AuthenticatedRoute.extend({
     beforeModel: function(transition) {
         var loginController = this.controllerFor('login');
@@ -443,33 +455,12 @@ App.DoelByUserRoute = App.AuthenticatedRoute.extend({
         }
     }
 });
+*/
 
 App.KlussenRoute = App.AuthenticatedRoute.extend({
     model: function(params) {
         var currentSavingTarget = App.User.findSavingTarget(this.controllerFor('login').get('userid'), params.doel_id);
         return currentSavingTarget;
-    },
-    actions: {
-        complete : function(savingtargetid){
-            var thisModel = this;
-            var savingTargetId;
-            var userModel = App.User.find(this.controllerFor('login').get('userid'), function (response) {
-                if(response.savingtargets != null)
-                {
-                    response.savingtargets.forEach(function (savingtarget) {
-                        // get the current savingtarget, it's not completed yet
-                        if(savingtarget._id == savingtargetid)
-                        {
-                            savingtarget.completed = true;
-                        }
-                    });
-                }
-
-                App.User.save(response, function(){
-                    thisModel.transitionTo('index');
-                });
-            });
-        }
     }
 });
 
@@ -542,41 +533,6 @@ App.KlusAddRoute = App.AuthenticatedRoute.extend({
         }
     }
 
-});
-
-App.KlusAddDate = App.AuthenticatedRoute.extend({
-    actions: {
-        add : function(){
-            debugger;
-            var window = this;
-            var savingtargetid;
-
-            var klus ={
-                task_id: this.currentModel._id,
-                completed_by: this.currentModel.doneBy,
-                amount: this.currentModel.amount
-            };
-            var thisModel = this;
-            var userid = this.controllerFor('login').get('userid');
-            var userModel = App.User.find(userid, function (response) {
-                if(response.savingtargets != null)
-                {
-                    response.savingtargets.forEach(function (savingtarget) {
-                        // get the current savingtarget, it's not completed yet
-                        if(savingtarget.completed == false)
-                        {
-                            savingtargetid = savingtarget._id;
-                            savingtarget.tasks.push(klus);
-                        }
-                    });
-                }
-
-                App.User.save(response, function(){
-                    thisModel.transitionTo('klussen');
-                });
-            });
-        }
-    }
 });
 
 App.KlusDoneRoute = App.AuthenticatedRoute.extend({

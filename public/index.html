@@ -185,7 +185,7 @@
     							<p>{{doel.short_description}}</p>
     						</div>
     					</article>
-						{{#link-to 'doel' doel class="boxlink"}}meer informatie{{/link-to}}
+                        {{#link-to 'doel' doel class="boxlink"}}meer informatie{{/link-to}}
     				</li>
     			{{/each}}
     		</ul>
@@ -214,7 +214,9 @@
    		<ul class="meta">
    			<li class="price">&euro;{{content.amount}}</li>
    		</ul>
-   		<a href="#linknaarform" {{action 'add'}} class="btn">Voeg spaardoel toe</a>
+   		{{#unless content.hasActiveSavingTarget}}
+   		    <a href="#linknaarform" {{action 'add'}} class="btn">Voeg spaardoel toe</a>
+   		{{/unless}}
    	</script>
 
    <script type='text/x-handlebars' data-template-name='doelSelectDate'>
