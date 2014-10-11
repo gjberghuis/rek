@@ -409,7 +409,8 @@ App.DoelRoute = App.AuthenticatedRoute.extend({
 
                 if(saveModel){
                     if(App.User.save(response)){
-                        thisModel.transitionTo('index');
+                        var currentSavingTarget = App.User.findSavingTarget(thisModel.controllerFor('login').get('userid'));
+                        thisModel.transitionTo('index', currentSavingTarget);
                     }
                 }
             });
@@ -593,7 +594,8 @@ App.SavingTargetDoneRoute = App.AuthenticatedRoute.extend({
     afterModel: function(savingtarget, transition) {
         var model = this;
         setTimeout(function(){
-            model.transitionTo('index');
+            var currentSavingTarget = App.User.findSavingTarget(model.controllerFor('login').get('userid'));
+            model.transitionTo('index', currentSavingTarget);
         }, 2000);
     }
 });
