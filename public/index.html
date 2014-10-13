@@ -340,6 +340,7 @@
    	</script>
 
     <script type="text/x-handlebars" data-template-name="login">
+    <div class="login box">
     {{#if loggedIn}}
       <p>You are already logged in!</p>
     {{else}}
@@ -347,20 +348,21 @@
         <h2>Log In</h2>
         {{input value=username type="text" placeholder="Username"}}
         {{input value=password type="password" placeholder="Password"}}
-        {{input class="btn" type="submit" value="Log In"}}
+        {{input class="btn login" type="submit" value="Log In"}}
         <a href="#informatie" class="btn icn info">Informatie</a>
       </form>
       {{#if errorMessage}}
         <div class="alert alert-error">{{errorMessage}}</div>
       {{/if}}
     {{/if}}
+    </div>
   </script>
     <script type="text/x-handlebars" data-template-name="settings">
     {{#if name}}
       <p>Naam: {{firstname}} {{name}}</p>
         <p>Email: {{email}}</p>
         <p>Geregistreerd op: {{registration_date}}</p>
-        <button {{action 'logout'}}>Uitloggen</button>
+        <button class="btn" {{action 'logout'}}>Uitloggen</button>
     {{else}}
       <form class="form-inline" {{action login on="submit"}}>
         <h2>Log In</h2>
