@@ -2,7 +2,10 @@
 	height: 44px;
 	background: $blue;
 	text-align: center;
-	position: relative;
+	position: fixed;
+	top:0;
+	z-index: 100;
+	width: 100%;
 	
 	.logo {
 		height: 42px;
