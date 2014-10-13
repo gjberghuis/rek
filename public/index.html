@@ -66,8 +66,10 @@
                 <a href="#klussen" class="btn">Bekijk je klussen</a>
             </article>
 		{{else}}
-            Welkom bij de redeenkind app. In deze app kun je door middel klussen uitvoeren sparen voor een spaardoel.
-            Begin met het selecteren van een spaardoel. {{#link-to 'doelen' class="boxLink"}}Spaardoel toevoegen{{/link-to}}
+            <div class="messageBox">
+            	<p>Welkom bij de redeenkind app. In deze app kun je door middel klussen uitvoeren sparen voor een spaardoel.<br />Begin met het selecteren van een spaardoel.</p> 
+            	{{#link-to 'doelen' class="btn new boxLink"}}Spaardoel toevoegen{{/link-to}}
+            </div>
         {{/if}}
 	</script>
 
