@@ -19,12 +19,17 @@ button {
 	@include iconSocial(false);
 	font-size: em(20);
 	
-	&.new:before {
+	&.new:before,
+	&.login:before {
 		content:$fa-var-plus;
 		position: absolute;
 		border: 0;
 		right: 0;
 		width: auto;
+	}
+	
+	&.login:before {
+		content:$fa-var-sign-in;
 	}
 	
 	&.blanc {
@@ -36,6 +41,8 @@ button {
 	&.ember-view {
 		height: auto;
 	}
+	
+	
 }
 
 .btn.icn {
@@ -292,6 +299,24 @@ align-items:center;
 	
 	.btn {
 		text-align: left;	
+	}
+}
+
+.login.box {
+	text-align: center;
+	padding-top:$gutter;
+	
+	h2 {
+		margin-bottom: 15px;
+		
+	}
+	
+	input {
+		margin-bottom: 5px;
+	}
+	
+	.btn.info {
+		margin: 2*$gutter 0;
 	}
 }
 /*
