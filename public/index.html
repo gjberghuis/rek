@@ -59,7 +59,7 @@
                 </figure>
                 <h5>Er staan nog <strong>{{taskUncompletedCount}}</strong> klussen open</h5>
                 {{#if money_left_needed}}
-                    <h2><strong class="price">Nog &euro; {{money_left}} te gaan binnen {{days_left}} dagen</strong></h2>
+                    <h2><strong class="price">Nog &euro; {{money_left}} te gaan <br /> binnen {{days_left}} dagen</strong></h2>
                 {{else}}
                     <h2><strong class="price">Je hebt &euro; {{money_saved}} gespaard voor dit spaardoel</strong></h2>
                 {{/if}}
@@ -67,7 +67,7 @@
             </article>
 		{{else}}
             <div class="messageBox">
-            	<h2>Welkom bij de redeenkind app.</h2>
+            	<h2>Welkom bij de <br />redeenkind app.</h2>
             	<p> In deze app kun je door middel klussen uitvoeren sparen voor een spaardoel.<br />Begin met het selecteren van een spaardoel.</p> 
             	{{#link-to 'doelen' class="btn new boxLink"}}Spaardoel toevoegen{{/link-to}}
             </div>
