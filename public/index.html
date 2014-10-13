@@ -362,7 +362,7 @@
       <p>Naam: {{firstname}} {{name}}</p>
         <p>Email: {{email}}</p>
         <p>Geregistreerd op: {{registration_date}}</p>
-        <button {{action 'logout'}}>Uitloggen</button>
+        <button class="btn" {{action 'logout'}}>Uitloggen</button>
     {{else}}
       <form class="form-inline" {{action login on="submit"}}>
         <h2>Log In</h2>

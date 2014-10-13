@@ -82,6 +82,7 @@ button {
 
 .container {
 	display: block;
+	height: 100%;
 	flex:1;
 	//display: flex;
 	//flex-direction: column;
@@ -263,7 +264,6 @@ align-items:center;
 .login {
 	.btn.info {
 		position: absolute;
-		bottom:$gutter;
 		left:50%;
 		margin-left:-20px;
 	}
@@ -316,7 +316,7 @@ align-items:center;
 	}
 	
 	.btn.info {
-		margin: 2*$gutter 0;
+		bottom:60px;
 	}
 }
 /*
