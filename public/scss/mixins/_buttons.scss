@@ -1,0 +1,180 @@
+$round:true !default; //make roundend buttons for icon btn
+$social:true !default; //make social buttons, works only with FontAwesome
+
+//social icons
+$youtube:#cc181e !default;
+$flickr:#ff0084 !default;
+$instagram:#966753 !default;
+$twitter:#00b7ee !default;
+$facebook:#335798 !default;
+$google:#e1453b !default;
+$pinterest:#ce2020 !default;
+$linkedin:#0077b5 !default;
+
+$socialmedia:facebook $facebook,twitter $twitter, youtube $youtube, instagram $instagram, flickr $flickr, google $google, pinterest $pinterest, linkedin $linkedin !default;
+
+
+
+@mixin button(
+	$bgColor:#0077b5,
+	$color:#fff,
+	$round:false,
+	$borderColor:#000) {
+	
+	position: relative;
+	padding:8px 20px;
+	background-color: $bgColor;
+	border-top:2px solid transparent;
+	border-bottom:2px solid transparent;
+	border-left:1px solid transparent;
+	border-right:1px solid transparent;
+	clear: both;
+	color: $color;
+	width: 100%;
+	display: block;
+	
+	@if ($round) {
+		@include border-radius($round);
+	}
+	
+	&:before {
+		@extend %icon-fa;
+		width: 15%;
+		margin-right: .5*$gutter;
+		border-right: 2px solid fade-out(#fff, .8);
+		display: inline-block;
+	}
+	
+	&:hover {
+		background-color: lighten($bgColor,5%);
+		color:$color;
+	}
+	
+	&:active {
+		border-bottom: 2px solid transparent;
+		border-top:2px solid fade-out($borderColor, .8);
+		border-left:2px solid fade-out($borderColor, .8);
+		border-right:2px solid fade-out($borderColor, .8);
+		color:darken($color,20%);
+		
+		&:before {
+			padding-top: 1px;
+			
+		}		
+	}
+}
+
+@mixin iconButton(
+	$size:40px,
+	$bgColor:blue,
+	$color:yellow,
+	$borderColor:$color) {
+		display: inline-block;
+		text-align: left;
+		position: relative;
+		width: $size;
+		height: $size;
+		overflow: hidden;
+		text-indent: 200px;
+		white-space: nowrap;
+		text-decoration: none;	
+		color:$color;
+	
+		@if ($bgColor){
+			background: $bgColor;
+		}
+		
+		@if ($borderColor) {
+			border:2px solid;
+			border-color:$borderColor;
+		}
+		
+		@if ($round) {
+			@include border-radius($size/2);
+		}
+		
+		&:before {
+			text-indent:0;
+			position:absolute;
+			left:0;
+			top:3px;
+			@extend %icon-fa;
+			
+		}
+		
+		&:hover {
+			@if ($bgColor) {
+				background: darken($bgColor,5%);
+			}
+			@if ($borderColor) {
+				border-color:darken($borderColor,5%);
+			}
+		}
+		
+		@if ($social) {
+			@include iconSocial();
+		}
+}
+
+@mixin iconSocial($hover:true) {
+
+	@each $social in $socialmedia {
+					
+		&.#{nth($social, 1)} {
+
+			&:before {
+				top:2px;
+				left:0;
+				//text-indent:8px;
+				
+				@if nth($social, 1) == facebook {
+					content:$fa-var-facebook;
+					//text-indent:12px;
+					//top:3px;
+					
+				}
+								
+				@if nth($social, 1) == twitter {
+					content:$fa-var-twitter;
+				}
+				@if nth($social, 1) == youtube {
+					content:$fa-var-youtube;
+				}
+				@if nth($social, 1) == flickr {
+					content:$fa-var-flickr;
+				}
+				@if nth($social, 1) == instagram {
+					content:$fa-var-instagram;
+				}
+				@if nth($social, 1) == google {
+					content:$fa-var-google-plus;
+				}
+				@if nth($social, 1) == pinterest {
+					content:$fa-var-pinterest;
+				}
+				
+				@if nth($social, 1) == linkedin {
+					content:$fa-var-linkedin;
+				}
+
+			}
+			
+			@if ($hover) {
+				&:hover { 
+					background:#{nth($social, 2)} !important;
+					border-color:#{nth($social, 2)} !important;
+					color:#fff !important;
+				}
+			} @else {
+				background:#{nth($social, 2)} !important;
+				border-color:#{nth($social, 2)} !important;
+				color:#fff !important;
+				
+				&:hover {
+					opacity: .8;
+				}
+			}
+		}
+	}			
+}
+

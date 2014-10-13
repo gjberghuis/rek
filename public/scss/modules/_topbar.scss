@@ -1,0 +1,29 @@
+.topBar {
+	height: 44px;
+	background: $blue;
+	text-align: center;
+	position: relative;
+	
+	.logo {
+		height: 42px;
+		display: inline-block;
+		width: 55px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		overflow: hidden;
+		text-indent: -200%;
+		background-image: url('#{$gfxMap}/logoSmall.png');
+	}
+	
+	.btn {
+		width: auto;
+		background: none;
+		height: 100%;
+		position: absolute;
+		top:0;
+		//right: 0;
+		padding:4px 10px;
+		color:$orange;
+		font-size: 1em;
+	}	
+}

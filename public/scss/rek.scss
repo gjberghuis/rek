@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/*
+	Author: Berry Wijnia
+	Site: http://berrywijnia.nl
+	
+	sudo sass --watch rek.scss:../css/style.css --style compressed
+*/
+
+
+/*
+@font-face {
+  font-family: 'sassoon';
+  src: url('fonts/sassoon/sassoon-webfont.eot');
+  src: url('fonts/sassoon/sassoon-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/sassoon/sassoon-webfont.woff') format('woff'),
+    url('fonts/sassoon/sassoon-webfont.ttf') format('truetype'),
+    url('fonts/sassoon/sassoon-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+*/
+
+@import
+	"mixins/compass/css3",
+	"mixins/compass/reset",
+	"mixins/all",
+	"settings",
+	"modules/all",
+	"base/all";
+
+

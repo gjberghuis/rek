@@ -1,0 +1,89 @@
+$max-width:980px !default;
+//
+@mixin grid(
+	$name:'grid-',
+	$dimension:'large',
+	$columns:12) {
+	
+	[class*=#{$name}-] {
+		float: left;
+		display: block;
+	}
+	
+	@for $i from 1 through $columns {
+		.#{$name}-#{$dimension}-#{$i} { 
+			//@include span-columns($i);
+			$x:$columns/$i;
+			width: (100%)/$x;		
+		}
+	}
+	.#{$dimension}-hide {
+		display: none !important;
+	}			
+}
+
+//
+@mixin group(
+	$name:'group-',
+	$dimension:'large',
+	$columns:12 ) {
+	
+	[class*=#{$name}-] {
+		padding: 0;
+		list-style: none;
+		//margin: 0 -$gutter;
+		
+		> li {
+			float: left;
+			padding: 0 $gutter;
+			margin-bottom:$gutter;
+		}
+	}
+	
+	@for $i from 1 through $columns {
+		.#{$name}-#{$dimension}-#{$i} > li {
+			width: (100%)/$i;
+			$var:#{$i}n;
+			
+			&:nth-of-type(#{$i}n) {
+				margin-right: 0;
+			}
+			&:nth-of-type(#{$i}n+1) {
+				clear: left;
+			}
+		}
+		
+	}
+
+}
+
+@mixin center-container($width:$max-width) {
+  @include clearfix;
+  max-width: $width;
+  clear: both;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  
+  &.center {
+	  left:50%;
+	  top:0;
+	  position: absolute;
+	  margin-left: -($width/2);
+  }
+}
+
+@mixin clearfix {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
