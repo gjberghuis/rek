@@ -240,14 +240,14 @@
   	    {{#if name}}
             <ul class="results">
             {{#if content.taskUncompletedCount}}
-                <h1>Openstaande klussen:</h1>
+                <h1 class="hide">Openstaande klussen:</h1>
                 {{#each task in unCompletedTasks}}
                   <li class="{{task.cssClass}}">
                     <article>
                         <div class="text">
                             <h1>{{task.name}}</h1>
                         </div>
-                      {{#link-to 'klusBySavingtarget' task class="boxLink"}}meer info{{/link-to}}
+                      {{#link-to 'klusBySavingtarget' task class="boxlink"}}meer info{{/link-to}}
                     </article>
                   </li>
                 {{/each}}
