@@ -146,7 +146,7 @@ App.User.reopenClass({
     findSavingTarget: function(id, savingtarget_id, callback){
         return $.getJSON("/users/" + id, { token: localStorage.getItem('token'), resolve: true})
             .then(function(response) {
-                var currentSavingTarget;
+                var currentSavingTarget = [];
                 if(response.user != null && response.user.savingtargets != null && response.user.savingtargets.length > 0)
                 {
                     var openSavingTarget;
@@ -199,15 +199,13 @@ App.User.reopenClass({
                             openSavingTarget  = GetDaysLeft(savingtarget);
                         }
                     });
-                    if (!currentSavingTarget && openSavingTarget)
+                    if (currentSavingTarget.length < 1 && openSavingTarget)
                         currentSavingTarget = openSavingTarget;
-
-                    if(callback)
-                        callback(currentSavingTarget);
-                    else
-                        return currentSavingTarget;
                 }
-
+                if(callback)
+                    callback(currentSavingTarget);
+                else
+                    return currentSavingTarget;
             });
     },
     save: function(user, callback){
@@ -332,7 +330,7 @@ App.DoelenRoute = App.AuthenticatedRoute.extend({
         var model = this;
         return App.Doel.all().then(function(doelen){
             return App.User.findSavingTarget(model.controllerFor('login').get('userid')).then(function(user){
-                if(user != null)
+                if(user.length > 0)
                 {
                     doelen.forEach(function(doel){
                         doel.hasActiveSavingTarget = true;
@@ -384,34 +382,29 @@ App.DoelRoute = App.AuthenticatedRoute.extend({
             };
 
             var saveModel = true;
-            var userModel = App.User.find(this.controllerFor('login').get('userid'), function (response) {
-                if(response.savingtargets != null)
+            var userModel = App.User.findSavingTarget(thisModel.controllerFor('login').get('userid'), null, function (currentSavingtarget) {
+                if(currentSavingtarget.length > 0)
                 {
-                    // check if there is a current and not completed savingtarget. If so, adding a new savingtarget is not allowed.
-                    var currentSavingTarget = null;
-                    response.savingtargets.forEach(function(savingtarget){
-                        if(!savingtarget.completed){
-                            currentSavingTarget = savingtarget;
-                        }
-                    });
-                    if(currentSavingTarget == null){
-                        response.savingtargets.push(savingtarget);
-                    } else {
-                        saveModel = false;
-                    }
-                }
-                else
-                {
-                    var savingtargets = [];
-                    savingtargets.push(savingtarget);
-                    response["savingtargets"] = savingtargets;
+                    saveModel = false;
                 }
 
                 if(saveModel){
-                    if(App.User.save(response)){
-                        var currentSavingTarget = App.User.findSavingTarget(thisModel.controllerFor('login').get('userid'));
-                        thisModel.transitionTo('index');
-                    }
+                    var userModel = App.User.find(thisModel.controllerFor('login').get('userid'), function (response) {
+                        if(response.savingtargets != null)
+                        {
+                                response.savingtargets.push(savingtarget);
+                        }
+                        else
+                        {
+                            var savingtargets = [];
+                            savingtargets.push(savingtarget);
+                            response["savingtargets"] = savingtargets;
+                        }
+
+                        App.User.save(response, function(){
+                            thisModel.transitionTo('index');
+                        });
+                    });
                 }
             });
         }
@@ -595,7 +588,7 @@ App.SavingTargetDoneRoute = App.AuthenticatedRoute.extend({
         var model = this;
         setTimeout(function(){
             var currentSavingTarget = App.User.findSavingTarget(model.controllerFor('login').get('userid'));
-            model.transitionTo('index', currentSavingTarget);
+            model.transitionTo('index');
         }, 2000);
     }
 });
