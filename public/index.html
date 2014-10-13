@@ -215,7 +215,7 @@
    			<li class="price">&euro;{{content.amount}}</li>
    		</ul>
    		{{#unless content.hasActiveSavingTarget}}
-   		    <a href="#linknaarform" {{action 'add'}} class="btn">Voeg spaardoel toe</a>
+   		    <a href="#" {{action 'add'}} class="btn">Voeg spaardoel toe</a>
    		{{/unless}}
    	</script>
 
@@ -249,7 +249,7 @@
                   </li>
                 {{/each}}
               {{else}}
-                    <h1>Voeg je eerste klusje toe</h1>
+                    <h1>Voeg een klusje toe</h1>
                 {{/if}}
             </ul>
             {{#link-to 'klusAdd' class="btn blanc new"}}Nieuw{{/link-to}}

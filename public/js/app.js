@@ -410,7 +410,7 @@ App.DoelRoute = App.AuthenticatedRoute.extend({
                 if(saveModel){
                     if(App.User.save(response)){
                         var currentSavingTarget = App.User.findSavingTarget(thisModel.controllerFor('login').get('userid'));
-                        thisModel.transitionTo('index', currentSavingTarget);
+                        thisModel.transitionTo('index');
                     }
                 }
             });

@@ -39,14 +39,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="235" column="30" selection-start="9008" selection-end="9008" vertical-scroll-proportion="0.21174653" vertical-offset="1843" max-vertical-offset="2760">
+            <state line="216" column="49" selection-start="8357" selection-end="8357" vertical-scroll-proportion="-6.88" vertical-offset="1486" max-vertical-offset="2895">
               <folding>
                 <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
                 <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
-                <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
                 <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
                 <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
                 <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
@@ -58,10 +57,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="319" column="48" selection-start="11470" selection-end="11470" vertical-scroll-proportion="5.8461537" vertical-offset="1727" max-vertical-offset="5250">
+            <state line="323" column="92" selection-start="11649" selection-end="11649" vertical-scroll-proportion="0.6263383" vertical-offset="0" max-vertical-offset="3180">
               <folding>
                 <element signature="e#95#341#0" expanded="false" />
                 <element signature="e#418#1253#0" expanded="false" />
@@ -70,6 +69,7 @@
                 <element signature="e#2164#3254#0" expanded="false" />
                 <element signature="e#3258#3280#0" expanded="false" />
                 <element signature="e#3312#3315#0" expanded="false" />
+                <element signature="e#3340#8618#0" expanded="false" />
                 <element signature="e#3374#4725#0" expanded="false" />
                 <element signature="e#7806#8616#0" expanded="false" />
                 <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
@@ -77,12 +77,13 @@
                 <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
                 <element signature="e#10761#11401#0" expanded="false" />
                 <element signature="e#11744#12327#0" expanded="false" />
-                <element signature="e#16448#16513#0" expanded="false" />
-                <element signature="e#16566#18725#0" expanded="false" />
-                <element signature="e#18779#20482#0" expanded="false" />
-                <element signature="e#21017#22608#0" expanded="false" />
-                <element signature="e#22672#24378#0" expanded="false" />
-                <element signature="e#24432#24782#0" expanded="false" />
+                <element signature="e#12377#14784#0" expanded="false" />
+                <element signature="e#16427#16492#0" expanded="false" />
+                <element signature="e#16545#18704#0" expanded="false" />
+                <element signature="e#18758#20461#0" expanded="false" />
+                <element signature="e#20996#22587#0" expanded="false" />
+                <element signature="e#22651#24357#0" expanded="false" />
+                <element signature="e#24411#24761#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -136,16 +137,16 @@
         <option value="$PROJECT_DIR$/web.js" />
         <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/routes/mongoose.js" />
-        <option value="$PROJECT_DIR$/public/js/app.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/js/app.js" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
+    <option name="x" value="1440" />
     <option name="width" value="1920" />
-    <option name="height" value="817" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -329,7 +330,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="817" extended-state="0" />
+    <frame x="1440" y="0" width="1920" height="1080" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -418,7 +419,6 @@
           <folding>
             <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
@@ -440,6 +440,7 @@
             <element signature="e#2164#3254#0" expanded="false" />
             <element signature="e#3258#3280#0" expanded="false" />
             <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="e#3340#8618#0" expanded="false" />
             <element signature="e#3374#4725#0" expanded="false" />
             <element signature="e#7806#8616#0" expanded="false" />
             <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
@@ -447,12 +448,13 @@
             <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
             <element signature="e#10761#11401#0" expanded="false" />
             <element signature="e#11744#12327#0" expanded="false" />
-            <element signature="e#16448#16513#0" expanded="false" />
-            <element signature="e#16566#18725#0" expanded="false" />
-            <element signature="e#18779#20482#0" expanded="false" />
-            <element signature="e#21017#22608#0" expanded="false" />
-            <element signature="e#22672#24378#0" expanded="false" />
-            <element signature="e#24432#24782#0" expanded="false" />
+            <element signature="e#12377#14784#0" expanded="false" />
+            <element signature="e#16427#16492#0" expanded="false" />
+            <element signature="e#16545#18704#0" expanded="false" />
+            <element signature="e#18758#20461#0" expanded="false" />
+            <element signature="e#20996#22587#0" expanded="false" />
+            <element signature="e#22651#24357#0" expanded="false" />
+            <element signature="e#24411#24761#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -487,7 +489,6 @@
           <folding>
             <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
@@ -509,6 +510,7 @@
             <element signature="e#2164#3254#0" expanded="false" />
             <element signature="e#3258#3280#0" expanded="false" />
             <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="e#3340#8618#0" expanded="false" />
             <element signature="e#3374#4725#0" expanded="false" />
             <element signature="e#7806#8616#0" expanded="false" />
             <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
@@ -516,12 +518,13 @@
             <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
             <element signature="e#10761#11401#0" expanded="false" />
             <element signature="e#11744#12327#0" expanded="false" />
-            <element signature="e#16448#16513#0" expanded="false" />
-            <element signature="e#16566#18725#0" expanded="false" />
-            <element signature="e#18779#20482#0" expanded="false" />
-            <element signature="e#21017#22608#0" expanded="false" />
-            <element signature="e#22672#24378#0" expanded="false" />
-            <element signature="e#24432#24782#0" expanded="false" />
+            <element signature="e#12377#14784#0" expanded="false" />
+            <element signature="e#16427#16492#0" expanded="false" />
+            <element signature="e#16545#18704#0" expanded="false" />
+            <element signature="e#18758#20461#0" expanded="false" />
+            <element signature="e#20996#22587#0" expanded="false" />
+            <element signature="e#22651#24357#0" expanded="false" />
+            <element signature="e#24411#24761#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -549,7 +552,6 @@
           <folding>
             <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
@@ -571,6 +573,7 @@
             <element signature="e#2164#3254#0" expanded="false" />
             <element signature="e#3258#3280#0" expanded="false" />
             <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="e#3340#8618#0" expanded="false" />
             <element signature="e#3374#4725#0" expanded="false" />
             <element signature="e#7806#8616#0" expanded="false" />
             <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
@@ -578,12 +581,13 @@
             <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
             <element signature="e#10761#11401#0" expanded="false" />
             <element signature="e#11744#12327#0" expanded="false" />
-            <element signature="e#16448#16513#0" expanded="false" />
-            <element signature="e#16566#18725#0" expanded="false" />
-            <element signature="e#18779#20482#0" expanded="false" />
-            <element signature="e#21017#22608#0" expanded="false" />
-            <element signature="e#22672#24378#0" expanded="false" />
-            <element signature="e#24432#24782#0" expanded="false" />
+            <element signature="e#12377#14784#0" expanded="false" />
+            <element signature="e#16427#16492#0" expanded="false" />
+            <element signature="e#16545#18704#0" expanded="false" />
+            <element signature="e#18758#20461#0" expanded="false" />
+            <element signature="e#20996#22587#0" expanded="false" />
+            <element signature="e#22651#24357#0" expanded="false" />
+            <element signature="e#24411#24761#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -611,7 +615,6 @@
           <folding>
             <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
@@ -633,6 +636,7 @@
             <element signature="e#2164#3254#0" expanded="false" />
             <element signature="e#3258#3280#0" expanded="false" />
             <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="e#3340#8618#0" expanded="false" />
             <element signature="e#3374#4725#0" expanded="false" />
             <element signature="e#7806#8616#0" expanded="false" />
             <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
@@ -640,12 +644,13 @@
             <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
             <element signature="e#10761#11401#0" expanded="false" />
             <element signature="e#11744#12327#0" expanded="false" />
-            <element signature="e#16448#16513#0" expanded="false" />
-            <element signature="e#16566#18725#0" expanded="false" />
-            <element signature="e#18779#20482#0" expanded="false" />
-            <element signature="e#21017#22608#0" expanded="false" />
-            <element signature="e#22672#24378#0" expanded="false" />
-            <element signature="e#24432#24782#0" expanded="false" />
+            <element signature="e#12377#14784#0" expanded="false" />
+            <element signature="e#16427#16492#0" expanded="false" />
+            <element signature="e#16545#18704#0" expanded="false" />
+            <element signature="e#18758#20461#0" expanded="false" />
+            <element signature="e#20996#22587#0" expanded="false" />
+            <element signature="e#22651#24357#0" expanded="false" />
+            <element signature="e#24411#24761#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -673,7 +678,6 @@
           <folding>
             <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
@@ -695,6 +699,7 @@
             <element signature="e#2164#3254#0" expanded="false" />
             <element signature="e#3258#3280#0" expanded="false" />
             <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="e#3340#8618#0" expanded="false" />
             <element signature="e#3374#4725#0" expanded="false" />
             <element signature="e#7806#8616#0" expanded="false" />
             <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
@@ -702,12 +707,13 @@
             <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
             <element signature="e#10761#11401#0" expanded="false" />
             <element signature="e#11744#12327#0" expanded="false" />
-            <element signature="e#16448#16513#0" expanded="false" />
-            <element signature="e#16566#18725#0" expanded="false" />
-            <element signature="e#18779#20482#0" expanded="false" />
-            <element signature="e#21017#22608#0" expanded="false" />
-            <element signature="e#22672#24378#0" expanded="false" />
-            <element signature="e#24432#24782#0" expanded="false" />
+            <element signature="e#12377#14784#0" expanded="false" />
+            <element signature="e#16427#16492#0" expanded="false" />
+            <element signature="e#16545#18704#0" expanded="false" />
+            <element signature="e#18758#20461#0" expanded="false" />
+            <element signature="e#20996#22587#0" expanded="false" />
+            <element signature="e#22651#24357#0" expanded="false" />
+            <element signature="e#24411#24761#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -735,7 +741,6 @@
           <folding>
             <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
@@ -757,6 +762,7 @@
             <element signature="e#2164#3254#0" expanded="false" />
             <element signature="e#3258#3280#0" expanded="false" />
             <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="e#3340#8618#0" expanded="false" />
             <element signature="e#3374#4725#0" expanded="false" />
             <element signature="e#7806#8616#0" expanded="false" />
             <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
@@ -764,12 +770,13 @@
             <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
             <element signature="e#10761#11401#0" expanded="false" />
             <element signature="e#11744#12327#0" expanded="false" />
-            <element signature="e#16448#16513#0" expanded="false" />
-            <element signature="e#16566#18725#0" expanded="false" />
-            <element signature="e#18779#20482#0" expanded="false" />
-            <element signature="e#21017#22608#0" expanded="false" />
-            <element signature="e#22672#24378#0" expanded="false" />
-            <element signature="e#24432#24782#0" expanded="false" />
+            <element signature="e#12377#14784#0" expanded="false" />
+            <element signature="e#16427#16492#0" expanded="false" />
+            <element signature="e#16545#18704#0" expanded="false" />
+            <element signature="e#18758#20461#0" expanded="false" />
+            <element signature="e#20996#22587#0" expanded="false" />
+            <element signature="e#22651#24357#0" expanded="false" />
+            <element signature="e#24411#24761#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -802,6 +809,7 @@
             <element signature="e#2164#3254#0" expanded="false" />
             <element signature="e#3258#3280#0" expanded="false" />
             <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="e#3340#8618#0" expanded="false" />
             <element signature="e#3374#4725#0" expanded="false" />
             <element signature="e#7806#8616#0" expanded="false" />
             <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
@@ -809,12 +817,13 @@
             <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
             <element signature="e#10761#11401#0" expanded="false" />
             <element signature="e#11744#12327#0" expanded="false" />
-            <element signature="e#16448#16513#0" expanded="false" />
-            <element signature="e#16566#18725#0" expanded="false" />
-            <element signature="e#18779#20482#0" expanded="false" />
-            <element signature="e#21017#22608#0" expanded="false" />
-            <element signature="e#22672#24378#0" expanded="false" />
-            <element signature="e#24432#24782#0" expanded="false" />
+            <element signature="e#12377#14784#0" expanded="false" />
+            <element signature="e#16427#16492#0" expanded="false" />
+            <element signature="e#16545#18704#0" expanded="false" />
+            <element signature="e#18758#20461#0" expanded="false" />
+            <element signature="e#20996#22587#0" expanded="false" />
+            <element signature="e#22651#24357#0" expanded="false" />
+            <element signature="e#24411#24761#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -825,7 +834,6 @@
           <folding>
             <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
@@ -854,6 +862,7 @@
             <element signature="e#2164#3254#0" expanded="false" />
             <element signature="e#3258#3280#0" expanded="false" />
             <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="e#3340#8618#0" expanded="false" />
             <element signature="e#3374#4725#0" expanded="false" />
             <element signature="e#7806#8616#0" expanded="false" />
             <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
@@ -861,12 +870,13 @@
             <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
             <element signature="e#10761#11401#0" expanded="false" />
             <element signature="e#11744#12327#0" expanded="false" />
-            <element signature="e#16448#16513#0" expanded="false" />
-            <element signature="e#16566#18725#0" expanded="false" />
-            <element signature="e#18779#20482#0" expanded="false" />
-            <element signature="e#21017#22608#0" expanded="false" />
-            <element signature="e#22672#24378#0" expanded="false" />
-            <element signature="e#24432#24782#0" expanded="false" />
+            <element signature="e#12377#14784#0" expanded="false" />
+            <element signature="e#16427#16492#0" expanded="false" />
+            <element signature="e#16545#18704#0" expanded="false" />
+            <element signature="e#18758#20461#0" expanded="false" />
+            <element signature="e#20996#22587#0" expanded="false" />
+            <element signature="e#22651#24357#0" expanded="false" />
+            <element signature="e#24411#24761#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -877,7 +887,6 @@
           <folding>
             <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
@@ -906,6 +915,7 @@
             <element signature="e#2164#3254#0" expanded="false" />
             <element signature="e#3258#3280#0" expanded="false" />
             <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="e#3340#8618#0" expanded="false" />
             <element signature="e#3374#4725#0" expanded="false" />
             <element signature="e#7806#8616#0" expanded="false" />
             <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
@@ -913,12 +923,13 @@
             <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
             <element signature="e#10761#11401#0" expanded="false" />
             <element signature="e#11744#12327#0" expanded="false" />
-            <element signature="e#16448#16513#0" expanded="false" />
-            <element signature="e#16566#18725#0" expanded="false" />
-            <element signature="e#18779#20482#0" expanded="false" />
-            <element signature="e#21017#22608#0" expanded="false" />
-            <element signature="e#22672#24378#0" expanded="false" />
-            <element signature="e#24432#24782#0" expanded="false" />
+            <element signature="e#12377#14784#0" expanded="false" />
+            <element signature="e#16427#16492#0" expanded="false" />
+            <element signature="e#16545#18704#0" expanded="false" />
+            <element signature="e#18758#20461#0" expanded="false" />
+            <element signature="e#20996#22587#0" expanded="false" />
+            <element signature="e#22651#24357#0" expanded="false" />
+            <element signature="e#24411#24761#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -929,7 +940,6 @@
           <folding>
             <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
@@ -958,6 +968,7 @@
             <element signature="e#2164#3254#0" expanded="false" />
             <element signature="e#3258#3280#0" expanded="false" />
             <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="e#3340#8618#0" expanded="false" />
             <element signature="e#3374#4725#0" expanded="false" />
             <element signature="e#7806#8616#0" expanded="false" />
             <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
@@ -965,12 +976,13 @@
             <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
             <element signature="e#10761#11401#0" expanded="false" />
             <element signature="e#11744#12327#0" expanded="false" />
-            <element signature="e#16448#16513#0" expanded="false" />
-            <element signature="e#16566#18725#0" expanded="false" />
-            <element signature="e#18779#20482#0" expanded="false" />
-            <element signature="e#21017#22608#0" expanded="false" />
-            <element signature="e#22672#24378#0" expanded="false" />
-            <element signature="e#24432#24782#0" expanded="false" />
+            <element signature="e#12377#14784#0" expanded="false" />
+            <element signature="e#16427#16492#0" expanded="false" />
+            <element signature="e#16545#18704#0" expanded="false" />
+            <element signature="e#18758#20461#0" expanded="false" />
+            <element signature="e#20996#22587#0" expanded="false" />
+            <element signature="e#22651#24357#0" expanded="false" />
+            <element signature="e#24411#24761#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -981,7 +993,6 @@
           <folding>
             <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
             <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
@@ -1035,9 +1046,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="216" column="49" selection-start="8357" selection-end="8357" vertical-scroll-proportion="-6.88" vertical-offset="1486" max-vertical-offset="2895">
+          <folding>
+            <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="319" column="48" selection-start="11470" selection-end="11470" vertical-scroll-proportion="5.8461537" vertical-offset="1727" max-vertical-offset="5250">
+        <state line="323" column="92" selection-start="11649" selection-end="11649" vertical-scroll-proportion="0.6263383" vertical-offset="0" max-vertical-offset="3180">
           <folding>
             <element signature="e#95#341#0" expanded="false" />
             <element signature="e#418#1253#0" expanded="false" />
@@ -1046,6 +1073,7 @@
             <element signature="e#2164#3254#0" expanded="false" />
             <element signature="e#3258#3280#0" expanded="false" />
             <element signature="e#3312#3315#0" expanded="false" />
+            <element signature="e#3340#8618#0" expanded="false" />
             <element signature="e#3374#4725#0" expanded="false" />
             <element signature="e#7806#8616#0" expanded="false" />
             <element signature="n#!!block;n#GetTaskCssClass#0" expanded="false" />
@@ -1053,29 +1081,13 @@
             <element signature="n#!!block;n#GetDaysLeft#0" expanded="false" />
             <element signature="e#10761#11401#0" expanded="false" />
             <element signature="e#11744#12327#0" expanded="false" />
-            <element signature="e#16448#16513#0" expanded="false" />
-            <element signature="e#16566#18725#0" expanded="false" />
-            <element signature="e#18779#20482#0" expanded="false" />
-            <element signature="e#21017#22608#0" expanded="false" />
-            <element signature="e#22672#24378#0" expanded="false" />
-            <element signature="e#24432#24782#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="235" column="30" selection-start="9008" selection-end="9008" vertical-scroll-proportion="0.21174653" vertical-offset="1843" max-vertical-offset="2760">
-          <folding>
-            <element signature="tag#script#2;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#7;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#9;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#10;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#11;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#12;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#13;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="tag#script#14;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="e#12377#14784#0" expanded="false" />
+            <element signature="e#16427#16492#0" expanded="false" />
+            <element signature="e#16545#18704#0" expanded="false" />
+            <element signature="e#18758#20461#0" expanded="false" />
+            <element signature="e#20996#22587#0" expanded="false" />
+            <element signature="e#22651#24357#0" expanded="false" />
+            <element signature="e#24411#24761#0" expanded="false" />
           </folding>
         </state>
       </provider>
