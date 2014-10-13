@@ -59,15 +59,18 @@
                 </figure>
                 <h5>Er staan nog <strong>{{taskUncompletedCount}}</strong> klussen open</h5>
                 {{#if money_left_needed}}
-                    <h2><strong class="price">Nog &euro; {{money_left}} te gaan binnen {{days_left}} dagen</strong></h2>
+                    <h2><strong class="price">Nog &euro; {{money_left}} te gaan <br /> binnen {{days_left}} dagen</strong></h2>
                 {{else}}
                     <h2><strong class="price">Je hebt &euro; {{money_saved}} gespaard voor dit spaardoel</strong></h2>
                 {{/if}}
                 <a href="#klussen" class="btn">Bekijk je klussen</a>
             </article>
 		{{else}}
-            Welkom bij de redeenkind app. In deze app kun je door middel klussen uitvoeren sparen voor een spaardoel.
-            Begin met het selecteren van een spaardoel. {{#link-to 'doelen' class="boxLink"}}Spaardoel toevoegen{{/link-to}}
+            <div class="messageBox">
+            	<h2>Welkom bij de <br />redeenkind app.</h2>
+            	<p> In deze app kun je door middel klussen uitvoeren sparen voor een spaardoel.<br />Begin met het selecteren van een spaardoel.</p> 
+            	{{#link-to 'doelen' class="btn new boxLink"}}Spaardoel toevoegen{{/link-to}}
+            </div>
         {{/if}}
 	</script>
 
@@ -173,7 +176,7 @@
 	
 	<script type='text/x-handlebars' data-template-name='doelen' id='doelen'>
     	<h1>Doelen</h1>
-    		<ul class="results">
+    		<ul class="results doelen">
     			{{#each doel in doelen}}
     				<li>
     					<article>
@@ -215,7 +218,7 @@
    			<li class="price">&euro;{{content.amount}}</li>
    		</ul>
    		{{#unless content.hasActiveSavingTarget}}
-   		    <a href="#" {{action 'add'}} class="btn">Voeg spaardoel toe</a>
+   		    <a href="#linknaarform" {{action 'add'}} class="btn">Voeg spaardoel toe</a>
    		{{/unless}}
    	</script>
 
@@ -237,19 +240,19 @@
   	    {{#if name}}
             <ul class="results">
             {{#if content.taskUncompletedCount}}
-                <h1>Openstaande klussen:</h1>
+                <h1 class="hide">Openstaande klussen:</h1>
                 {{#each task in unCompletedTasks}}
                   <li class="{{task.cssClass}}">
                     <article>
                         <div class="text">
                             <h1>{{task.name}}</h1>
                         </div>
-                      {{#link-to 'klusBySavingtarget' task class="boxLink"}}meer info{{/link-to}}
+                      {{#link-to 'klusBySavingtarget' task class="boxlink"}}meer info{{/link-to}}
                     </article>
                   </li>
                 {{/each}}
               {{else}}
-                    <h1>Voeg een klusje toe</h1>
+                    <p class="message">Voeg je eerste klusje toe</p>
                 {{/if}}
             </ul>
             {{#link-to 'klusAdd' class="btn blanc new"}}Nieuw{{/link-to}}
@@ -260,8 +263,9 @@
 
     <script type='text/x-handlebars' data-template-name='klusAdd'>
    		<article class="article">
+	   		 <h1>Voeg klusje toe</h1>
             {{#if stepOne}}
-                <h1>Voeg klusje toe</h1>
+               
                 <form>
                     <fieldset>
                         <label for="klus">Kies een klus:</label>
